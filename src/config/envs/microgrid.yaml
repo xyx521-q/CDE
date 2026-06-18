@@ -1,0 +1,76 @@
+# microgrid.yaml
+env: "microgrid"
+
+env_args:
+  result_dir: "./results"
+  action_bins: 7
+  log_trajectories: false
+  log_trajectories_mode: "test"
+  reward_aggregate: "mean"
+  reward_scale: 1.0
+  buy_cost_weight: 1.0
+  buy_reward_mode: "relative_saving"
+  buy_reward_scale: 100.0
+  generate_cost_weight: 1.0
+  bess_cost_weight: 1.0
+  env_reward_weight: 1.0
+  battery_punishment_weight: 5.0
+  soc_reserve_target: 0.4
+  soc_reserve_weight: 5.0
+  data:
+    - agent_name: "agent1"
+      low_state: [0.0, 0.0, 0.2]
+      high_state: [5.0, 5.0, 0.8]
+      low_action: [0.0, -1.0]
+      high_action: [1.0, 1.0]
+      dg_max: 2.0
+      battery_cap: 5.0
+      battery_punishment_param: 1.0
+      raw_ch: 0.95
+      raw_dis: 0.95
+      split_ratio: 0.25
+      bessa: 0.01
+      bessb: 0.1
+      bessc: 0.05
+      costa: 0.02
+      costb: 0.5
+      costc: 0.1
+      env_param: 0.05
+    - agent_name: "agent2"
+      low_state: [0.0, 0.0, 0.2]
+      high_state: [5.0, 5.0, 0.8]
+      low_action: [0.0, -1.0]
+      high_action: [1.0, 1.0]
+      dg_max: 2.0
+      battery_cap: 5.0
+      battery_punishment_param: 1.0
+      raw_ch: 0.95
+      raw_dis: 0.95
+      split_ratio: 0.25
+      bessa: 0.01
+      bessb: 0.1
+      bessc: 0.05
+      costa: 0.02
+      costb: 0.5
+      costc: 0.1
+      env_param: 0.05
+    - agent_name: "agent3"
+      low_state: [0.0, 0.0, 0.2]
+      high_state: [5.0, 5.0, 0.8]
+      low_action: [0.0, -1.0]
+      high_action: [1.0, 1.0]
+      dg_max: 2.0
+      battery_cap: 5.0
+      battery_punishment_param: 1.0
+      raw_ch: 0.95
+      raw_dis: 0.95
+      split_ratio: 0.25
+      bessa: 0.01
+      bessb: 0.1
+      bessc: 0.05
+      costa: 0.02
+      costb: 0.5
+      costc: 0.1
+      env_param: 0.05
+    
+    # 如果有多个 agent，依此类推在下面贴上 agent2, agent3, agent4...
