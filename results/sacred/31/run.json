@@ -1,0 +1,93 @@
+{
+  "artifacts": [],
+  "command": "my_main",
+  "experiment": {
+    "base_dir": "C:\\Users\\xyx\\Desktop\\GDE-main\\src",
+    "dependencies": [
+      "munch==2.5.0",
+      "numpy==1.26.4",
+      "PyYAML==6.0",
+      "sacred==0.8.2",
+      "torch==1.11.0"
+    ],
+    "mainfile": "main.py",
+    "name": "pymarl",
+    "repositories": [],
+    "sources": [
+      [
+        "main.py",
+        "_sources\\main_2c962e5fbbbd5c48ffb00801afc3a42d.py"
+      ],
+      [
+        "run.py",
+        "_sources\\run_c2ae0f0c69bde547ee2c07d260a0301a.py"
+      ],
+      [
+        "utils\\__init__.py",
+        "_sources\\__init___d41d8cd98f00b204e9800998ecf8427e.py"
+      ],
+      [
+        "utils\\logging.py",
+        "_sources\\logging_5a4abe2163c8e0c8266d8332beedceba.py"
+      ]
+    ]
+  },
+  "fail_trace": [
+    "Traceback (most recent call last):\n",
+    "  File \"C:\\Users\\xyx\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sacred\\config\\captured_function.py\", line 42, in captured_function\n    result = wrapped(*args, **kwargs)\n",
+    "  File \"C:\\Users\\xyx\\Desktop\\GDE-main\\src\\main.py\", line 55, in my_main\n    run(_run, config, _log)\n",
+    "  File \"C:\\Users\\xyx\\Desktop\\GDE-main\\src\\run.py\", line 64, in run\n    run_sequential(args=args, logger=logger)\n",
+    "  File \"C:\\Users\\xyx\\Desktop\\GDE-main\\src\\run.py\", line 223, in run_sequential\n    buffer = ReplayBuffer(scheme, groups, args.buffer_size,\n",
+    "  File \"C:\\Users\\xyx\\Desktop\\GDE-main\\src\\components\\episode_buffer.py\", line 475, in __init__\n    super(ReplayBuffer, self).__init__(scheme, groups, buffer_size, max_seq_length, preprocess=preprocess, device=device, out_device=out_device)\n",
+    "  File \"C:\\Users\\xyx\\Desktop\\GDE-main\\src\\components\\episode_buffer.py\", line 31, in __init__\n    self._setup_data(self.scheme, self.groups, batch_size, max_seq_length, self.preprocess)\n",
+    "  File \"C:\\Users\\xyx\\Desktop\\GDE-main\\src\\components\\episode_buffer.py\", line 78, in _setup_data\n    self.data.transition_data[field_key] = th.zeros((batch_size, max_seq_length, *shape), dtype=dtype, device=self.device)\n",
+    "TypeError: zeros() received an invalid combination of arguments - got (tuple, device=str, dtype=torch.dtype), but expected one of:\n * (tuple of ints size, *, tuple of names names, torch.dtype dtype, torch.layout layout, torch.device device, bool pin_memory, bool requires_grad)\n * (tuple of ints size, *, Tensor out, torch.dtype dtype, torch.layout layout, torch.device device, bool pin_memory, bool requires_grad)\n\n"
+  ],
+  "heartbeat": "2026-06-15T11:57:28.299773",
+  "host": {
+    "ENV": {},
+    "cpu": "Unknown",
+    "hostname": "DESKTOP-39MDRMU",
+    "os": [
+      "Windows",
+      "Windows-10-10.0.26200-SP0"
+    ],
+    "python_version": "3.10.11"
+  },
+  "meta": {
+    "command": "my_main",
+    "options": {
+      "--beat-interval": null,
+      "--capture": null,
+      "--comment": null,
+      "--debug": false,
+      "--enforce_clean": false,
+      "--file_storage": null,
+      "--force": false,
+      "--help": false,
+      "--loglevel": null,
+      "--mongo_db": null,
+      "--name": null,
+      "--pdb": false,
+      "--print-config": false,
+      "--priority": null,
+      "--queue": false,
+      "--s3": null,
+      "--sql": null,
+      "--tiny_db": null,
+      "--unobserved": false,
+      "COMMAND": null,
+      "UPDATE": [
+        "t_max=300000",
+        "use_cuda=False"
+      ],
+      "help": false,
+      "with": true
+    }
+  },
+  "resources": [],
+  "result": null,
+  "start_time": "2026-06-15T11:57:28.220022",
+  "status": "FAILED",
+  "stop_time": "2026-06-15T11:57:28.307655"
+}

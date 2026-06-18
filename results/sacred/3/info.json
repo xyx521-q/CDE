@@ -1,0 +1,152 @@
+{
+  "battle_won_mean": [
+    1.0
+  ],
+  "battle_won_mean_T": [
+    24
+  ],
+  "ep_length_mean": [
+    24.0
+  ],
+  "ep_length_mean_T": [
+    24
+  ],
+  "episode_limit_mean": [
+    1.0
+  ],
+  "episode_limit_mean_T": [
+    24
+  ],
+  "epsilon": [
+    0.5
+  ],
+  "epsilon_T": [
+    24
+  ],
+  "mean_soc_mean": [
+    0.5366666704416275
+  ],
+  "mean_soc_mean_T": [
+    24
+  ],
+  "return_mean": [
+    {
+      "dtype": "float64",
+      "py/object": "numpy.float64",
+      "value": -850169.5046643912
+    }
+  ],
+  "return_mean_T": [
+    24
+  ],
+  "return_std": [
+    {
+      "dtype": "float64",
+      "py/object": "numpy.float64",
+      "value": 0.0
+    }
+  ],
+  "return_std_T": [
+    24
+  ],
+  "test_battle_won_mean": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "test_battle_won_mean_T": [
+    24,
+    24,
+    24
+  ],
+  "test_ep_length_mean": [
+    24.0,
+    24.0,
+    24.0
+  ],
+  "test_ep_length_mean_T": [
+    24,
+    24,
+    24
+  ],
+  "test_episode_limit_mean": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "test_episode_limit_mean_T": [
+    24,
+    24,
+    24
+  ],
+  "test_mean_soc_mean": [
+    0.8000000000000005,
+    0.8000000000000005,
+    0.8000000000000005
+  ],
+  "test_mean_soc_mean_T": [
+    24,
+    24,
+    24
+  ],
+  "test_return_mean": [
+    {
+      "dtype": "float64",
+      "py/object": "numpy.float64",
+      "value": -933353.6108237838
+    },
+    {
+      "dtype": "float64",
+      "py/object": "numpy.float64",
+      "value": -924022.2262420976
+    },
+    {
+      "dtype": "float64",
+      "py/object": "numpy.float64",
+      "value": -901469.7273447232
+    }
+  ],
+  "test_return_mean_T": [
+    24,
+    24,
+    24
+  ],
+  "test_return_std": [
+    {
+      "dtype": "float64",
+      "py/object": "numpy.float64",
+      "value": 82222.9484475006
+    },
+    {
+      "dtype": "float64",
+      "py/object": "numpy.float64",
+      "value": 86688.67267364483
+    },
+    {
+      "dtype": "float64",
+      "py/object": "numpy.float64",
+      "value": 95072.94723691976
+    }
+  ],
+  "test_return_std_T": [
+    24,
+    24,
+    24
+  ],
+  "test_total_power_loss_mean": [
+    574.932499947846,
+    583.2768748569488,
+    568.6065624623745
+  ],
+  "test_total_power_loss_mean_T": [
+    24,
+    24,
+    24
+  ],
+  "total_power_loss_mean": [
+    505.9700000596047
+  ],
+  "total_power_loss_mean_T": [
+    24
+  ]
+}

@@ -1,0 +1,1399 @@
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+[INFO 19:58:04] root Experiment Parameters:
+[INFO 19:58:04] root 
+
+{   'EA': 1,
+    'EA_alpha': 1.0,
+    'EA_freq': 5,
+    'N_type': 1,
+    'Org_alpha': 1.0,
+    'SAME': 0,
+    'act_noise': 0.05,
+    'action_range': None,
+    'action_selector': 'gaussian',
+    'agent': 'rnn',
+    'agent_output_type': 'continuous',
+    'agent_return_logits': False,
+    'batch_size': 256,
+    'batch_size_run': 1,
+    'buffer_algo': None,
+    'buffer_chunk_size': None,
+    'buffer_cpu_only': True,
+    'buffer_device': None,
+    'buffer_mode': 'transitions',
+    'buffer_size': 500000,
+    'buffer_warmup': 5000,
+    'checkpoint_path': '',
+    'continuous_actions': False,
+    'critic_lr': 0.0001,
+    'critic_spectral': 'ynn',
+    'critic_train_reps': 1,
+    'debug': False,
+    'discretize_actions': False,
+    'double_q': True,
+    'elite_fraction': 0.2,
+    'env': 'microgrid',
+    'env_args': {   'action_bins': 7,
+                    'battery_punishment_weight': 20.0,
+                    'bess_cost_weight': 1.0,
+                    'buy_cost_weight': 1.0,
+                    'data': [   {   'agent_name': 'agent1',
+                                    'battery_cap': 5.0,
+                                    'battery_punishment_param': 1.0,
+                                    'bessa': 0.01,
+                                    'bessb': 0.1,
+                                    'bessc': 0.05,
+                                    'costa': 0.02,
+                                    'costb': 0.5,
+                                    'costc': 0.1,
+                                    'dg_max': 2.0,
+                                    'env_param': 0.05,
+                                    'high_action': [   1.0,
+                                                       1.0],
+                                    'high_state': [   5.0,
+                                                      5.0,
+                                                      0.8],
+                                    'low_action': [   0.0,
+                                                      -1.0],
+                                    'low_state': [   0.0,
+                                                     0.0,
+                                                     0.2],
+                                    'raw_ch': 0.95,
+                                    'raw_dis': 0.95,
+                                    'split_ratio': 0.25},
+                                {   'agent_name': 'agent2',
+                                    'battery_cap': 5.0,
+                                    'battery_punishment_param': 1.0,
+                                    'bessa': 0.01,
+                                    'bessb': 0.1,
+                                    'bessc': 0.05,
+                                    'costa': 0.02,
+                                    'costb': 0.5,
+                                    'costc': 0.1,
+                                    'dg_max': 2.0,
+                                    'env_param': 0.05,
+                                    'high_action': [   1.0,
+                                                       1.0],
+                                    'high_state': [   5.0,
+                                                      5.0,
+                                                      0.8],
+                                    'low_action': [   0.0,
+                                                      -1.0],
+                                    'low_state': [   0.0,
+                                                     0.0,
+                                                     0.2],
+                                    'raw_ch': 0.95,
+                                    'raw_dis': 0.95,
+                                    'split_ratio': 0.25},
+                                {   'agent_name': 'agent3',
+                                    'battery_cap': 5.0,
+                                    'battery_punishment_param': 1.0,
+                                    'bessa': 0.01,
+                                    'bessb': 0.1,
+                                    'bessc': 0.05,
+                                    'costa': 0.02,
+                                    'costb': 0.5,
+                                    'costc': 0.1,
+                                    'dg_max': 2.0,
+                                    'env_param': 0.05,
+                                    'high_action': [   1.0,
+                                                       1.0],
+                                    'high_state': [   5.0,
+                                                      5.0,
+                                                      0.8],
+                                    'low_action': [   0.0,
+                                                      -1.0],
+                                    'low_state': [   0.0,
+                                                     0.0,
+                                                     0.2],
+                                    'raw_ch': 0.95,
+                                    'raw_dis': 0.95,
+                                    'split_ratio': 0.25}],
+                    'env_reward_weight': 1.0,
+                    'generate_cost_weight': 1.0,
+                    'log_trajectories': False,
+                    'log_trajectories_mode': 'test',
+                    'result_dir': './results',
+                    'reward_aggregate': 'mean',
+                    'reward_scale': 0.001,
+                    'run_id': 'direct',
+                    'seed': 0,
+                    'soc_reserve_target': 0.35,
+                    'soc_reserve_weight': 0.0,
+                    'state_last_action': False},
+    'epsilon_anneal_time': 100000,
+    'epsilon_decay_mode': None,
+    'epsilon_finish': 0.05,
+    'epsilon_start': 0.5,
+    'evaluate': False,
+    'exploration_mode': 'gaussian',
+    'final_ou_noise_scale': 0.0,
+    'frac': 1.0,
+    'gamma': 0.99,
+    'gated': False,
+    'grad_norm_clip': 5,
+    'hyper_initialization_nonzeros': 0,
+    'hypernet_embed': 64,
+    'hypernet_layers': 2,
+    'label': 'default_label',
+    'learn_interval': 1,
+    'learner': 'facmac_learner',
+    'learner_log_interval': 2000,
+    'load_step': 0,
+    'local_results_path': 'results',
+    'log_interval': 2000,
+    'lr': 0.0003,
+    'mac': 'cqmix_mac',
+    'mask_before_softmax': True,
+    'mixer': 'graph',
+    'mixing_embed_dim': 64,
+    'mutation_prob': 0.9,
+    'n_runners': None,
+    'n_train': 1,
+    'name': 'facmac_smac',
+    'obs_agent_id': True,
+    'obs_last_action': True,
+    'optim_alpha': 0.99,
+    'optim_eps': 1e-05,
+    'optimizer': 'adam',
+    'ou_noise_scale': 0.3,
+    'ou_sigma': 0.2,
+    'ou_stop_episode': 100,
+    'ou_theta': 0.15,
+    'plot_loss_network': False,
+    'policy_spectral': 'nnnn',
+    'pop_size': 5,
+    'pr_dim': 64,
+    'prob_reset_and_sup': 0.05,
+    'q_embed_dim': 1,
+    'q_nstep': 0.99,
+    'recurrent_critic': False,
+    'repeat_id': 1,
+    'rl_to_ea_synch_period': 1,
+    'rnn_hidden_dim': 64,
+    'run_mode': None,
+    'runner': 'episode',
+    'runner_log_interval': 2000,
+    'runner_scope': 'episodic',
+    'save_model': True,
+    'save_model_interval': 10000,
+    'save_replay': False,
+    'seed': 0,
+    'skip_connections': False,
+    'spectral_regularization': False,
+    'start_steps': 5000,
+    'start_timesteps': 10000,
+    'state_alpha': 0.1,
+    't_max': 300000,
+    'target_update_interval': 200,
+    'target_update_mode': 'soft',
+    'target_update_tau': 0.002,
+    'td_lambda': 0.8,
+    'test_greedy': True,
+    'test_interval': 10000,
+    'test_nepisode': 32,
+    'testing_on': True,
+    'use_buffer_compression': False,
+    'use_cuda': False,
+    'use_tensorboard': True,
+    'verbose': True,
+    'weight_decay': True,
+    'weight_decay_factor': 0.0001}
+
+[INFO 19:58:04] root Beginning training for 300000 timesteps
+C:\Users\xyx\Desktop\GDE-main\src\components\episode_buffer.py:108: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at  ..\torch\csrc\utils\tensor_new.cpp:210.)
+  v = th.tensor(v, dtype=dtype, device=self.device)
+C:\Users\xyx\AppData\Local\Programs\Python\Python310\lib\site-packages\torch\nn\functional.py:1933: UserWarning: nn.functional.tanh is deprecated. Use torch.tanh instead.
+  warnings.warn("nn.functional.tanh is deprecated. Use torch.tanh instead.")
+C:\Users\xyx\Desktop\GDE-main\src\components\episode_buffer.py:108: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  v = th.tensor(v, dtype=dtype, device=self.device)
+[INFO 19:58:04] root t_env: 24 / 300000
+[INFO 19:58:04] root Estimated time left: 0 seconds. Time passed: 0 seconds
+[INFO 19:58:06] root Saving models to results\models\facmac_smac__2026-06-15_19-58-04\24
+[INFO 19:58:08] root Recent Stats | t_env:       2016 | Episode:       84
+battery_punishment_reward_mean:-1550.1986	battle_won_mean:           1.0000	bess_cost_reward_mean:   -102.3789	buffer/episodes:          84.0000
+buy_cost_reward_mean:    -307165.1916	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -308.1751
+eval/best_win_rate:        1.0000	eval/ea_reward:          -309.0845	eval/ea_win_rate:          1.0000	eval/rl_reward:          -308.1751
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-47.0639	grid_purchase_cost_mean: 307165.1916	mean_soc_mean:             0.5495
+return_mean:             -307.7330	return_std:                0.0000	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       23.6753
+test/battery_punishment_reward:-2262.4427	test/battle_won:           1.0000	test/bess_cost_reward:   -142.7981	test/buy_cost_reward:    -312381.1784
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-43.7068	test/grid_purchase_cost: 312381.1784
+test/mean_soc:             0.3859	test/return_mean:        -313.1987	test/return_std:          29.8840	test/soc_reserve_reward:   0.0000
+test/soc_violation:       33.4355	test/total_power_loss:   14359.6976	test_battery_punishment_reward_mean:-2262.4427	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-142.7981	test_buy_cost_reward_mean:-312381.1784	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-43.7068	test_grid_purchase_cost_mean:312381.1784	test_mean_soc_mean:        0.3859	test_return_mean:        -313.1987
+test_return_std:          29.8840	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  33.4355	test_total_power_loss_mean:14359.6976
+total_power_loss_mean:   14184.7145	train/battery_punishment_reward:-1550.1986	train/battle_won:          1.0000	train/bess_cost_reward:  -102.3789
+train/buy_cost_reward:   -307165.1916	train/ep_length:          24.0000	train/episode:            84.0000	train/episode_limit:       1.0000
+train/generate_cost_reward:-47.0639	train/grid_purchase_cost:307165.1916	train/mean_soc:            0.5495	train/return_mean:       -307.7330
+train/return_std:          0.0000	train/soc_reserve_reward:  0.0000	train/soc_violation:      23.6753	train/t_env:             2016.0000
+train/total_power_loss:  14184.7145	
+[INFO 19:58:10] root Recent Stats | t_env:       4032 | Episode:      168
+battery_punishment_reward_mean:-1360.5083	battle_won_mean:           1.0000	bess_cost_reward_mean:   -110.4598	buffer/episodes:         126.0000
+buy_cost_reward_mean:    -306984.7510	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -308.1751
+eval/best_win_rate:        1.0000	eval/ea_reward:          -309.0845	eval/ea_win_rate:          1.0000	eval/rl_reward:          -308.1751
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-45.9880	grid_purchase_cost_mean: 306984.7510	mean_soc_mean:             0.5204
+return_mean:             -307.4916	return_std:               17.5991	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       21.2747
+test/battery_punishment_reward:-2262.4427	test/battle_won:           1.0000	test/bess_cost_reward:   -142.7981	test/buy_cost_reward:    -312381.1784
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-43.7068	test/grid_purchase_cost: 312381.1784
+test/mean_soc:             0.3859	test/return_mean:        -313.1987	test/return_std:          29.8840	test/soc_reserve_reward:   0.0000
+test/soc_violation:       33.4355	test/total_power_loss:   14359.6976	test_battery_punishment_reward_mean:-2262.4427	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-142.7981	test_buy_cost_reward_mean:-312381.1784	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-43.7068	test_grid_purchase_cost_mean:312381.1784	test_mean_soc_mean:        0.3859	test_return_mean:        -313.1987
+test_return_std:          29.8840	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  33.4355	test_total_power_loss_mean:14359.6976
+total_power_loss_mean:   14157.8791	train/battery_punishment_reward:-1360.5083	train/battle_won:          1.0000	train/bess_cost_reward:  -110.4598
+train/buy_cost_reward:   -306984.7510	train/ep_length:          24.0000	train/episode:           126.0000	train/episode_limit:       1.0000
+train/generate_cost_reward:-45.9880	train/grid_purchase_cost:306984.7510	train/mean_soc:            0.5204	train/return_mean:       -307.4916
+train/return_std:         17.5991	train/soc_reserve_reward:  0.0000	train/soc_violation:      21.2747	train/t_env:             3024.0000
+train/total_power_loss:  14157.8791	
+[INFO 19:58:12] root Recent Stats | t_env:       6048 | Episode:      252
+battery_punishment_reward_mean:-1288.5683	battle_won_mean:           1.0000	bess_cost_reward_mean:   -113.0933	buffer/episodes:         168.0000
+buy_cost_reward_mean:    -309430.3077	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -308.1751
+eval/best_win_rate:        1.0000	eval/ea_reward:          -309.0845	eval/ea_win_rate:          1.0000	eval/rl_reward:          -308.1751
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-45.6528	grid_purchase_cost_mean: 309430.3077	mean_soc_mean:             0.5109
+return_mean:             -309.9140	return_std:               22.3034	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       20.4004
+test/battery_punishment_reward:-2262.4427	test/battle_won:           1.0000	test/bess_cost_reward:   -142.7981	test/buy_cost_reward:    -312381.1784
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-43.7068	test/grid_purchase_cost: 312381.1784
+test/mean_soc:             0.3859	test/return_mean:        -313.1987	test/return_std:          29.8840	test/soc_reserve_reward:   0.0000
+test/soc_violation:       33.4355	test/total_power_loss:   14359.6976	test_battery_punishment_reward_mean:-2262.4427	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-142.7981	test_buy_cost_reward_mean:-312381.1784	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-43.7068	test_grid_purchase_cost_mean:312381.1784	test_mean_soc_mean:        0.3859	test_return_mean:        -313.1987
+test_return_std:          29.8840	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  33.4355	test_total_power_loss_mean:14359.6976
+total_power_loss_mean:   14243.9202	train/battery_punishment_reward:-1288.5683	train/battle_won:          1.0000	train/bess_cost_reward:  -113.0933
+train/buy_cost_reward:   -309430.3077	train/ep_length:          24.0000	train/episode:           168.0000	train/episode_limit:       1.0000
+train/generate_cost_reward:-45.6528	train/grid_purchase_cost:309430.3077	train/mean_soc:            0.5109	train/return_mean:       -309.9140
+train/return_std:         22.3034	train/soc_reserve_reward:  0.0000	train/soc_violation:      20.4004	train/t_env:             4032.0000
+train/total_power_loss:  14243.9202	
+[INFO 19:58:13] root Recent Stats | t_env:       8064 | Episode:      336
+battery_punishment_reward_mean:-1545.0357	battle_won_mean:           1.0000	bess_cost_reward_mean:   -124.3554	buffer/episodes:         210.0000
+buy_cost_reward_mean:    -308749.8698	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -308.1751
+eval/best_win_rate:        1.0000	eval/ea_reward:          -309.0845	eval/ea_win_rate:          1.0000	eval/rl_reward:          -308.1751
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-44.6277	grid_purchase_cost_mean: 308749.8698	mean_soc_mean:             0.4679
+return_mean:             -309.3224	return_std:               25.6731	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       23.4886
+test/battery_punishment_reward:-2262.4427	test/battle_won:           1.0000	test/bess_cost_reward:   -142.7981	test/buy_cost_reward:    -312381.1784
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-43.7068	test/grid_purchase_cost: 312381.1784
+test/mean_soc:             0.3859	test/return_mean:        -313.1987	test/return_std:          29.8840	test/soc_reserve_reward:   0.0000
+test/soc_violation:       33.4355	test/total_power_loss:   14359.6976	test_battery_punishment_reward_mean:-2262.4427	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-142.7981	test_buy_cost_reward_mean:-312381.1784	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-43.7068	test_grid_purchase_cost_mean:312381.1784	test_mean_soc_mean:        0.3859	test_return_mean:        -313.1987
+test_return_std:          29.8840	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  33.4355	test_total_power_loss_mean:14359.6976
+total_power_loss_mean:   14220.6809	train/battery_punishment_reward:-1545.0357	train/battle_won:          1.0000	train/bess_cost_reward:  -124.3554
+train/buy_cost_reward:   -308749.8698	train/ep_length:          24.0000	train/episode:           210.0000	train/episode_limit:       1.0000
+train/generate_cost_reward:-44.6277	train/grid_purchase_cost:308749.8698	train/mean_soc:            0.4679	train/return_mean:       -309.3224
+train/return_std:         25.6731	train/soc_reserve_reward:  0.0000	train/soc_violation:      23.4886	train/t_env:             5040.0000
+train/total_power_loss:  14220.6809	
+[INFO 19:58:15] root t_env: 10032 / 300000
+[INFO 19:58:15] root Estimated time left: 5 minutes, 0 seconds. Time passed: 10 seconds
+[INFO 19:58:16] root Saving models to results\models\facmac_smac__2026-06-15_19-58-04\10032
+[INFO 19:58:16] root Recent Stats | t_env:      10080 | Episode:      420
+battery_punishment_reward_mean:-1911.8878	battle_won_mean:           1.0000	bess_cost_reward_mean:   -138.3676	buffer/episodes:         252.0000
+buy_cost_reward_mean:    -308354.8277	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -306.0841
+eval/best_win_rate:        1.0000	eval/ea_reward:          -306.5388	eval/ea_win_rate:          1.0000	eval/rl_reward:          -309.2474
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-43.4260	grid_purchase_cost_mean: 308354.8277	mean_soc_mean:             0.4144
+return_mean:             -309.0539	return_std:               27.1501	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       27.9141
+test/battery_punishment_reward:-2039.4784	test/battle_won:           1.0000	test/bess_cost_reward:   -132.6133	test/buy_cost_reward:    -308994.2173
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-44.7455	test/grid_purchase_cost: 308994.2173
+test/mean_soc:             0.4226	test/return_mean:        -309.7344	test/return_std:          30.9502	test/soc_reserve_reward:   0.0000
+test/soc_violation:       30.9845	test/total_power_loss:   14214.8114	test_battery_punishment_reward_mean:-2039.4784	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-132.6133	test_buy_cost_reward_mean:-308994.2173	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-44.7455	test_grid_purchase_cost_mean:308994.2173	test_mean_soc_mean:        0.4226	test_return_mean:        -309.7344
+test_return_std:          30.9502	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  30.9845	test_total_power_loss_mean:14214.8114
+total_power_loss_mean:   14207.5966	train/battery_punishment_reward:-1911.8878	train/battle_won:          1.0000	train/bess_cost_reward:  -138.3676
+train/buy_cost_reward:   -308354.8277	train/ep_length:          24.0000	train/episode:           252.0000	train/episode_limit:       1.0000
+train/generate_cost_reward:-43.4260	train/grid_purchase_cost:308354.8277	train/mean_soc:            0.4144	train/return_mean:       -309.0539
+train/return_std:         27.1501	train/soc_reserve_reward:  0.0000	train/soc_violation:      27.9141	train/t_env:             6048.0000
+train/total_power_loss:  14207.5966	
+[INFO 19:59:00] root Recent Stats | t_env:      12144 | Episode:      461
+battery_punishment_reward_mean:-2676.8539	battle_won_mean:           1.0000	bess_cost_reward_mean:   -166.2981	buffer/episodes:         336.4000
+buy_cost_reward_mean:    -309468.4725	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -306.0841
+eval/best_win_rate:        1.0000	eval/ea_reward:          -306.5388	eval/ea_win_rate:          1.0000	eval/rl_reward:          -309.2474
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-41.3721	grid_purchase_cost_mean: 309468.4725	mean_soc_mean:             0.3068
+return_mean:             -310.4311	return_std:               33.9908	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       37.1203
+test/battery_punishment_reward:-2039.4784	test/battle_won:           1.0000	test/bess_cost_reward:   -132.6133	test/buy_cost_reward:    -308994.2173
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-44.7455	test/grid_purchase_cost: 308994.2173
+test/mean_soc:             0.4226	test/return_mean:        -309.7344	test/return_std:          30.9502	test/soc_reserve_reward:   0.0000
+test/soc_violation:       30.9845	test/total_power_loss:   14214.8114	test_battery_punishment_reward_mean:-2039.4784	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-132.6133	test_buy_cost_reward_mean:-308994.2173	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-44.7455	test_grid_purchase_cost_mean:308994.2173	test_mean_soc_mean:        0.4226	test_return_mean:        -309.7344
+test_return_std:          30.9502	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  30.9845	test_total_power_loss_mean:14214.8114
+total_power_loss_mean:   14251.0675	train/battery_punishment_reward:-2676.8539	train/battle_won:          1.0000	train/bess_cost_reward:  -166.2981
+train/buy_cost_reward:   -309468.4725	train/ep_length:          24.0000	train/episode:           327.4000	train/episode_limit:       1.0000
+train/generate_cost_reward:-41.3721	train/grid_purchase_cost:309468.4725	train/mean_soc:            0.3068	train/return_mean:       -310.4311
+train/return_std:         33.9908	train/soc_reserve_reward:  0.0000	train/soc_violation:      37.1203	train/t_env:             8073.6000
+train/total_power_loss:  14251.0675	
+[INFO 19:59:38] root Recent Stats | t_env:      14160 | Episode:      505
+battery_punishment_reward_mean:-3132.6104	battle_won_mean:           1.0000	bess_cost_reward_mean:   -179.2398	buffer/episodes:         420.8000
+buy_cost_reward_mean:    -307845.3271	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -306.0841
+eval/best_win_rate:        1.0000	eval/ea_reward:          -306.5388	eval/ea_win_rate:          1.0000	eval/rl_reward:          -309.2474
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-40.5377	grid_purchase_cost_mean: 307845.3271	mean_soc_mean:             0.2568
+return_mean:             -308.9639	return_std:               35.2207	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       42.4824
+test/battery_punishment_reward:-2039.4784	test/battle_won:           1.0000	test/bess_cost_reward:   -132.6133	test/buy_cost_reward:    -308994.2173
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-44.7455	test/grid_purchase_cost: 308994.2173
+test/mean_soc:             0.4226	test/return_mean:        -309.7344	test/return_std:          30.9502	test/soc_reserve_reward:   0.0000
+test/soc_violation:       30.9845	test/total_power_loss:   14214.8114	test_battery_punishment_reward_mean:-2039.4784	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-132.6133	test_buy_cost_reward_mean:-308994.2173	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-44.7455	test_grid_purchase_cost_mean:308994.2173	test_mean_soc_mean:        0.4226	test_return_mean:        -309.7344
+test_return_std:          30.9502	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  30.9845	test_total_power_loss_mean:14214.8114
+total_power_loss_mean:   14191.8020	train/battery_punishment_reward:-3132.6104	train/battle_won:          1.0000	train/bess_cost_reward:  -179.2398
+train/buy_cost_reward:   -307845.3271	train/ep_length:          24.0000	train/episode:           394.8000	train/episode_limit:       1.0000
+train/generate_cost_reward:-40.5377	train/grid_purchase_cost:307845.3271	train/mean_soc:            0.2568	train/return_mean:       -308.9639
+train/return_std:         35.2207	train/soc_reserve_reward:  0.0000	train/soc_violation:      42.4824	train/t_env:             10099.2000
+train/total_power_loss:  14191.8020	
+[INFO 20:00:20] root Recent Stats | t_env:      16224 | Episode:      546
+battery_punishment_reward_mean:-3275.3769	battle_won_mean:           1.0000	bess_cost_reward_mean:   -181.4656	buffer/episodes:         505.6000
+buy_cost_reward_mean:    -308154.7419	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -306.0841
+eval/best_win_rate:        1.0000	eval/ea_reward:          -306.5388	eval/ea_win_rate:          1.0000	eval/rl_reward:          -309.2474
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-40.3157	grid_purchase_cost_mean: 308154.7419	mean_soc_mean:             0.2471
+return_mean:             -309.3215	return_std:               34.3283	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       44.2205
+test/battery_punishment_reward:-2039.4784	test/battle_won:           1.0000	test/bess_cost_reward:   -132.6133	test/buy_cost_reward:    -308994.2173
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-44.7455	test/grid_purchase_cost: 308994.2173
+test/mean_soc:             0.4226	test/return_mean:        -309.7344	test/return_std:          30.9502	test/soc_reserve_reward:   0.0000
+test/soc_violation:       30.9845	test/total_power_loss:   14214.8114	test_battery_punishment_reward_mean:-2039.4784	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-132.6133	test_buy_cost_reward_mean:-308994.2173	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-44.7455	test_grid_purchase_cost_mean:308994.2173	test_mean_soc_mean:        0.4226	test_return_mean:        -309.7344
+test_return_std:          30.9502	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  30.9845	test_total_power_loss_mean:14214.8114
+total_power_loss_mean:   14198.2600	train/battery_punishment_reward:-3275.3769	train/battle_won:          1.0000	train/bess_cost_reward:  -181.4656
+train/buy_cost_reward:   -308154.7419	train/ep_length:          24.0000	train/episode:           453.6000	train/episode_limit:       1.0000
+train/generate_cost_reward:-40.3157	train/grid_purchase_cost:308154.7419	train/mean_soc:            0.2471	train/return_mean:       -309.3215
+train/return_std:         34.3283	train/soc_reserve_reward:  0.0000	train/soc_violation:      44.2205	train/t_env:             12134.4000
+train/total_power_loss:  14198.2600	
+[INFO 20:00:59] root Recent Stats | t_env:      18240 | Episode:      590
+battery_punishment_reward_mean:-3172.8662	battle_won_mean:           1.0000	bess_cost_reward_mean:   -171.4736	buffer/episodes:         590.4000
+buy_cost_reward_mean:    -309182.9632	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -306.0841
+eval/best_win_rate:        1.0000	eval/ea_reward:          -306.5388	eval/ea_win_rate:          1.0000	eval/rl_reward:          -309.2474
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-40.3715	grid_purchase_cost_mean: 309182.9632	mean_soc_mean:             0.2835
+return_mean:             -310.3123	return_std:               35.9768	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       43.0549
+test/battery_punishment_reward:-2039.4784	test/battle_won:           1.0000	test/bess_cost_reward:   -132.6133	test/buy_cost_reward:    -308994.2173
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-44.7455	test/grid_purchase_cost: 308994.2173
+test/mean_soc:             0.4226	test/return_mean:        -309.7344	test/return_std:          30.9502	test/soc_reserve_reward:   0.0000
+test/soc_violation:       30.9845	test/total_power_loss:   14214.8114	test_battery_punishment_reward_mean:-2039.4784	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-132.6133	test_buy_cost_reward_mean:-308994.2173	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-44.7455	test_grid_purchase_cost_mean:308994.2173	test_mean_soc_mean:        0.4226	test_return_mean:        -309.7344
+test_return_std:          30.9502	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  30.9845	test_total_power_loss_mean:14214.8114
+total_power_loss_mean:   14240.9625	train/battery_punishment_reward:-3172.8662	train/battle_won:          1.0000	train/bess_cost_reward:  -171.4736
+train/buy_cost_reward:   -309182.9632	train/ep_length:          24.0000	train/episode:           504.4000	train/episode_limit:       1.0000
+train/generate_cost_reward:-40.3715	train/grid_purchase_cost:309182.9632	train/mean_soc:            0.2835	train/return_mean:       -310.3123
+train/return_std:         35.9768	train/soc_reserve_reward:  0.0000	train/soc_violation:      43.0549	train/t_env:             14169.6000
+train/total_power_loss:  14240.9625	
+[INFO 20:01:36] root t_env: 20064 / 300000
+[INFO 20:01:36] root Estimated time left: 1 hours, 33 minutes, 48 seconds. Time passed: 3 minutes, 32 seconds
+[INFO 20:01:38] root Saving models to results\models\facmac_smac__2026-06-15_19-58-04\20064
+[INFO 20:01:43] root Recent Stats | t_env:      20304 | Episode:      631
+battery_punishment_reward_mean:-3163.5771	battle_won_mean:           1.0000	bess_cost_reward_mean:   -169.2999	buffer/episodes:         675.6000
+buy_cost_reward_mean:    -308115.0971	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -306.8601
+eval/best_win_rate:        1.0000	eval/ea_reward:          -307.8696	eval/ea_win_rate:          1.0000	eval/rl_reward:          -308.9690
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-40.7955	grid_purchase_cost_mean: 308115.0971	mean_soc_mean:             0.2913
+return_mean:             -309.2407	return_std:               35.9801	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       42.8184
+test/battery_punishment_reward:-3073.1246	test/battle_won:           1.0000	test/bess_cost_reward:   -163.6047	test/buy_cost_reward:    -306725.5380
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-40.2587	test/grid_purchase_cost: 306725.5380
+test/mean_soc:             0.3111	test/return_mean:        -307.8189	test/return_std:          33.1171	test/soc_reserve_reward:   0.0000
+test/soc_violation:       41.7696	test/total_power_loss:   14128.8993	test_battery_punishment_reward_mean:-3073.1246	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-163.6047	test_buy_cost_reward_mean:-306725.5380	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-40.2587	test_grid_purchase_cost_mean:306725.5380	test_mean_soc_mean:        0.3111	test_return_mean:        -307.8189
+test_return_std:          33.1171	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  41.7696	test_total_power_loss_mean:14128.8993
+total_power_loss_mean:   14192.9713	train/battery_punishment_reward:-3163.5771	train/battle_won:          1.0000	train/bess_cost_reward:  -169.2999
+train/buy_cost_reward:   -308115.0971	train/ep_length:          24.0000	train/episode:           546.6000	train/episode_limit:       1.0000
+train/generate_cost_reward:-40.7955	train/grid_purchase_cost:308115.0971	train/mean_soc:            0.2913	train/return_mean:       -309.2407
+train/return_std:         35.9801	train/soc_reserve_reward:  0.0000	train/soc_violation:      42.8184	train/t_env:             16214.4000
+train/total_power_loss:  14192.9713	
+[INFO 20:02:21] root Recent Stats | t_env:      22320 | Episode:      675
+battery_punishment_reward_mean:-3237.0897	battle_won_mean:           1.0000	bess_cost_reward_mean:   -169.8617	buffer/episodes:         760.4000
+buy_cost_reward_mean:    -307018.5870	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -306.8601
+eval/best_win_rate:        1.0000	eval/ea_reward:          -307.8696	eval/ea_win_rate:          1.0000	eval/rl_reward:          -308.9690
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-39.9223	grid_purchase_cost_mean: 307018.5870	mean_soc_mean:             0.2895
+return_mean:             -308.1686	return_std:               35.9611	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       43.5528
+test/battery_punishment_reward:-3073.1246	test/battle_won:           1.0000	test/bess_cost_reward:   -163.6047	test/buy_cost_reward:    -306725.5380
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-40.2587	test/grid_purchase_cost: 306725.5380
+test/mean_soc:             0.3111	test/return_mean:        -307.8189	test/return_std:          33.1171	test/soc_reserve_reward:   0.0000
+test/soc_violation:       41.7696	test/total_power_loss:   14128.8993	test_battery_punishment_reward_mean:-3073.1246	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-163.6047	test_buy_cost_reward_mean:-306725.5380	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-40.2587	test_grid_purchase_cost_mean:306725.5380	test_mean_soc_mean:        0.3111	test_return_mean:        -307.8189
+test_return_std:          33.1171	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  41.7696	test_total_power_loss_mean:14128.8993
+total_power_loss_mean:   14145.0196	train/battery_punishment_reward:-3237.0897	train/battle_won:          1.0000	train/bess_cost_reward:  -169.8617
+train/buy_cost_reward:   -307018.5870	train/ep_length:          24.0000	train/episode:           589.4000	train/episode_limit:       1.0000
+train/generate_cost_reward:-39.9223	train/grid_purchase_cost:307018.5870	train/mean_soc:            0.2895	train/return_mean:       -308.1686
+train/return_std:         35.9611	train/soc_reserve_reward:  0.0000	train/soc_violation:      43.5528	train/t_env:             18249.6000
+train/total_power_loss:  14145.0196	
+[INFO 20:03:04] root Recent Stats | t_env:      24384 | Episode:      716
+battery_punishment_reward_mean:-3094.6252	battle_won_mean:           1.0000	bess_cost_reward_mean:   -169.4311	buffer/episodes:         845.6000
+buy_cost_reward_mean:    -306809.7803	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -306.8601
+eval/best_win_rate:        1.0000	eval/ea_reward:          -307.8696	eval/ea_win_rate:          1.0000	eval/rl_reward:          -308.9690
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-39.3506	grid_purchase_cost_mean: 306809.7803	mean_soc_mean:             0.2908
+return_mean:             -307.9119	return_std:               36.0562	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       42.0650
+test/battery_punishment_reward:-3073.1246	test/battle_won:           1.0000	test/bess_cost_reward:   -163.6047	test/buy_cost_reward:    -306725.5380
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-40.2587	test/grid_purchase_cost: 306725.5380
+test/mean_soc:             0.3111	test/return_mean:        -307.8189	test/return_std:          33.1171	test/soc_reserve_reward:   0.0000
+test/soc_violation:       41.7696	test/total_power_loss:   14128.8993	test_battery_punishment_reward_mean:-3073.1246	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-163.6047	test_buy_cost_reward_mean:-306725.5380	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-40.2587	test_grid_purchase_cost_mean:306725.5380	test_mean_soc_mean:        0.3111	test_return_mean:        -307.8189
+test_return_std:          33.1171	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  41.7696	test_total_power_loss_mean:14128.8993
+total_power_loss_mean:   14134.7089	train/battery_punishment_reward:-3094.6252	train/battle_won:          1.0000	train/bess_cost_reward:  -169.4311
+train/buy_cost_reward:   -306809.7803	train/ep_length:          24.0000	train/episode:           631.6000	train/episode_limit:       1.0000
+train/generate_cost_reward:-39.3506	train/grid_purchase_cost:306809.7803	train/mean_soc:            0.2908	train/return_mean:       -307.9119
+train/return_std:         36.0562	train/soc_reserve_reward:  0.0000	train/soc_violation:      42.0650	train/t_env:             20294.4000
+train/total_power_loss:  14134.7089	
+[INFO 20:03:42] root Recent Stats | t_env:      26400 | Episode:      760
+battery_punishment_reward_mean:-3126.7182	battle_won_mean:           1.0000	bess_cost_reward_mean:   -167.8956	buffer/episodes:         930.4000
+buy_cost_reward_mean:    -307463.0214	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -306.8601
+eval/best_win_rate:        1.0000	eval/ea_reward:          -307.8696	eval/ea_win_rate:          1.0000	eval/rl_reward:          -308.9690
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-39.3264	grid_purchase_cost_mean: 307463.0214	mean_soc_mean:             0.2966
+return_mean:             -308.5754	return_std:               36.5146	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       42.3631
+test/battery_punishment_reward:-3073.1246	test/battle_won:           1.0000	test/bess_cost_reward:   -163.6047	test/buy_cost_reward:    -306725.5380
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-40.2587	test/grid_purchase_cost: 306725.5380
+test/mean_soc:             0.3111	test/return_mean:        -307.8189	test/return_std:          33.1171	test/soc_reserve_reward:   0.0000
+test/soc_violation:       41.7696	test/total_power_loss:   14128.8993	test_battery_punishment_reward_mean:-3073.1246	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-163.6047	test_buy_cost_reward_mean:-306725.5380	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-40.2587	test_grid_purchase_cost_mean:306725.5380	test_mean_soc_mean:        0.3111	test_return_mean:        -307.8189
+test_return_std:          33.1171	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  41.7696	test_total_power_loss_mean:14128.8993
+total_power_loss_mean:   14166.1865	train/battery_punishment_reward:-3126.7182	train/battle_won:          1.0000	train/bess_cost_reward:  -167.8956
+train/buy_cost_reward:   -307463.0214	train/ep_length:          24.0000	train/episode:           674.4000	train/episode_limit:       1.0000
+train/generate_cost_reward:-39.3264	train/grid_purchase_cost:307463.0214	train/mean_soc:            0.2966	train/return_mean:       -308.5754
+train/return_std:         36.5146	train/soc_reserve_reward:  0.0000	train/soc_violation:      42.3631	train/t_env:             22329.6000
+train/total_power_loss:  14166.1865	
+[INFO 20:04:25] root Recent Stats | t_env:      28464 | Episode:      801
+battery_punishment_reward_mean:-3318.6635	battle_won_mean:           1.0000	bess_cost_reward_mean:   -171.7352	buffer/episodes:         1015.6000
+buy_cost_reward_mean:    -307516.5020	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -306.8601
+eval/best_win_rate:        1.0000	eval/ea_reward:          -307.8696	eval/ea_win_rate:          1.0000	eval/rl_reward:          -308.9690
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-39.6274	grid_purchase_cost_mean: 307516.5020	mean_soc_mean:             0.2830
+return_mean:             -308.6942	return_std:               35.1957	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       44.3128
+test/battery_punishment_reward:-3073.1246	test/battle_won:           1.0000	test/bess_cost_reward:   -163.6047	test/buy_cost_reward:    -306725.5380
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-40.2587	test/grid_purchase_cost: 306725.5380
+test/mean_soc:             0.3111	test/return_mean:        -307.8189	test/return_std:          33.1171	test/soc_reserve_reward:   0.0000
+test/soc_violation:       41.7696	test/total_power_loss:   14128.8993	test_battery_punishment_reward_mean:-3073.1246	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-163.6047	test_buy_cost_reward_mean:-306725.5380	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-40.2587	test_grid_purchase_cost_mean:306725.5380	test_mean_soc_mean:        0.3111	test_return_mean:        -307.8189
+test_return_std:          33.1171	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  41.7696	test_total_power_loss_mean:14128.8993
+total_power_loss_mean:   14163.1234	train/battery_punishment_reward:-3318.6635	train/battle_won:          1.0000	train/bess_cost_reward:  -171.7352
+train/buy_cost_reward:   -307516.5020	train/ep_length:          24.0000	train/episode:           716.6000	train/episode_limit:       1.0000
+train/generate_cost_reward:-39.6274	train/grid_purchase_cost:307516.5020	train/mean_soc:            0.2830	train/return_mean:       -308.6942
+train/return_std:         35.1957	train/soc_reserve_reward:  0.0000	train/soc_violation:      44.3128	train/t_env:             24374.4000
+train/total_power_loss:  14163.1234	
+[INFO 20:04:57] root t_env: 30144 / 300000
+[INFO 20:04:57] root Estimated time left: 1 hours, 29 minutes, 26 seconds. Time passed: 6 minutes, 52 seconds
+[INFO 20:04:59] root Saving models to results\models\facmac_smac__2026-06-15_19-58-04\30144
+[INFO 20:05:04] root Recent Stats | t_env:      30480 | Episode:      845
+battery_punishment_reward_mean:-3371.7892	battle_won_mean:           1.0000	bess_cost_reward_mean:   -168.8329	buffer/episodes:         1100.4000
+buy_cost_reward_mean:    -309106.2374	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -307.6994
+eval/best_win_rate:        1.0000	eval/ea_reward:          -309.3473	eval/ea_win_rate:          1.0000	eval/rl_reward:          -309.2810
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-39.3438	grid_purchase_cost_mean: 309106.2374	mean_soc_mean:             0.2940
+return_mean:             -310.3006	return_std:               35.0827	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       44.8633
+test/battery_punishment_reward:-4139.4519	test/battle_won:           1.0000	test/bess_cost_reward:   -161.6928	test/buy_cost_reward:    -311148.3788
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-39.4246	test/grid_purchase_cost: 311148.3788
+test/mean_soc:             0.3201	test/return_mean:        -312.5963	test/return_std:          33.8866	test/soc_reserve_reward:   0.0000
+test/soc_violation:       52.8853	test/total_power_loss:   14323.3212	test_battery_punishment_reward_mean:-4139.4519	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-161.6928	test_buy_cost_reward_mean:-311148.3788	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-39.4246	test_grid_purchase_cost_mean:311148.3788	test_mean_soc_mean:        0.3201	test_return_mean:        -312.5963
+test_return_std:          33.8866	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  52.8853	test_total_power_loss_mean:14323.3212
+total_power_loss_mean:   14230.6251	train/battery_punishment_reward:-3371.7892	train/battle_won:          1.0000	train/bess_cost_reward:  -168.8329
+train/buy_cost_reward:   -309106.2374	train/ep_length:          24.0000	train/episode:           759.4000	train/episode_limit:       1.0000
+train/generate_cost_reward:-39.3438	train/grid_purchase_cost:309106.2374	train/mean_soc:            0.2940	train/return_mean:       -310.3006
+train/return_std:         35.0827	train/soc_reserve_reward:  0.0000	train/soc_violation:      44.8633	train/t_env:             26409.6000
+train/total_power_loss:  14230.6251	
+[INFO 20:05:49] root Recent Stats | t_env:      32544 | Episode:      886
+battery_punishment_reward_mean:-3371.6254	battle_won_mean:           1.0000	bess_cost_reward_mean:   -167.2411	buffer/episodes:         1185.6000
+buy_cost_reward_mean:    -309780.7916	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -307.6994
+eval/best_win_rate:        1.0000	eval/ea_reward:          -309.3473	eval/ea_win_rate:          1.0000	eval/rl_reward:          -309.2810
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-39.7482	grid_purchase_cost_mean: 309780.7916	mean_soc_mean:             0.2996
+return_mean:             -310.9747	return_std:               35.4906	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       44.8491
+test/battery_punishment_reward:-4139.4519	test/battle_won:           1.0000	test/bess_cost_reward:   -161.6928	test/buy_cost_reward:    -311148.3788
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-39.4246	test/grid_purchase_cost: 311148.3788
+test/mean_soc:             0.3201	test/return_mean:        -312.5963	test/return_std:          33.8866	test/soc_reserve_reward:   0.0000
+test/soc_violation:       52.8853	test/total_power_loss:   14323.3212	test_battery_punishment_reward_mean:-4139.4519	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-161.6928	test_buy_cost_reward_mean:-311148.3788	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-39.4246	test_grid_purchase_cost_mean:311148.3788	test_mean_soc_mean:        0.3201	test_return_mean:        -312.5963
+test_return_std:          33.8866	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  52.8853	test_total_power_loss_mean:14323.3212
+total_power_loss_mean:   14259.6968	train/battery_punishment_reward:-3371.6254	train/battle_won:          1.0000	train/bess_cost_reward:  -167.2411
+train/buy_cost_reward:   -309780.7916	train/ep_length:          24.0000	train/episode:           801.6000	train/episode_limit:       1.0000
+train/generate_cost_reward:-39.7482	train/grid_purchase_cost:309780.7916	train/mean_soc:            0.2996	train/return_mean:       -310.9747
+train/return_std:         35.4906	train/soc_reserve_reward:  0.0000	train/soc_violation:      44.8491	train/t_env:             28454.4000
+train/total_power_loss:  14259.6968	
+[INFO 20:06:29] root Recent Stats | t_env:      34560 | Episode:      930
+battery_punishment_reward_mean:-3467.9722	battle_won_mean:           1.0000	bess_cost_reward_mean:   -163.9977	buffer/episodes:         1270.4000
+buy_cost_reward_mean:    -310869.1881	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -307.6994
+eval/best_win_rate:        1.0000	eval/ea_reward:          -309.3473	eval/ea_win_rate:          1.0000	eval/rl_reward:          -309.2810
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-39.5120	grid_purchase_cost_mean: 310869.1881	mean_soc_mean:             0.3117
+return_mean:             -312.0940	return_std:               34.5077	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       45.8227
+test/battery_punishment_reward:-4139.4519	test/battle_won:           1.0000	test/bess_cost_reward:   -161.6928	test/buy_cost_reward:    -311148.3788
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-39.4246	test/grid_purchase_cost: 311148.3788
+test/mean_soc:             0.3201	test/return_mean:        -312.5963	test/return_std:          33.8866	test/soc_reserve_reward:   0.0000
+test/soc_violation:       52.8853	test/total_power_loss:   14323.3212	test_battery_punishment_reward_mean:-4139.4519	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-161.6928	test_buy_cost_reward_mean:-311148.3788	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-39.4246	test_grid_purchase_cost_mean:311148.3788	test_mean_soc_mean:        0.3201	test_return_mean:        -312.5963
+test_return_std:          33.8866	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  52.8853	test_total_power_loss_mean:14323.3212
+total_power_loss_mean:   14306.4204	train/battery_punishment_reward:-3467.9722	train/battle_won:          1.0000	train/bess_cost_reward:  -163.9977
+train/buy_cost_reward:   -310869.1881	train/ep_length:          24.0000	train/episode:           844.4000	train/episode_limit:       1.0000
+train/generate_cost_reward:-39.5120	train/grid_purchase_cost:310869.1881	train/mean_soc:            0.3117	train/return_mean:       -312.0940
+train/return_std:         34.5077	train/soc_reserve_reward:  0.0000	train/soc_violation:      45.8227	train/t_env:             30489.6000
+train/total_power_loss:  14306.4204	
+[INFO 20:07:10] root Recent Stats | t_env:      36624 | Episode:      971
+battery_punishment_reward_mean:-3421.1948	battle_won_mean:           1.0000	bess_cost_reward_mean:   -166.3246	buffer/episodes:         1355.6000
+buy_cost_reward_mean:    -310835.2703	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -307.6994
+eval/best_win_rate:        1.0000	eval/ea_reward:          -309.3473	eval/ea_win_rate:          1.0000	eval/rl_reward:          -309.2810
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-38.7776	grid_purchase_cost_mean: 310835.2703	mean_soc_mean:             0.3030
+return_mean:             -312.0450	return_std:               35.9950	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       45.3675
+test/battery_punishment_reward:-4139.4519	test/battle_won:           1.0000	test/bess_cost_reward:   -161.6928	test/buy_cost_reward:    -311148.3788
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-39.4246	test/grid_purchase_cost: 311148.3788
+test/mean_soc:             0.3201	test/return_mean:        -312.5963	test/return_std:          33.8866	test/soc_reserve_reward:   0.0000
+test/soc_violation:       52.8853	test/total_power_loss:   14323.3212	test_battery_punishment_reward_mean:-4139.4519	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-161.6928	test_buy_cost_reward_mean:-311148.3788	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-39.4246	test_grid_purchase_cost_mean:311148.3788	test_mean_soc_mean:        0.3201	test_return_mean:        -312.5963
+test_return_std:          33.8866	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  52.8853	test_total_power_loss_mean:14323.3212
+total_power_loss_mean:   14303.9771	train/battery_punishment_reward:-3421.1948	train/battle_won:          1.0000	train/bess_cost_reward:  -166.3246
+train/buy_cost_reward:   -310835.2703	train/ep_length:          24.0000	train/episode:           886.6000	train/episode_limit:       1.0000
+train/generate_cost_reward:-38.7776	train/grid_purchase_cost:310835.2703	train/mean_soc:            0.3030	train/return_mean:       -312.0450
+train/return_std:         35.9950	train/soc_reserve_reward:  0.0000	train/soc_violation:      45.3675	train/t_env:             32534.4000
+train/total_power_loss:  14303.9771	
+[INFO 20:07:48] root Recent Stats | t_env:      38640 | Episode:     1015
+battery_punishment_reward_mean:-3336.5436	battle_won_mean:           1.0000	bess_cost_reward_mean:   -167.7094	buffer/episodes:         1440.4000
+buy_cost_reward_mean:    -311205.4883	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -307.6994
+eval/best_win_rate:        1.0000	eval/ea_reward:          -309.3473	eval/ea_win_rate:          1.0000	eval/rl_reward:          -309.2810
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-38.2445	grid_purchase_cost_mean: 311205.4883	mean_soc_mean:             0.2977
+return_mean:             -312.3873	return_std:               36.1691	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       44.5220
+test/battery_punishment_reward:-4139.4519	test/battle_won:           1.0000	test/bess_cost_reward:   -161.6928	test/buy_cost_reward:    -311148.3788
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-39.4246	test/grid_purchase_cost: 311148.3788
+test/mean_soc:             0.3201	test/return_mean:        -312.5963	test/return_std:          33.8866	test/soc_reserve_reward:   0.0000
+test/soc_violation:       52.8853	test/total_power_loss:   14323.3212	test_battery_punishment_reward_mean:-4139.4519	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-161.6928	test_buy_cost_reward_mean:-311148.3788	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-39.4246	test_grid_purchase_cost_mean:311148.3788	test_mean_soc_mean:        0.3201	test_return_mean:        -312.5963
+test_return_std:          33.8866	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  52.8853	test_total_power_loss_mean:14323.3212
+total_power_loss_mean:   14324.4022	train/battery_punishment_reward:-3336.5436	train/battle_won:          1.0000	train/bess_cost_reward:  -167.7094
+train/buy_cost_reward:   -311205.4883	train/ep_length:          24.0000	train/episode:           929.4000	train/episode_limit:       1.0000
+train/generate_cost_reward:-38.2445	train/grid_purchase_cost:311205.4883	train/mean_soc:            0.2977	train/return_mean:       -312.3873
+train/return_std:         36.1691	train/soc_reserve_reward:  0.0000	train/soc_violation:      44.5220	train/t_env:             34569.6000
+train/total_power_loss:  14324.4022	
+[INFO 20:08:19] root t_env: 40224 / 300000
+[INFO 20:08:19] root Estimated time left: 1 hours, 26 minutes, 47 seconds. Time passed: 10 minutes, 14 seconds
+[INFO 20:08:21] root Saving models to results\models\facmac_smac__2026-06-15_19-58-04\40224
+[INFO 20:08:30] root Recent Stats | t_env:      40704 | Episode:     1056
+battery_punishment_reward_mean:-3421.5744	battle_won_mean:           1.0000	bess_cost_reward_mean:   -164.4588	buffer/episodes:         1525.6000
+buy_cost_reward_mean:    -311567.9010	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -307.3000
+eval/best_win_rate:        1.0000	eval/ea_reward:          -312.8036	eval/ea_win_rate:          1.0000	eval/rl_reward:          -308.5653
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-39.1904	grid_purchase_cost_mean: 311567.9010	mean_soc_mean:             0.3095
+return_mean:             -312.7773	return_std:               35.8423	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       45.3890
+test/battery_punishment_reward:-4221.8585	test/battle_won:           1.0000	test/bess_cost_reward:   -128.9461	test/buy_cost_reward:    -314732.3924
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-34.5440	test/grid_purchase_cost: 314732.3924
+test/mean_soc:             0.4400	test/return_mean:        -316.1950	test/return_std:          32.4289	test/soc_reserve_reward:   0.0000
+test/soc_violation:       53.6701	test/total_power_loss:   14488.8253	test_battery_punishment_reward_mean:-4221.8585	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-128.9461	test_buy_cost_reward_mean:-314732.3924	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-34.5440	test_grid_purchase_cost_mean:314732.3924	test_mean_soc_mean:        0.4400	test_return_mean:        -316.1950
+test_return_std:          32.4289	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  53.6701	test_total_power_loss_mean:14488.8253
+total_power_loss_mean:   14343.2303	train/battery_punishment_reward:-3421.5744	train/battle_won:          1.0000	train/bess_cost_reward:  -164.4588
+train/buy_cost_reward:   -311567.9010	train/ep_length:          24.0000	train/episode:           971.6000	train/episode_limit:       1.0000
+train/generate_cost_reward:-39.1904	train/grid_purchase_cost:311567.9010	train/mean_soc:            0.3095	train/return_mean:       -312.7773
+train/return_std:         35.8423	train/soc_reserve_reward:  0.0000	train/soc_violation:      45.3890	train/t_env:             36614.4000
+train/total_power_loss:  14343.2303	
+[INFO 20:09:08] root Recent Stats | t_env:      42720 | Episode:     1100
+battery_punishment_reward_mean:-3465.4867	battle_won_mean:           1.0000	bess_cost_reward_mean:   -164.4444	buffer/episodes:         1610.4000
+buy_cost_reward_mean:    -311892.8952	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -307.3000
+eval/best_win_rate:        1.0000	eval/ea_reward:          -312.8036	eval/ea_win_rate:          1.0000	eval/rl_reward:          -308.5653
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-38.2759	grid_purchase_cost_mean: 311892.8952	mean_soc_mean:             0.3100
+return_mean:             -313.1166	return_std:               35.5229	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       45.8746
+test/battery_punishment_reward:-4221.8585	test/battle_won:           1.0000	test/bess_cost_reward:   -128.9461	test/buy_cost_reward:    -314732.3924
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-34.5440	test/grid_purchase_cost: 314732.3924
+test/mean_soc:             0.4400	test/return_mean:        -316.1950	test/return_std:          32.4289	test/soc_reserve_reward:   0.0000
+test/soc_violation:       53.6701	test/total_power_loss:   14488.8253	test_battery_punishment_reward_mean:-4221.8585	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-128.9461	test_buy_cost_reward_mean:-314732.3924	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-34.5440	test_grid_purchase_cost_mean:314732.3924	test_mean_soc_mean:        0.4400	test_return_mean:        -316.1950
+test_return_std:          32.4289	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  53.6701	test_total_power_loss_mean:14488.8253
+total_power_loss_mean:   14358.5582	train/battery_punishment_reward:-3465.4867	train/battle_won:          1.0000	train/bess_cost_reward:  -164.4444
+train/buy_cost_reward:   -311892.8952	train/ep_length:          24.0000	train/episode:           1014.4000	train/episode_limit:       1.0000
+train/generate_cost_reward:-38.2759	train/grid_purchase_cost:311892.8952	train/mean_soc:            0.3100	train/return_mean:       -313.1166
+train/return_std:         35.5229	train/soc_reserve_reward:  0.0000	train/soc_violation:      45.8746	train/t_env:             38649.6000
+train/total_power_loss:  14358.5582	
+[INFO 20:09:50] root Recent Stats | t_env:      44784 | Episode:     1141
+battery_punishment_reward_mean:-3462.2381	battle_won_mean:           1.0000	bess_cost_reward_mean:   -166.9815	buffer/episodes:         1695.6000
+buy_cost_reward_mean:    -312793.9374	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -307.3000
+eval/best_win_rate:        1.0000	eval/ea_reward:          -312.8036	eval/ea_win_rate:          1.0000	eval/rl_reward:          -308.5653
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-38.3536	grid_purchase_cost_mean: 312793.9374	mean_soc_mean:             0.3007
+return_mean:             -314.0175	return_std:               36.2811	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       45.9122
+test/battery_punishment_reward:-4221.8585	test/battle_won:           1.0000	test/bess_cost_reward:   -128.9461	test/buy_cost_reward:    -314732.3924
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-34.5440	test/grid_purchase_cost: 314732.3924
+test/mean_soc:             0.4400	test/return_mean:        -316.1950	test/return_std:          32.4289	test/soc_reserve_reward:   0.0000
+test/soc_violation:       53.6701	test/total_power_loss:   14488.8253	test_battery_punishment_reward_mean:-4221.8585	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-128.9461	test_buy_cost_reward_mean:-314732.3924	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-34.5440	test_grid_purchase_cost_mean:314732.3924	test_mean_soc_mean:        0.4400	test_return_mean:        -316.1950
+test_return_std:          32.4289	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  53.6701	test_total_power_loss_mean:14488.8253
+total_power_loss_mean:   14395.3728	train/battery_punishment_reward:-3462.2381	train/battle_won:          1.0000	train/bess_cost_reward:  -166.9815
+train/buy_cost_reward:   -312793.9374	train/ep_length:          24.0000	train/episode:           1056.6000	train/episode_limit:       1.0000
+train/generate_cost_reward:-38.3536	train/grid_purchase_cost:312793.9374	train/mean_soc:            0.3007	train/return_mean:       -314.0175
+train/return_std:         36.2811	train/soc_reserve_reward:  0.0000	train/soc_violation:      45.9122	train/t_env:             40694.4000
+train/total_power_loss:  14395.3728	
+[INFO 20:10:27] root Recent Stats | t_env:      46800 | Episode:     1185
+battery_punishment_reward_mean:-3402.5841	battle_won_mean:           1.0000	bess_cost_reward_mean:   -166.8590	buffer/episodes:         1780.4000
+buy_cost_reward_mean:    -312043.8373	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -307.3000
+eval/best_win_rate:        1.0000	eval/ea_reward:          -312.8036	eval/ea_win_rate:          1.0000	eval/rl_reward:          -308.5653
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-38.8426	grid_purchase_cost_mean: 312043.8373	mean_soc_mean:             0.3011
+return_mean:             -313.2476	return_std:               36.1992	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       45.2073
+test/battery_punishment_reward:-4221.8585	test/battle_won:           1.0000	test/bess_cost_reward:   -128.9461	test/buy_cost_reward:    -314732.3924
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-34.5440	test/grid_purchase_cost: 314732.3924
+test/mean_soc:             0.4400	test/return_mean:        -316.1950	test/return_std:          32.4289	test/soc_reserve_reward:   0.0000
+test/soc_violation:       53.6701	test/total_power_loss:   14488.8253	test_battery_punishment_reward_mean:-4221.8585	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-128.9461	test_buy_cost_reward_mean:-314732.3924	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-34.5440	test_grid_purchase_cost_mean:314732.3924	test_mean_soc_mean:        0.4400	test_return_mean:        -316.1950
+test_return_std:          32.4289	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  53.6701	test_total_power_loss_mean:14488.8253
+total_power_loss_mean:   14358.6914	train/battery_punishment_reward:-3402.5841	train/battle_won:          1.0000	train/bess_cost_reward:  -166.8590
+train/buy_cost_reward:   -312043.8373	train/ep_length:          24.0000	train/episode:           1099.4000	train/episode_limit:       1.0000
+train/generate_cost_reward:-38.8426	train/grid_purchase_cost:312043.8373	train/mean_soc:            0.3011	train/return_mean:       -313.2476
+train/return_std:         36.1992	train/soc_reserve_reward:  0.0000	train/soc_violation:      45.2073	train/t_env:             42729.6000
+train/total_power_loss:  14358.6914	
+[INFO 20:11:08] root Recent Stats | t_env:      48864 | Episode:     1226
+battery_punishment_reward_mean:-3306.5326	battle_won_mean:           1.0000	bess_cost_reward_mean:   -167.3275	buffer/episodes:         1865.6000
+buy_cost_reward_mean:    -310382.8917	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -307.3000
+eval/best_win_rate:        1.0000	eval/ea_reward:          -312.8036	eval/ea_win_rate:          1.0000	eval/rl_reward:          -308.5653
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-39.7845	grid_purchase_cost_mean: 310382.8917	mean_soc_mean:             0.2994
+return_mean:             -311.5551	return_std:               36.1194	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       44.2823
+test/battery_punishment_reward:-4221.8585	test/battle_won:           1.0000	test/bess_cost_reward:   -128.9461	test/buy_cost_reward:    -314732.3924
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-34.5440	test/grid_purchase_cost: 314732.3924
+test/mean_soc:             0.4400	test/return_mean:        -316.1950	test/return_std:          32.4289	test/soc_reserve_reward:   0.0000
+test/soc_violation:       53.6701	test/total_power_loss:   14488.8253	test_battery_punishment_reward_mean:-4221.8585	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-128.9461	test_buy_cost_reward_mean:-314732.3924	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-34.5440	test_grid_purchase_cost_mean:314732.3924	test_mean_soc_mean:        0.4400	test_return_mean:        -316.1950
+test_return_std:          32.4289	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  53.6701	test_total_power_loss_mean:14488.8253
+total_power_loss_mean:   14289.5227	train/battery_punishment_reward:-3306.5326	train/battle_won:          1.0000	train/bess_cost_reward:  -167.3275
+train/buy_cost_reward:   -310382.8917	train/ep_length:          24.0000	train/episode:           1141.6000	train/episode_limit:       1.0000
+train/generate_cost_reward:-39.7845	train/grid_purchase_cost:310382.8917	train/mean_soc:            0.2994	train/return_mean:       -311.5551
+train/return_std:         36.1194	train/soc_reserve_reward:  0.0000	train/soc_violation:      44.2823	train/t_env:             44774.4000
+train/total_power_loss:  14289.5227	
+[INFO 20:11:35] root t_env: 50304 / 300000
+[INFO 20:11:35] root Estimated time left: 1 hours, 20 minutes, 44 seconds. Time passed: 13 minutes, 30 seconds
+[INFO 20:11:36] root Saving models to results\models\facmac_smac__2026-06-15_19-58-04\50304
+[INFO 20:11:46] root Recent Stats | t_env:      50880 | Episode:     1270
+battery_punishment_reward_mean:-3198.8897	battle_won_mean:           1.0000	bess_cost_reward_mean:   -172.7777	buffer/episodes:         1950.4000
+buy_cost_reward_mean:    -308434.0323	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -306.9196
+eval/best_win_rate:        1.0000	eval/ea_reward:          -314.9039	eval/ea_win_rate:          1.0000	eval/rl_reward:          -308.1849
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-38.7295	grid_purchase_cost_mean: 308434.0323	mean_soc_mean:             0.2795
+return_mean:             -309.5718	return_std:               37.5605	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       43.2278
+test/battery_punishment_reward:-3843.9152	test/battle_won:           1.0000	test/bess_cost_reward:   -156.1700	test/buy_cost_reward:    -313706.2290
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-37.2591	test/grid_purchase_cost: 313706.2290
+test/mean_soc:             0.3468	test/return_mean:        -315.0530	test/return_std:          30.0270	test/soc_reserve_reward:   0.0000
+test/soc_violation:       49.8065	test/total_power_loss:   14439.2962	test_battery_punishment_reward_mean:-3843.9152	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-156.1700	test_buy_cost_reward_mean:-313706.2290	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-37.2591	test_grid_purchase_cost_mean:313706.2290	test_mean_soc_mean:        0.3468	test_return_mean:        -315.0530
+test_return_std:          30.0270	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  49.8065	test_total_power_loss_mean:14439.2962
+total_power_loss_mean:   14199.3007	train/battery_punishment_reward:-3198.8897	train/battle_won:          1.0000	train/bess_cost_reward:  -172.7777
+train/buy_cost_reward:   -308434.0323	train/ep_length:          24.0000	train/episode:           1184.4000	train/episode_limit:       1.0000
+train/generate_cost_reward:-38.7295	train/grid_purchase_cost:308434.0323	train/mean_soc:            0.2795	train/return_mean:       -309.5718
+train/return_std:         37.5605	train/soc_reserve_reward:  0.0000	train/soc_violation:      43.2278	train/t_env:             46809.6000
+train/total_power_loss:  14199.3007	
+[INFO 20:12:30] root Recent Stats | t_env:      52944 | Episode:     1311
+battery_punishment_reward_mean:-3194.6096	battle_won_mean:           1.0000	bess_cost_reward_mean:   -171.7088	buffer/episodes:         2035.6000
+buy_cost_reward_mean:    -309284.9991	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -306.9196
+eval/best_win_rate:        1.0000	eval/ea_reward:          -314.9039	eval/ea_win_rate:          1.0000	eval/rl_reward:          -308.1849
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-39.4258	grid_purchase_cost_mean: 309284.9991	mean_soc_mean:             0.2833
+return_mean:             -310.4213	return_std:               37.3769	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       43.1413
+test/battery_punishment_reward:-3843.9152	test/battle_won:           1.0000	test/bess_cost_reward:   -156.1700	test/buy_cost_reward:    -313706.2290
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-37.2591	test/grid_purchase_cost: 313706.2290
+test/mean_soc:             0.3468	test/return_mean:        -315.0530	test/return_std:          30.0270	test/soc_reserve_reward:   0.0000
+test/soc_violation:       49.8065	test/total_power_loss:   14439.2962	test_battery_punishment_reward_mean:-3843.9152	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-156.1700	test_buy_cost_reward_mean:-313706.2290	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-37.2591	test_grid_purchase_cost_mean:313706.2290	test_mean_soc_mean:        0.3468	test_return_mean:        -315.0530
+test_return_std:          30.0270	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  49.8065	test_total_power_loss_mean:14439.2962
+total_power_loss_mean:   14232.1277	train/battery_punishment_reward:-3194.6096	train/battle_won:          1.0000	train/bess_cost_reward:  -171.7088
+train/buy_cost_reward:   -309284.9991	train/ep_length:          24.0000	train/episode:           1226.6000	train/episode_limit:       1.0000
+train/generate_cost_reward:-39.4258	train/grid_purchase_cost:309284.9991	train/mean_soc:            0.2833	train/return_mean:       -310.4213
+train/return_std:         37.3769	train/soc_reserve_reward:  0.0000	train/soc_violation:      43.1413	train/t_env:             48854.4000
+train/total_power_loss:  14232.1277	
+[INFO 20:13:07] root Recent Stats | t_env:      54960 | Episode:     1355
+battery_punishment_reward_mean:-3340.8109	battle_won_mean:           1.0000	bess_cost_reward_mean:   -166.7409	buffer/episodes:         2120.4000
+buy_cost_reward_mean:    -308764.2144	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -306.9196
+eval/best_win_rate:        1.0000	eval/ea_reward:          -314.9039	eval/ea_win_rate:          1.0000	eval/rl_reward:          -308.1849
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-41.1303	grid_purchase_cost_mean: 308764.2144	mean_soc_mean:             0.3020
+return_mean:             -309.9482	return_std:               37.3348	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       44.6238
+test/battery_punishment_reward:-3843.9152	test/battle_won:           1.0000	test/bess_cost_reward:   -156.1700	test/buy_cost_reward:    -313706.2290
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-37.2591	test/grid_purchase_cost: 313706.2290
+test/mean_soc:             0.3468	test/return_mean:        -315.0530	test/return_std:          30.0270	test/soc_reserve_reward:   0.0000
+test/soc_violation:       49.8065	test/total_power_loss:   14439.2962	test_battery_punishment_reward_mean:-3843.9152	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-156.1700	test_buy_cost_reward_mean:-313706.2290	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-37.2591	test_grid_purchase_cost_mean:313706.2290	test_mean_soc_mean:        0.3468	test_return_mean:        -315.0530
+test_return_std:          30.0270	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  49.8065	test_total_power_loss_mean:14439.2962
+total_power_loss_mean:   14207.7249	train/battery_punishment_reward:-3340.8109	train/battle_won:          1.0000	train/bess_cost_reward:  -166.7409
+train/buy_cost_reward:   -308764.2144	train/ep_length:          24.0000	train/episode:           1269.4000	train/episode_limit:       1.0000
+train/generate_cost_reward:-41.1303	train/grid_purchase_cost:308764.2144	train/mean_soc:            0.3020	train/return_mean:       -309.9482
+train/return_std:         37.3348	train/soc_reserve_reward:  0.0000	train/soc_violation:      44.6238	train/t_env:             50889.6000
+train/total_power_loss:  14207.7249	
+[INFO 20:13:48] root Recent Stats | t_env:      57024 | Episode:     1396
+battery_punishment_reward_mean:-3555.7808	battle_won_mean:           1.0000	bess_cost_reward_mean:   -164.7449	buffer/episodes:         2205.6000
+buy_cost_reward_mean:    -310426.1913	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -306.9196
+eval/best_win_rate:        1.0000	eval/ea_reward:          -314.9039	eval/ea_win_rate:          1.0000	eval/rl_reward:          -308.1849
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-40.6053	grid_purchase_cost_mean: 310426.1913	mean_soc_mean:             0.3096
+return_mean:             -311.6810	return_std:               35.7795	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       46.9506
+test/battery_punishment_reward:-3843.9152	test/battle_won:           1.0000	test/bess_cost_reward:   -156.1700	test/buy_cost_reward:    -313706.2290
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-37.2591	test/grid_purchase_cost: 313706.2290
+test/mean_soc:             0.3468	test/return_mean:        -315.0530	test/return_std:          30.0270	test/soc_reserve_reward:   0.0000
+test/soc_violation:       49.8065	test/total_power_loss:   14439.2962	test_battery_punishment_reward_mean:-3843.9152	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-156.1700	test_buy_cost_reward_mean:-313706.2290	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-37.2591	test_grid_purchase_cost_mean:313706.2290	test_mean_soc_mean:        0.3468	test_return_mean:        -315.0530
+test_return_std:          30.0270	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  49.8065	test_total_power_loss_mean:14439.2962
+total_power_loss_mean:   14284.5925	train/battery_punishment_reward:-3555.7808	train/battle_won:          1.0000	train/bess_cost_reward:  -164.7449
+train/buy_cost_reward:   -310426.1913	train/ep_length:          24.0000	train/episode:           1311.6000	train/episode_limit:       1.0000
+train/generate_cost_reward:-40.6053	train/grid_purchase_cost:310426.1913	train/mean_soc:            0.3096	train/return_mean:       -311.6810
+train/return_std:         35.7795	train/soc_reserve_reward:  0.0000	train/soc_violation:      46.9506	train/t_env:             52934.4000
+train/total_power_loss:  14284.5925	
+[INFO 20:14:25] root Recent Stats | t_env:      59040 | Episode:     1440
+battery_punishment_reward_mean:-3661.8898	battle_won_mean:           1.0000	bess_cost_reward_mean:   -164.9780	buffer/episodes:         2290.4000
+buy_cost_reward_mean:    -310767.2094	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -306.9196
+eval/best_win_rate:        1.0000	eval/ea_reward:          -314.9039	eval/ea_win_rate:          1.0000	eval/rl_reward:          -308.1849
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-39.5789	grid_purchase_cost_mean: 310767.2094	mean_soc_mean:             0.3092
+return_mean:             -312.0571	return_std:               35.7444	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       47.9922
+test/battery_punishment_reward:-3843.9152	test/battle_won:           1.0000	test/bess_cost_reward:   -156.1700	test/buy_cost_reward:    -313706.2290
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-37.2591	test/grid_purchase_cost: 313706.2290
+test/mean_soc:             0.3468	test/return_mean:        -315.0530	test/return_std:          30.0270	test/soc_reserve_reward:   0.0000
+test/soc_violation:       49.8065	test/total_power_loss:   14439.2962	test_battery_punishment_reward_mean:-3843.9152	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-156.1700	test_buy_cost_reward_mean:-313706.2290	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-37.2591	test_grid_purchase_cost_mean:313706.2290	test_mean_soc_mean:        0.3468	test_return_mean:        -315.0530
+test_return_std:          30.0270	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  49.8065	test_total_power_loss_mean:14439.2962
+total_power_loss_mean:   14297.1857	train/battery_punishment_reward:-3661.8898	train/battle_won:          1.0000	train/bess_cost_reward:  -164.9780
+train/buy_cost_reward:   -310767.2094	train/ep_length:          24.0000	train/episode:           1354.4000	train/episode_limit:       1.0000
+train/generate_cost_reward:-39.5789	train/grid_purchase_cost:310767.2094	train/mean_soc:            0.3092	train/return_mean:       -312.0571
+train/return_std:         35.7444	train/soc_reserve_reward:  0.0000	train/soc_violation:      47.9922	train/t_env:             54969.6000
+train/total_power_loss:  14297.1857	
+[INFO 20:14:57] root t_env: 60384 / 300000
+[INFO 20:14:57] root Estimated time left: 1 hours, 20 minutes, 14 seconds. Time passed: 16 minutes, 52 seconds
+[INFO 20:14:59] root Saving models to results\models\facmac_smac__2026-06-15_19-58-04\60384
+[INFO 20:15:16] root Recent Stats | t_env:      61104 | Episode:     1481
+battery_punishment_reward_mean:-3590.3861	battle_won_mean:           1.0000	bess_cost_reward_mean:   -163.0909	buffer/episodes:         2375.6000
+buy_cost_reward_mean:    -311150.0535	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -308.5859
+eval/best_win_rate:        1.0000	eval/ea_reward:          -316.5703	eval/ea_win_rate:          1.0000	eval/rl_reward:          -309.3452
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-40.6484	grid_purchase_cost_mean: 311150.0535	mean_soc_mean:             0.3158
+return_mean:             -312.4158	return_std:               34.8391	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       47.2589
+test/battery_punishment_reward:-2720.1265	test/battle_won:           1.0000	test/bess_cost_reward:   -173.4095	test/buy_cost_reward:    -311683.1117
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-41.9256	test/grid_purchase_cost: 311683.1117
+test/mean_soc:             0.2796	test/return_mean:        -312.6627	test/return_std:          29.7514	test/soc_reserve_reward:   0.0000
+test/soc_violation:       37.4544	test/total_power_loss:   14349.8719	test_battery_punishment_reward_mean:-2720.1265	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-173.4095	test_buy_cost_reward_mean:-311683.1117	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-41.9256	test_grid_purchase_cost_mean:311683.1117	test_mean_soc_mean:        0.2796	test_return_mean:        -312.6627
+test_return_std:          29.7514	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  37.4544	test_total_power_loss_mean:14349.8719
+total_power_loss_mean:   14319.1958	train/battery_punishment_reward:-3590.3861	train/battle_won:          1.0000	train/bess_cost_reward:  -163.0909
+train/buy_cost_reward:   -311150.0535	train/ep_length:          24.0000	train/episode:           1396.6000	train/episode_limit:       1.0000
+train/generate_cost_reward:-40.6484	train/grid_purchase_cost:311150.0535	train/mean_soc:            0.3158	train/return_mean:       -312.4158
+train/return_std:         34.8391	train/soc_reserve_reward:  0.0000	train/soc_violation:      47.2589	train/t_env:             57014.4000
+train/total_power_loss:  14319.1958	
+[INFO 20:15:57] root Recent Stats | t_env:      63120 | Episode:     1525
+battery_punishment_reward_mean:-3550.0537	battle_won_mean:           1.0000	bess_cost_reward_mean:   -165.8517	buffer/episodes:         2460.4000
+buy_cost_reward_mean:    -310329.4404	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -308.5859
+eval/best_win_rate:        1.0000	eval/ea_reward:          -316.5703	eval/ea_win_rate:          1.0000	eval/rl_reward:          -309.3452
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-39.6756	grid_purchase_cost_mean: 310329.4404	mean_soc_mean:             0.3056
+return_mean:             -311.5823	return_std:               34.6830	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       46.8890
+test/battery_punishment_reward:-2720.1265	test/battle_won:           1.0000	test/bess_cost_reward:   -173.4095	test/buy_cost_reward:    -311683.1117
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-41.9256	test/grid_purchase_cost: 311683.1117
+test/mean_soc:             0.2796	test/return_mean:        -312.6627	test/return_std:          29.7514	test/soc_reserve_reward:   0.0000
+test/soc_violation:       37.4544	test/total_power_loss:   14349.8719	test_battery_punishment_reward_mean:-2720.1265	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-173.4095	test_buy_cost_reward_mean:-311683.1117	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-41.9256	test_grid_purchase_cost_mean:311683.1117	test_mean_soc_mean:        0.2796	test_return_mean:        -312.6627
+test_return_std:          29.7514	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  37.4544	test_total_power_loss_mean:14349.8719
+total_power_loss_mean:   14286.9082	train/battery_punishment_reward:-3550.0537	train/battle_won:          1.0000	train/bess_cost_reward:  -165.8517
+train/buy_cost_reward:   -310329.4404	train/ep_length:          24.0000	train/episode:           1439.4000	train/episode_limit:       1.0000
+train/generate_cost_reward:-39.6756	train/grid_purchase_cost:310329.4404	train/mean_soc:            0.3056	train/return_mean:       -311.5823
+train/return_std:         34.6830	train/soc_reserve_reward:  0.0000	train/soc_violation:      46.8890	train/t_env:             59049.6000
+train/total_power_loss:  14286.9082	
+[INFO 20:16:44] root Recent Stats | t_env:      65184 | Episode:     1566
+battery_punishment_reward_mean:-3400.8227	battle_won_mean:           1.0000	bess_cost_reward_mean:   -169.6216	buffer/episodes:         2545.6000
+buy_cost_reward_mean:    -310101.3039	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -308.5859
+eval/best_win_rate:        1.0000	eval/ea_reward:          -316.5703	eval/ea_win_rate:          1.0000	eval/rl_reward:          -309.3452
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-40.0816	grid_purchase_cost_mean: 310101.3039	mean_soc_mean:             0.2915
+return_mean:             -311.3059	return_std:               34.2226	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       45.3410
+test/battery_punishment_reward:-2720.1265	test/battle_won:           1.0000	test/bess_cost_reward:   -173.4095	test/buy_cost_reward:    -311683.1117
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-41.9256	test/grid_purchase_cost: 311683.1117
+test/mean_soc:             0.2796	test/return_mean:        -312.6627	test/return_std:          29.7514	test/soc_reserve_reward:   0.0000
+test/soc_violation:       37.4544	test/total_power_loss:   14349.8719	test_battery_punishment_reward_mean:-2720.1265	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-173.4095	test_buy_cost_reward_mean:-311683.1117	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-41.9256	test_grid_purchase_cost_mean:311683.1117	test_mean_soc_mean:        0.2796	test_return_mean:        -312.6627
+test_return_std:          29.7514	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  37.4544	test_total_power_loss_mean:14349.8719
+total_power_loss_mean:   14278.0522	train/battery_punishment_reward:-3400.8227	train/battle_won:          1.0000	train/bess_cost_reward:  -169.6216
+train/buy_cost_reward:   -310101.3039	train/ep_length:          24.0000	train/episode:           1481.6000	train/episode_limit:       1.0000
+train/generate_cost_reward:-40.0816	train/grid_purchase_cost:310101.3039	train/mean_soc:            0.2915	train/return_mean:       -311.3059
+train/return_std:         34.2226	train/soc_reserve_reward:  0.0000	train/soc_violation:      45.3410	train/t_env:             61094.4000
+train/total_power_loss:  14278.0522	
+[INFO 20:17:26] root Recent Stats | t_env:      67200 | Episode:     1610
+battery_punishment_reward_mean:-3296.4023	battle_won_mean:           1.0000	bess_cost_reward_mean:   -170.3168	buffer/episodes:         2630.4000
+buy_cost_reward_mean:    -308302.5193	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -308.5859
+eval/best_win_rate:        1.0000	eval/ea_reward:          -316.5703	eval/ea_win_rate:          1.0000	eval/rl_reward:          -309.3452
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-41.0246	grid_purchase_cost_mean: 308302.5193	mean_soc_mean:             0.2888
+return_mean:             -309.4728	return_std:               34.7725	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       44.2231
+test/battery_punishment_reward:-2720.1265	test/battle_won:           1.0000	test/bess_cost_reward:   -173.4095	test/buy_cost_reward:    -311683.1117
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-41.9256	test/grid_purchase_cost: 311683.1117
+test/mean_soc:             0.2796	test/return_mean:        -312.6627	test/return_std:          29.7514	test/soc_reserve_reward:   0.0000
+test/soc_violation:       37.4544	test/total_power_loss:   14349.8719	test_battery_punishment_reward_mean:-2720.1265	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-173.4095	test_buy_cost_reward_mean:-311683.1117	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-41.9256	test_grid_purchase_cost_mean:311683.1117	test_mean_soc_mean:        0.2796	test_return_mean:        -312.6627
+test_return_std:          29.7514	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  37.4544	test_total_power_loss_mean:14349.8719
+total_power_loss_mean:   14199.2030	train/battery_punishment_reward:-3296.4023	train/battle_won:          1.0000	train/bess_cost_reward:  -170.3168
+train/buy_cost_reward:   -308302.5193	train/ep_length:          24.0000	train/episode:           1524.4000	train/episode_limit:       1.0000
+train/generate_cost_reward:-41.0246	train/grid_purchase_cost:308302.5193	train/mean_soc:            0.2888	train/return_mean:       -309.4728
+train/return_std:         34.7725	train/soc_reserve_reward:  0.0000	train/soc_violation:      44.2231	train/t_env:             63129.6000
+train/total_power_loss:  14199.2030	
+RL eval  -308.1750848616473 1.0
+EA eval  -309.0844777720816 1.0
+RL eval  -310.31970665018036 1.0
+EA eval  -303.9930959220322 1.0
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+RL eval  -308.4121801526682 1.0
+EA eval  -310.5312557128439 1.0
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+RL eval  -310.2170408848083 1.0
+EA eval  -313.78026852165954 1.0
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+EA evolution start ...
+EA evolution end.
+Sync from RL --> Nevo
+[INFO 20:18:14] root Recent Stats | t_env:      69264 | Episode:     1651
+battery_punishment_reward_mean:-3320.9776	battle_won_mean:           1.0000	bess_cost_reward_mean:   -166.6767	buffer/episodes:         2715.6000
+buy_cost_reward_mean:    -308594.4641	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -308.5859
+eval/best_win_rate:        1.0000	eval/ea_reward:          -316.5703	eval/ea_win_rate:          1.0000	eval/rl_reward:          -309.3452
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-41.3179	grid_purchase_cost_mean: 308594.4641	mean_soc_mean:             0.3019
+return_mean:             -309.7719	return_std:               34.4777	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       44.4296
+test/battery_punishment_reward:-2720.1265	test/battle_won:           1.0000	test/bess_cost_reward:   -173.4095	test/buy_cost_reward:    -311683.1117
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-41.9256	test/grid_purchase_cost: 311683.1117
+test/mean_soc:             0.2796	test/return_mean:        -312.6627	test/return_std:          29.7514	test/soc_reserve_reward:   0.0000
+test/soc_violation:       37.4544	test/total_power_loss:   14349.8719	test_battery_punishment_reward_mean:-2720.1265	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-173.4095	test_buy_cost_reward_mean:-311683.1117	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-41.9256	test_grid_purchase_cost_mean:311683.1117	test_mean_soc_mean:        0.2796	test_return_mean:        -312.6627
+test_return_std:          29.7514	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  37.4544	test_total_power_loss_mean:14349.8719
+total_power_loss_mean:   14208.3778	train/battery_punishment_reward:-3320.9776	train/battle_won:          1.0000	train/bess_cost_reward:  -166.6767
+train/buy_cost_reward:   -308594.4641	train/ep_length:          24.0000	train/episode:           1566.6000	train/episode_limit:       1.0000
+train/generate_cost_reward:-41.3179	train/grid_purchase_cost:308594.4641	train/mean_soc:            0.3019	train/return_mean:       -309.7719
+train/return_std:         34.4777	train/soc_reserve_reward:  0.0000	train/soc_violation:      44.4296	train/t_env:             65174.4000
+train/total_power_loss:  14208.3778	
+[INFO 20:18:39] root t_env: 70464 / 300000
+[INFO 20:18:39] root Estimated time left: 1 hours, 24 minutes, 12 seconds. Time passed: 20 minutes, 34 seconds
+[INFO 20:18:41] root Saving models to results\models\facmac_smac__2026-06-15_19-58-04\70464
+[INFO 20:18:54] root Recent Stats | t_env:      71280 | Episode:     1695
+battery_punishment_reward_mean:-3446.5296	battle_won_mean:           1.0000	bess_cost_reward_mean:   -167.1389	buffer/episodes:         2800.4000
+buy_cost_reward_mean:    -309351.4779	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -309.5036
+eval/best_win_rate:        1.0000	eval/ea_reward:          -317.5799	eval/ea_win_rate:          1.0000	eval/rl_reward:          -310.2629
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-39.5947	grid_purchase_cost_mean: 309351.4779	mean_soc_mean:             0.3007
+return_mean:             -310.5703	return_std:               34.6464	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       45.7222
+test/battery_punishment_reward:-2514.2708	test/battle_won:           1.0000	test/bess_cost_reward:   -171.5932	test/buy_cost_reward:    -312854.1081
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-33.5970	test/grid_purchase_cost: 312854.1081
+test/mean_soc:             0.2789	test/return_mean:        -313.7614	test/return_std:          30.8207	test/soc_reserve_reward:   0.0000
+test/soc_violation:       35.2835	test/total_power_loss:   14391.1167	test_battery_punishment_reward_mean:-2514.2708	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-171.5932	test_buy_cost_reward_mean:-312854.1081	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-33.5970	test_grid_purchase_cost_mean:312854.1081	test_mean_soc_mean:        0.2789	test_return_mean:        -313.7614
+test_return_std:          30.8207	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  35.2835	test_total_power_loss_mean:14391.1167
+total_power_loss_mean:   14239.0138	train/battery_punishment_reward:-3446.5296	train/battle_won:          1.0000	train/bess_cost_reward:  -167.1389
+train/buy_cost_reward:   -309351.4779	train/ep_length:          24.0000	train/episode:           1609.4000	train/episode_limit:       1.0000
+train/generate_cost_reward:-39.5947	train/grid_purchase_cost:309351.4779	train/mean_soc:            0.3007	train/return_mean:       -310.5703
+train/return_std:         34.6464	train/soc_reserve_reward:  0.0000	train/soc_violation:      45.7222	train/t_env:             67209.6000
+train/total_power_loss:  14239.0138	
+[INFO 20:19:43] root Recent Stats | t_env:      73344 | Episode:     1736
+battery_punishment_reward_mean:-3452.2907	battle_won_mean:           1.0000	bess_cost_reward_mean:   -164.1024	buffer/episodes:         2885.6000
+buy_cost_reward_mean:    -308925.5453	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -309.5036
+eval/best_win_rate:        1.0000	eval/ea_reward:          -317.5799	eval/ea_win_rate:          1.0000	eval/rl_reward:          -310.2629
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-40.1812	grid_purchase_cost_mean: 308925.5453	mean_soc_mean:             0.3119
+return_mean:             -310.1455	return_std:               34.9910	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       45.7121
+test/battery_punishment_reward:-2514.2708	test/battle_won:           1.0000	test/bess_cost_reward:   -171.5932	test/buy_cost_reward:    -312854.1081
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-33.5970	test/grid_purchase_cost: 312854.1081
+test/mean_soc:             0.2789	test/return_mean:        -313.7614	test/return_std:          30.8207	test/soc_reserve_reward:   0.0000
+test/soc_violation:       35.2835	test/total_power_loss:   14391.1167	test_battery_punishment_reward_mean:-2514.2708	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-171.5932	test_buy_cost_reward_mean:-312854.1081	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-33.5970	test_grid_purchase_cost_mean:312854.1081	test_mean_soc_mean:        0.2789	test_return_mean:        -313.7614
+test_return_std:          30.8207	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  35.2835	test_total_power_loss_mean:14391.1167
+total_power_loss_mean:   14219.0291	train/battery_punishment_reward:-3452.2907	train/battle_won:          1.0000	train/bess_cost_reward:  -164.1024
+train/buy_cost_reward:   -308925.5453	train/ep_length:          24.0000	train/episode:           1651.6000	train/episode_limit:       1.0000
+train/generate_cost_reward:-40.1812	train/grid_purchase_cost:308925.5453	train/mean_soc:            0.3119	train/return_mean:       -310.1455
+train/return_std:         34.9910	train/soc_reserve_reward:  0.0000	train/soc_violation:      45.7121	train/t_env:             69254.4000
+train/total_power_loss:  14219.0291	
+[INFO 20:20:26] root Recent Stats | t_env:      75360 | Episode:     1780
+battery_punishment_reward_mean:-3409.4738	battle_won_mean:           1.0000	bess_cost_reward_mean:   -162.9941	buffer/episodes:         2970.4000
+buy_cost_reward_mean:    -308545.6479	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -309.5036
+eval/best_win_rate:        1.0000	eval/ea_reward:          -317.5799	eval/ea_win_rate:          1.0000	eval/rl_reward:          -310.2629
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-39.5075	grid_purchase_cost_mean: 308545.6479	mean_soc_mean:             0.3157
+return_mean:             -309.7507	return_std:               34.5939	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       45.3143
+test/battery_punishment_reward:-2514.2708	test/battle_won:           1.0000	test/bess_cost_reward:   -171.5932	test/buy_cost_reward:    -312854.1081
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-33.5970	test/grid_purchase_cost: 312854.1081
+test/mean_soc:             0.2789	test/return_mean:        -313.7614	test/return_std:          30.8207	test/soc_reserve_reward:   0.0000
+test/soc_violation:       35.2835	test/total_power_loss:   14391.1167	test_battery_punishment_reward_mean:-2514.2708	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-171.5932	test_buy_cost_reward_mean:-312854.1081	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-33.5970	test_grid_purchase_cost_mean:312854.1081	test_mean_soc_mean:        0.2789	test_return_mean:        -313.7614
+test_return_std:          30.8207	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  35.2835	test_total_power_loss_mean:14391.1167
+total_power_loss_mean:   14206.6000	train/battery_punishment_reward:-3409.4738	train/battle_won:          1.0000	train/bess_cost_reward:  -162.9941
+train/buy_cost_reward:   -308545.6479	train/ep_length:          24.0000	train/episode:           1694.4000	train/episode_limit:       1.0000
+train/generate_cost_reward:-39.5075	train/grid_purchase_cost:308545.6479	train/mean_soc:            0.3157	train/return_mean:       -309.7507
+train/return_std:         34.5939	train/soc_reserve_reward:  0.0000	train/soc_violation:      45.3143	train/t_env:             71289.6000
+train/total_power_loss:  14206.6000	
+[INFO 20:21:14] root Recent Stats | t_env:      77424 | Episode:     1821
+battery_punishment_reward_mean:-3477.5630	battle_won_mean:           1.0000	bess_cost_reward_mean:   -160.8086	buffer/episodes:         3055.6000
+buy_cost_reward_mean:    -309466.4481	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -309.5036
+eval/best_win_rate:        1.0000	eval/ea_reward:          -317.5799	eval/ea_win_rate:          1.0000	eval/rl_reward:          -310.2629
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-38.5183	grid_purchase_cost_mean: 309466.4481	mean_soc_mean:             0.3239
+return_mean:             -310.6931	return_std:               34.2550	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       46.0157
+test/battery_punishment_reward:-2514.2708	test/battle_won:           1.0000	test/bess_cost_reward:   -171.5932	test/buy_cost_reward:    -312854.1081
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-33.5970	test/grid_purchase_cost: 312854.1081
+test/mean_soc:             0.2789	test/return_mean:        -313.7614	test/return_std:          30.8207	test/soc_reserve_reward:   0.0000
+test/soc_violation:       35.2835	test/total_power_loss:   14391.1167	test_battery_punishment_reward_mean:-2514.2708	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-171.5932	test_buy_cost_reward_mean:-312854.1081	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-33.5970	test_grid_purchase_cost_mean:312854.1081	test_mean_soc_mean:        0.2789	test_return_mean:        -313.7614
+test_return_std:          30.8207	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  35.2835	test_total_power_loss_mean:14391.1167
+total_power_loss_mean:   14248.4190	train/battery_punishment_reward:-3477.5630	train/battle_won:          1.0000	train/bess_cost_reward:  -160.8086
+train/buy_cost_reward:   -309466.4481	train/ep_length:          24.0000	train/episode:           1736.6000	train/episode_limit:       1.0000
+train/generate_cost_reward:-38.5183	train/grid_purchase_cost:309466.4481	train/mean_soc:            0.3239	train/return_mean:       -310.6931
+train/return_std:         34.2550	train/soc_reserve_reward:  0.0000	train/soc_violation:      46.0157	train/t_env:             73334.4000
+train/total_power_loss:  14248.4190	
+[INFO 20:21:58] root Recent Stats | t_env:      79440 | Episode:     1865
+battery_punishment_reward_mean:-3478.6028	battle_won_mean:           1.0000	bess_cost_reward_mean:   -163.4793	buffer/episodes:         3140.4000
+buy_cost_reward_mean:    -311055.1777	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -309.5036
+eval/best_win_rate:        1.0000	eval/ea_reward:          -317.5799	eval/ea_win_rate:          1.0000	eval/rl_reward:          -310.2629
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-38.8616	grid_purchase_cost_mean: 311055.1777	mean_soc_mean:             0.3141
+return_mean:             -312.2832	return_std:               34.1736	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       46.0753
+test/battery_punishment_reward:-2514.2708	test/battle_won:           1.0000	test/bess_cost_reward:   -171.5932	test/buy_cost_reward:    -312854.1081
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-33.5970	test/grid_purchase_cost: 312854.1081
+test/mean_soc:             0.2789	test/return_mean:        -313.7614	test/return_std:          30.8207	test/soc_reserve_reward:   0.0000
+test/soc_violation:       35.2835	test/total_power_loss:   14391.1167	test_battery_punishment_reward_mean:-2514.2708	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-171.5932	test_buy_cost_reward_mean:-312854.1081	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-33.5970	test_grid_purchase_cost_mean:312854.1081	test_mean_soc_mean:        0.2789	test_return_mean:        -313.7614
+test_return_std:          30.8207	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  35.2835	test_total_power_loss_mean:14391.1167
+total_power_loss_mean:   14313.8027	train/battery_punishment_reward:-3478.6028	train/battle_won:          1.0000	train/bess_cost_reward:  -163.4793
+train/buy_cost_reward:   -311055.1777	train/ep_length:          24.0000	train/episode:           1779.4000	train/episode_limit:       1.0000
+train/generate_cost_reward:-38.8616	train/grid_purchase_cost:311055.1777	train/mean_soc:            0.3141	train/return_mean:       -312.2832
+train/return_std:         34.1736	train/soc_reserve_reward:  0.0000	train/soc_violation:      46.0753	train/t_env:             75369.6000
+train/total_power_loss:  14313.8027	
+[INFO 20:22:25] root t_env: 80544 / 300000
+[INFO 20:22:25] root Estimated time left: 1 hours, 22 minutes, 4 seconds. Time passed: 24 minutes, 20 seconds
+[INFO 20:22:27] root Saving models to results\models\facmac_smac__2026-06-15_19-58-04\80544
+[INFO 20:22:48] root Recent Stats | t_env:      81504 | Episode:     1906
+battery_punishment_reward_mean:-3364.3299	battle_won_mean:           1.0000	bess_cost_reward_mean:   -163.8397	buffer/episodes:         3225.6000
+buy_cost_reward_mean:    -310206.5947	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -310.0712
+eval/best_win_rate:        1.0000	eval/ea_reward:          -317.4349	eval/ea_win_rate:          1.0000	eval/rl_reward:          -310.9029
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-40.0578	grid_purchase_cost_mean: 310206.5947	mean_soc_mean:             0.3122
+return_mean:             -311.3971	return_std:               33.7784	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       44.8301
+test/battery_punishment_reward:-3574.6673	test/battle_won:           1.0000	test/bess_cost_reward:   -154.5492	test/buy_cost_reward:    -311460.0932
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-37.7478	test/grid_purchase_cost: 311460.0932
+test/mean_soc:             0.3454	test/return_mean:        -312.7167	test/return_std:          30.5277	test/soc_reserve_reward:   0.0000
+test/soc_violation:       46.9510	test/total_power_loss:   14332.9081	test_battery_punishment_reward_mean:-3574.6673	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-154.5492	test_buy_cost_reward_mean:-311460.0932	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-37.7478	test_grid_purchase_cost_mean:311460.0932	test_mean_soc_mean:        0.3454	test_return_mean:        -312.7167
+test_return_std:          30.5277	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  46.9510	test_total_power_loss_mean:14332.9081
+total_power_loss_mean:   14278.3867	train/battery_punishment_reward:-3364.3299	train/battle_won:          1.0000	train/bess_cost_reward:  -163.8397
+train/buy_cost_reward:   -310206.5947	train/ep_length:          24.0000	train/episode:           1821.6000	train/episode_limit:       1.0000
+train/generate_cost_reward:-40.0578	train/grid_purchase_cost:310206.5947	train/mean_soc:            0.3122	train/return_mean:       -311.3971
+train/return_std:         33.7784	train/soc_reserve_reward:  0.0000	train/soc_violation:      44.8301	train/t_env:             77414.4000
+train/total_power_loss:  14278.3867	
+[INFO 20:23:32] root Recent Stats | t_env:      83520 | Episode:     1950
+battery_punishment_reward_mean:-3426.3846	battle_won_mean:           1.0000	bess_cost_reward_mean:   -162.9093	buffer/episodes:         3310.4000
+buy_cost_reward_mean:    -311488.5513	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -310.0712
+eval/best_win_rate:        1.0000	eval/ea_reward:          -317.4349	eval/ea_win_rate:          1.0000	eval/rl_reward:          -310.9029
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-41.0870	grid_purchase_cost_mean: 311488.5513	mean_soc_mean:             0.3156
+return_mean:             -312.6998	return_std:               34.6040	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       45.4976
+test/battery_punishment_reward:-3574.6673	test/battle_won:           1.0000	test/bess_cost_reward:   -154.5492	test/buy_cost_reward:    -311460.0932
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-37.7478	test/grid_purchase_cost: 311460.0932
+test/mean_soc:             0.3454	test/return_mean:        -312.7167	test/return_std:          30.5277	test/soc_reserve_reward:   0.0000
+test/soc_violation:       46.9510	test/total_power_loss:   14332.9081	test_battery_punishment_reward_mean:-3574.6673	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-154.5492	test_buy_cost_reward_mean:-311460.0932	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-37.7478	test_grid_purchase_cost_mean:311460.0932	test_mean_soc_mean:        0.3454	test_return_mean:        -312.7167
+test_return_std:          30.5277	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  46.9510	test_total_power_loss_mean:14332.9081
+total_power_loss_mean:   14334.3657	train/battery_punishment_reward:-3426.3846	train/battle_won:          1.0000	train/bess_cost_reward:  -162.9093
+train/buy_cost_reward:   -311488.5513	train/ep_length:          24.0000	train/episode:           1864.4000	train/episode_limit:       1.0000
+train/generate_cost_reward:-41.0870	train/grid_purchase_cost:311488.5513	train/mean_soc:            0.3156	train/return_mean:       -312.6998
+train/return_std:         34.6040	train/soc_reserve_reward:  0.0000	train/soc_violation:      45.4976	train/t_env:             79449.6000
+train/total_power_loss:  14334.3657	
+[INFO 20:24:17] root Recent Stats | t_env:      85584 | Episode:     1991
+battery_punishment_reward_mean:-3602.5122	battle_won_mean:           1.0000	bess_cost_reward_mean:   -161.8629	buffer/episodes:         3395.6000
+buy_cost_reward_mean:    -309409.1262	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -310.0712
+eval/best_win_rate:        1.0000	eval/ea_reward:          -317.4349	eval/ea_win_rate:          1.0000	eval/rl_reward:          -310.9029
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-40.2276	grid_purchase_cost_mean: 309409.1262	mean_soc_mean:             0.3198
+return_mean:             -310.6784	return_std:               35.0322	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       47.2580
+test/battery_punishment_reward:-3574.6673	test/battle_won:           1.0000	test/bess_cost_reward:   -154.5492	test/buy_cost_reward:    -311460.0932
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-37.7478	test/grid_purchase_cost: 311460.0932
+test/mean_soc:             0.3454	test/return_mean:        -312.7167	test/return_std:          30.5277	test/soc_reserve_reward:   0.0000
+test/soc_violation:       46.9510	test/total_power_loss:   14332.9081	test_battery_punishment_reward_mean:-3574.6673	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-154.5492	test_buy_cost_reward_mean:-311460.0932	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-37.7478	test_grid_purchase_cost_mean:311460.0932	test_mean_soc_mean:        0.3454	test_return_mean:        -312.7167
+test_return_std:          30.5277	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  46.9510	test_total_power_loss_mean:14332.9081
+total_power_loss_mean:   14248.2705	train/battery_punishment_reward:-3602.5122	train/battle_won:          1.0000	train/bess_cost_reward:  -161.8629
+train/buy_cost_reward:   -309409.1262	train/ep_length:          24.0000	train/episode:           1906.6000	train/episode_limit:       1.0000
+train/generate_cost_reward:-40.2276	train/grid_purchase_cost:309409.1262	train/mean_soc:            0.3198	train/return_mean:       -310.6784
+train/return_std:         35.0322	train/soc_reserve_reward:  0.0000	train/soc_violation:      47.2580	train/t_env:             81494.4000
+train/total_power_loss:  14248.2705	
+[INFO 20:24:53] root Recent Stats | t_env:      87600 | Episode:     2035
+battery_punishment_reward_mean:-3660.1641	battle_won_mean:           1.0000	bess_cost_reward_mean:   -162.0328	buffer/episodes:         3480.4000
+buy_cost_reward_mean:    -309513.4184	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -310.0712
+eval/best_win_rate:        1.0000	eval/ea_reward:          -317.4349	eval/ea_win_rate:          1.0000	eval/rl_reward:          -310.9029
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-40.9187	grid_purchase_cost_mean: 309513.4184	mean_soc_mean:             0.3196
+return_mean:             -310.8022	return_std:               35.2428	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       47.8709
+test/battery_punishment_reward:-3574.6673	test/battle_won:           1.0000	test/bess_cost_reward:   -154.5492	test/buy_cost_reward:    -311460.0932
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-37.7478	test/grid_purchase_cost: 311460.0932
+test/mean_soc:             0.3454	test/return_mean:        -312.7167	test/return_std:          30.5277	test/soc_reserve_reward:   0.0000
+test/soc_violation:       46.9510	test/total_power_loss:   14332.9081	test_battery_punishment_reward_mean:-3574.6673	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-154.5492	test_buy_cost_reward_mean:-311460.0932	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-37.7478	test_grid_purchase_cost_mean:311460.0932	test_mean_soc_mean:        0.3454	test_return_mean:        -312.7167
+test_return_std:          30.5277	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  46.9510	test_total_power_loss_mean:14332.9081
+total_power_loss_mean:   14249.6798	train/battery_punishment_reward:-3660.1641	train/battle_won:          1.0000	train/bess_cost_reward:  -162.0328
+train/buy_cost_reward:   -309513.4184	train/ep_length:          24.0000	train/episode:           1949.4000	train/episode_limit:       1.0000
+train/generate_cost_reward:-40.9187	train/grid_purchase_cost:309513.4184	train/mean_soc:            0.3196	train/return_mean:       -310.8022
+train/return_std:         35.2428	train/soc_reserve_reward:  0.0000	train/soc_violation:      47.8709	train/t_env:             83529.6000
+train/total_power_loss:  14249.6798	
+[INFO 20:25:35] root Recent Stats | t_env:      89664 | Episode:     2076
+battery_punishment_reward_mean:-3480.7304	battle_won_mean:           1.0000	bess_cost_reward_mean:   -161.8823	buffer/episodes:         3565.6000
+buy_cost_reward_mean:    -307508.3190	ep_length_mean:           24.0000	episode_limit_mean:        1.0000	eval/best_reward:        -310.0712
+eval/best_win_rate:        1.0000	eval/ea_reward:          -317.4349	eval/ea_win_rate:          1.0000	eval/rl_reward:          -310.9029
+eval/rl_win_rate:          1.0000	generate_cost_reward_mean:-40.7975	grid_purchase_cost_mean: 307508.3190	mean_soc_mean:             0.3196
+return_mean:             -308.7372	return_std:               35.4097	soc_reserve_reward_mean:   0.0000	soc_violation_mean:       45.9381
+test/battery_punishment_reward:-3574.6673	test/battle_won:           1.0000	test/bess_cost_reward:   -154.5492	test/buy_cost_reward:    -311460.0932
+test/ep_length:           24.0000	test/episode_limit:        1.0000	test/generate_cost_reward:-37.7478	test/grid_purchase_cost: 311460.0932
+test/mean_soc:             0.3454	test/return_mean:        -312.7167	test/return_std:          30.5277	test/soc_reserve_reward:   0.0000
+test/soc_violation:       46.9510	test/total_power_loss:   14332.9081	test_battery_punishment_reward_mean:-3574.6673	test_battle_won_mean:      1.0000
+test_bess_cost_reward_mean:-154.5492	test_buy_cost_reward_mean:-311460.0932	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000
+test_generate_cost_reward_mean:-37.7478	test_grid_purchase_cost_mean:311460.0932	test_mean_soc_mean:        0.3454	test_return_mean:        -312.7167
+test_return_std:          30.5277	test_soc_reserve_reward_mean:  0.0000	test_soc_violation_mean:  46.9510	test_total_power_loss_mean:14332.9081
+total_power_loss_mean:   14165.5550	train/battery_punishment_reward:-3480.7304	train/battle_won:          1.0000	train/bess_cost_reward:  -161.8823
+train/buy_cost_reward:   -307508.3190	train/ep_length:          24.0000	train/episode:           1991.6000	train/episode_limit:       1.0000
+train/generate_cost_reward:-40.7975	train/grid_purchase_cost:307508.3190	train/mean_soc:            0.3196	train/return_mean:       -308.7372
+train/return_std:         35.4097	train/soc_reserve_reward:  0.0000	train/soc_violation:      45.9381	train/t_env:             85574.4000
+train/total_power_loss:  14165.5550	

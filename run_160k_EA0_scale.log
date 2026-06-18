@@ -1,0 +1,1000 @@
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+C:\Users\xyx\Desktop\GDE-main\.venv\lib\site-packages\torch\__init__.py:1331: UserWarning: torch.set_default_tensor_type() is deprecated as of PyTorch 2.1, please use torch.set_default_dtype() and torch.set_default_device() as alternatives. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\torch\csrc\tensor\python_tensor.cpp:436.)
+  _C._set_default_tensor_type(t)
+[INFO 22:18:57] root Saving to FileStorageObserver in results/sacred.
+[DEBUG 22:18:59] pymarl Using capture mode "no"
+[INFO 22:18:59] pymarl Running command 'my_main'
+[INFO 22:18:59] pymarl Started run with ID "20"
+[DEBUG 22:18:59] pymarl Starting Heartbeat
+[DEBUG 22:18:59] my_main Started
+[INFO 22:18:59] my_main Experiment Parameters:
+[INFO 22:18:59] my_main 
+
+{   'EA': 0,
+    'EA_alpha': 1.0,
+    'EA_freq': 1,
+    'N_type': 1,
+    'Org_alpha': 1.0,
+    'SAME': 0,
+    'act_noise': 0.1,
+    'action_range': None,
+    'action_selector': 'gumbel',
+    'agent': 'qmixrnn',
+    'agent_output_type': 'pi_logits',
+    'agent_return_logits': False,
+    'batch_size': 32,
+    'batch_size_run': 1,
+    'buffer_algo': None,
+    'buffer_chunk_size': None,
+    'buffer_cpu_only': True,
+    'buffer_device': None,
+    'buffer_mode': 'transitions',
+    'buffer_size': 5000,
+    'buffer_warmup': 0,
+    'checkpoint_path': '',
+    'continuous_actions': False,
+    'critic_lr': 0.0005,
+    'critic_spectral': 'ynn',
+    'critic_train_reps': 1,
+    'debug': False,
+    'discretize_actions': False,
+    'double_q': False,
+    'elite_fraction': 0.2,
+    'env': 'microgrid',
+    'env_args': {   'action_bins': 11,
+                    'data': [   {   'agent_name': 'agent1',
+                                    'battery_cap': 5.0,
+                                    'battery_punishment_param': 0.1,
+                                    'bessa': 0.01,
+                                    'bessb': 0.1,
+                                    'bessc': 0.05,
+                                    'costa': 0.02,
+                                    'costb': 0.5,
+                                    'costc': 0.1,
+                                    'dg_max': 2.0,
+                                    'env_param': 0.05,
+                                    'high_action': [   1.0,
+                                                       1.0],
+                                    'high_state': [   5.0,
+                                                      5.0,
+                                                      0.8],
+                                    'low_action': [   -1.0,
+                                                      -1.0],
+                                    'low_state': [   0.0,
+                                                     0.0,
+                                                     0.2],
+                                    'raw_ch': 0.95,
+                                    'raw_dis': 0.95,
+                                    'split_ratio': 0.25},
+                                {   'agent_name': 'agent2',
+                                    'battery_cap': 5.0,
+                                    'battery_punishment_param': 0.1,
+                                    'bessa': 0.01,
+                                    'bessb': 0.1,
+                                    'bessc': 0.05,
+                                    'costa': 0.02,
+                                    'costb': 0.5,
+                                    'costc': 0.1,
+                                    'dg_max': 2.0,
+                                    'env_param': 0.05,
+                                    'high_action': [   1.0,
+                                                       1.0],
+                                    'high_state': [   5.0,
+                                                      5.0,
+                                                      0.8],
+                                    'low_action': [   -1.0,
+                                                      -1.0],
+                                    'low_state': [   0.0,
+                                                     0.0,
+                                                     0.2],
+                                    'raw_ch': 0.95,
+                                    'raw_dis': 0.95,
+                                    'split_ratio': 0.25},
+                                {   'agent_name': 'agent3',
+                                    'battery_cap': 5.0,
+                                    'battery_punishment_param': 0.1,
+                                    'bessa': 0.01,
+                                    'bessb': 0.1,
+                                    'bessc': 0.05,
+                                    'costa': 0.02,
+                                    'costb': 0.5,
+                                    'costc': 0.1,
+                                    'dg_max': 2.0,
+                                    'env_param': 0.05,
+                                    'high_action': [   1.0,
+                                                       1.0],
+                                    'high_state': [   5.0,
+                                                      5.0,
+                                                      0.8],
+                                    'low_action': [   -1.0,
+                                                      -1.0],
+                                    'low_state': [   0.0,
+                                                     0.0,
+                                                     0.2],
+                                    'raw_ch': 0.95,
+                                    'raw_dis': 0.95,
+                                    'split_ratio': 0.25}],
+                    'log_trajectories': False,
+                    'log_trajectories_mode': 'test',
+                    'result_dir': './results',
+                    'reward_aggregate': 'mean',
+                    'reward_scale': 0.001,
+                    'run_id': '20',
+                    'seed': 98462333,
+                    'state_last_action': False},
+    'epsilon_anneal_time': 50000,
+    'epsilon_decay_mode': None,
+    'epsilon_finish': 0.05,
+    'epsilon_start': 0.5,
+    'evaluate': False,
+    'exploration_mode': 'gaussian',
+    'final_ou_noise_scale': 0.0,
+    'frac': 1.0,
+    'gamma': 0.99,
+    'gated': False,
+    'grad_norm_clip': 10,
+    'hyper_initialization_nonzeros': 0,
+    'hypernet_embed': 64,
+    'hypernet_layers': 2,
+    'label': 'default_label',
+    'learn_interval': 1,
+    'learner': 'facmac_learner_discrete',
+    'learner_log_interval': 2000,
+    'load_step': 0,
+    'local_results_path': 'results',
+    'log_interval': 2000,
+    'lr': 0.0025,
+    'mac': 'basic_mac',
+    'mask_before_softmax': True,
+    'mixer': 'graph',
+    'mixing_embed_dim': 32,
+    'mutation_prob': 0.9,
+    'n_runners': None,
+    'n_train': 1,
+    'name': 'facmac_smac',
+    'obs_agent_id': True,
+    'obs_last_action': True,
+    'optim_alpha': 0.99,
+    'optim_eps': 1e-05,
+    'optimizer': 'adam',
+    'ou_noise_scale': 0.3,
+    'ou_sigma': 0.2,
+    'ou_stop_episode': 100,
+    'ou_theta': 0.15,
+    'plot_loss_network': False,
+    'policy_spectral': 'nnnn',
+    'pop_size': 5,
+    'pr_dim': 64,
+    'prob_reset_and_sup': 0.05,
+    'q_embed_dim': 1,
+    'q_nstep': 0,
+    'recurrent_critic': False,
+    'repeat_id': 1,
+    'rl_to_ea_synch_period': 1,
+    'rnn_hidden_dim': 64,
+    'run_mode': None,
+    'runner': 'episode',
+    'runner_log_interval': 2000,
+    'runner_scope': 'episodic',
+    'save_model': False,
+    'save_model_interval': 10000,
+    'save_replay': False,
+    'seed': 98462333,
+    'skip_connections': False,
+    'spectral_regularization': False,
+    'start_steps': 0,
+    'start_timesteps': 10000,
+    'state_alpha': 0.1,
+    't_max': 160000,
+    'target_update_interval': 200,
+    'target_update_mode': 'hard',
+    'target_update_tau': 0.001,
+    'td_lambda': 0.8,
+    'test_greedy': True,
+    'test_interval': 10000,
+    'test_nepisode': 32,
+    'testing_on': True,
+    'use_buffer_compression': False,
+    'use_cuda': False,
+    'use_tensorboard': True,
+    'verbose': False,
+    'weight_decay': True,
+    'weight_decay_factor': 0.0001}
+
+[INFO 22:19:00] my_main Beginning training for 160000 timesteps
+C:\Users\xyx\Desktop\GDE-main\src\components\episode_buffer.py:97: UserWarning: Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\torch\csrc\autograd\python_variable_indexing.cpp:353.)
+  target["filled"][slices] = 1
+C:\Users\xyx\Desktop\GDE-main\src\components\episode_buffer.py:108: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\torch\csrc\utils\tensor_new.cpp:256.)
+  v = th.tensor(v, dtype=dtype, device=self.device)
+C:\Users\xyx\Desktop\GDE-main\src\components\episode_buffer.py:110: UserWarning: Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\torch\csrc\autograd\python_variable_indexing.cpp:353.)
+  self._check_safe_view(v, target[k][_slices])
+C:\Users\xyx\Desktop\GDE-main\src\components\episode_buffer.py:114: UserWarning: Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\torch\csrc\autograd\python_variable_indexing.cpp:353.)
+  target[k][_slices] = v.view_as(target[k][_slices])
+C:\Users\xyx\Desktop\GDE-main\src\components\episode_buffer.py:108: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.detach().clone() or sourceTensor.detach().clone().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  v = th.tensor(v, dtype=dtype, device=self.device)
+C:\Users\xyx\Desktop\GDE-main\src\components\episode_buffer.py:122: UserWarning: Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\torch\csrc\autograd\python_variable_indexing.cpp:353.)
+  v = target[k][_slices]
+C:\Users\xyx\Desktop\GDE-main\src\components\episode_buffer.py:125: UserWarning: Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\torch\csrc\autograd\python_variable_indexing.cpp:353.)
+  target[new_k][_slices] = v.view_as(target[new_k][_slices])
+[INFO 22:19:00] my_main t_env: 24 / 160000
+[INFO 22:19:00] my_main Estimated time left: 0 seconds. Time passed: 0 seconds
+C:\Users\xyx\Desktop\GDE-main\src\components\episode_buffer.py:165: UserWarning: Using a non-tuple sequence for multidimensional indexing is deprecated and will be changed in pytorch 2.9; use x[tuple(seq)] instead of x[seq]. In pytorch 2.9 this will be interpreted as tensor index, x[torch.tensor(seq)], which will result either in an error or a different result (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\torch\csrc\autograd\python_variable_indexing.cpp:353.)
+  new_data.transition_data[k] = v[item]
+[INFO 22:19:06] my_main Recent Stats | t_env:       2016 | Episode:       84
+battery_punishment_reward_mean: -7.6231	battle_won_mean:           1.0000	bess_cost_reward_mean:   -88.8241	buy_cost_reward_mean:    -294859.6648
+critic_grad_norm:        351.2245	critic_loss:             3601.3562	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.5000	generate_cost_reward_mean:-16.1392	grid_purchase_cost_mean: 294859.6648	mean_soc_mean:             0.6011
+return_mean:             -294.8974	return_std:                0.0000	soc_violation_mean:       23.7237	target_mean:             -18.5202
+td_error_abs:             55.3014	test_battery_punishment_reward_mean:-16.4681	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-170.5637
+test_buy_cost_reward_mean:-321062.8985	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:  9.7757
+test_grid_purchase_cost_mean:321062.8985	test_mean_soc_mean:        0.2959	test_return_mean:        -321.1214	test_return_std:          35.9223
+test_soc_violation_mean:  43.9128	test_total_power_loss_mean:14701.2723	total_power_loss_mean:   13848.6045	
+[INFO 22:19:12] my_main Recent Stats | t_env:       4032 | Episode:      168
+battery_punishment_reward_mean: -7.3736	battle_won_mean:           1.0000	bess_cost_reward_mean:   -103.3876	buy_cost_reward_mean:    -299223.5984
+critic_grad_norm:        880.1465	critic_loss:             2995.5184	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.4819	generate_cost_reward_mean:-15.0666	grid_purchase_cost_mean: 299223.5984	mean_soc_mean:             0.5484
+return_mean:             -299.2657	return_std:               16.3068	soc_violation_mean:       22.7871	target_mean:             -18.8354
+td_error_abs:             49.8201	test_battery_punishment_reward_mean:-16.4681	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-170.5637
+test_buy_cost_reward_mean:-321062.8985	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:  9.7757
+test_grid_purchase_cost_mean:321062.8985	test_mean_soc_mean:        0.2959	test_return_mean:        -321.1214	test_return_std:          35.9223
+test_soc_violation_mean:  43.9128	test_total_power_loss_mean:14701.2723	total_power_loss_mean:   13922.7982	
+[INFO 22:19:17] my_main Updated all target networks
+[INFO 22:19:18] my_main Recent Stats | t_env:       6048 | Episode:      252
+battery_punishment_reward_mean: -7.5943	battle_won_mean:           1.0000	bess_cost_reward_mean:   -105.9884	buy_cost_reward_mean:    -302337.7087
+critic_grad_norm:        625.5976	critic_loss:             2171.2418	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.4637	generate_cost_reward_mean:-12.7163	grid_purchase_cost_mean: 302337.7087	mean_soc_mean:             0.5397
+return_mean:             -302.3799	return_std:               23.0397	soc_violation_mean:       23.1270	target_mean:             -18.9026
+td_error_abs:             39.0198	test_battery_punishment_reward_mean:-16.4681	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-170.5637
+test_buy_cost_reward_mean:-321062.8985	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:  9.7757
+test_grid_purchase_cost_mean:321062.8985	test_mean_soc_mean:        0.2959	test_return_mean:        -321.1214	test_return_std:          35.9223
+test_soc_violation_mean:  43.9128	test_total_power_loss_mean:14701.2723	total_power_loss_mean:   14024.3772	
+[INFO 22:19:25] my_main Recent Stats | t_env:       8064 | Episode:      336
+battery_punishment_reward_mean: -7.1184	battle_won_mean:           1.0000	bess_cost_reward_mean:   -111.4129	buy_cost_reward_mean:    -304391.3543
+critic_grad_norm:        959.5317	critic_loss:             1987.3638	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.4456	generate_cost_reward_mean:-10.3847	grid_purchase_cost_mean: 304391.3543	mean_soc_mean:             0.5192
+return_mean:             -304.4344	return_std:               25.2012	soc_violation_mean:       21.9257	target_mean:             -23.2937
+td_error_abs:             37.2662	test_battery_punishment_reward_mean:-16.4681	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-170.5637
+test_buy_cost_reward_mean:-321062.8985	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:  9.7757
+test_grid_purchase_cost_mean:321062.8985	test_mean_soc_mean:        0.2959	test_return_mean:        -321.1214	test_return_std:          35.9223
+test_soc_violation_mean:  43.9128	test_total_power_loss_mean:14701.2723	total_power_loss_mean:   14090.9574	
+[INFO 22:19:31] my_main t_env: 10032 / 160000
+[INFO 22:19:31] my_main Estimated time left: 7 minutes, 36 seconds. Time passed: 30 seconds
+[INFO 22:19:32] my_main Recent Stats | t_env:      10080 | Episode:      420
+battery_punishment_reward_mean: -6.6857	battle_won_mean:           1.0000	bess_cost_reward_mean:   -113.9895	buy_cost_reward_mean:    -305873.6770
+critic_grad_norm:        808.5566	critic_loss:             1732.0255	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.4274	generate_cost_reward_mean: -8.4414	grid_purchase_cost_mean: 305873.6770	mean_soc_mean:             0.5087
+return_mean:             -305.9167	return_std:               26.1374	soc_violation_mean:       20.8737	target_mean:             -25.9349
+td_error_abs:             33.9250	test_battery_punishment_reward_mean:-11.6708	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-182.3555
+test_buy_cost_reward_mean:-317115.0018	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:-12.6585
+test_grid_purchase_cost_mean:317115.0018	test_mean_soc_mean:        0.2483	test_return_mean:        -317.1840	test_return_std:          37.0754
+test_soc_violation_mean:  35.1419	test_total_power_loss_mean:14542.5490	total_power_loss_mean:   14146.0065	
+[INFO 22:19:33] my_main Updated all target networks
+[INFO 22:19:38] my_main Recent Stats | t_env:      12096 | Episode:      504
+battery_punishment_reward_mean: -6.1607	battle_won_mean:           1.0000	bess_cost_reward_mean:   -122.4312	buy_cost_reward_mean:    -309283.1891
+critic_grad_norm:        1532.2092	critic_loss:             1492.1925	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.4093	generate_cost_reward_mean: -6.9351	grid_purchase_cost_mean: 309283.1891	mean_soc_mean:             0.4761
+return_mean:             -309.3283	return_std:               33.0670	soc_violation_mean:       19.4775	target_mean:             -32.7525
+td_error_abs:             31.3085	test_battery_punishment_reward_mean:-11.6708	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-182.3555
+test_buy_cost_reward_mean:-317115.0018	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:-12.6585
+test_grid_purchase_cost_mean:317115.0018	test_mean_soc_mean:        0.2483	test_return_mean:        -317.1840	test_return_std:          37.0754
+test_soc_violation_mean:  35.1419	test_total_power_loss_mean:14542.5490	total_power_loss_mean:   14248.5141	
+[INFO 22:19:44] my_main Recent Stats | t_env:      14112 | Episode:      588
+battery_punishment_reward_mean: -6.0741	battle_won_mean:           1.0000	bess_cost_reward_mean:   -127.0642	buy_cost_reward_mean:    -311686.4608
+critic_grad_norm:        1272.2837	critic_loss:             1144.4629	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.3911	generate_cost_reward_mean: -5.3246	grid_purchase_cost_mean: 311686.4608	mean_soc_mean:             0.4580
+return_mean:             -311.7325	return_std:               33.2454	soc_violation_mean:       19.3455	target_mean:             -39.3764
+td_error_abs:             26.3565	test_battery_punishment_reward_mean:-11.6708	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-182.3555
+test_buy_cost_reward_mean:-317115.0018	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:-12.6585
+test_grid_purchase_cost_mean:317115.0018	test_mean_soc_mean:        0.2483	test_return_mean:        -317.1840	test_return_std:          37.0754
+test_soc_violation_mean:  35.1419	test_total_power_loss_mean:14542.5490	total_power_loss_mean:   14347.8064	
+[INFO 22:19:47] my_main Updated all target networks
+[INFO 22:19:50] my_main Recent Stats | t_env:      16128 | Episode:      672
+battery_punishment_reward_mean: -5.7021	battle_won_mean:           1.0000	bess_cost_reward_mean:   -130.8473	buy_cost_reward_mean:    -312394.2870
+critic_grad_norm:        1269.8941	critic_loss:             1175.1022	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.3730	generate_cost_reward_mean: -4.2310	grid_purchase_cost_mean: 312394.2870	mean_soc_mean:             0.4434
+return_mean:             -312.4411	return_std:               33.5466	soc_violation_mean:       18.5832	target_mean:             -46.1866
+td_error_abs:             26.8814	test_battery_punishment_reward_mean:-11.6708	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-182.3555
+test_buy_cost_reward_mean:-317115.0018	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:-12.6585
+test_grid_purchase_cost_mean:317115.0018	test_mean_soc_mean:        0.2483	test_return_mean:        -317.1840	test_return_std:          37.0754
+test_soc_violation_mean:  35.1419	test_total_power_loss_mean:14542.5490	total_power_loss_mean:   14380.2777	
+[INFO 22:19:57] my_main Recent Stats | t_env:      18144 | Episode:      756
+battery_punishment_reward_mean: -5.6751	battle_won_mean:           1.0000	bess_cost_reward_mean:   -130.8413	buy_cost_reward_mean:    -312447.0275
+critic_grad_norm:        912.4867	critic_loss:             1039.2423	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.3548	generate_cost_reward_mean: -3.4912	grid_purchase_cost_mean: 312447.0275	mean_soc_mean:             0.4426
+return_mean:             -312.4935	return_std:               33.6165	soc_violation_mean:       18.6611	target_mean:             -52.8561
+td_error_abs:             24.7714	test_battery_punishment_reward_mean:-11.6708	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-182.3555
+test_buy_cost_reward_mean:-317115.0018	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:-12.6585
+test_grid_purchase_cost_mean:317115.0018	test_mean_soc_mean:        0.2483	test_return_mean:        -317.1840	test_return_std:          37.0754
+test_soc_violation_mean:  35.1419	test_total_power_loss_mean:14542.5490	total_power_loss_mean:   14388.0717	
+[INFO 22:20:03] my_main Updated all target networks
+[INFO 22:20:03] my_main t_env: 20040 / 160000
+[INFO 22:20:03] my_main Estimated time left: 7 minutes, 30 seconds. Time passed: 1 minutes, 2 seconds
+[INFO 22:20:04] my_main Recent Stats | t_env:      20160 | Episode:      840
+battery_punishment_reward_mean: -5.6837	battle_won_mean:           1.0000	bess_cost_reward_mean:   -130.4393	buy_cost_reward_mean:    -312932.4818
+critic_grad_norm:        890.6857	critic_loss:             1022.1703	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.3367	generate_cost_reward_mean: -3.3370	grid_purchase_cost_mean: 312932.4818	mean_soc_mean:             0.4438
+return_mean:             -312.9788	return_std:               34.4577	soc_violation_mean:       18.7912	target_mean:             -59.3428
+td_error_abs:             24.5255	test_battery_punishment_reward_mean: -6.0237	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-189.5406
+test_buy_cost_reward_mean:-312889.1870	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:-20.7670
+test_grid_purchase_cost_mean:312889.1870	test_mean_soc_mean:        0.2195	test_return_mean:        -312.9617	test_return_std:          38.0703
+test_soc_violation_mean:  24.5837	test_total_power_loss_mean:14377.8437	total_power_loss_mean:   14407.6401	
+[INFO 22:20:11] my_main Recent Stats | t_env:      22176 | Episode:      924
+battery_punishment_reward_mean: -5.6573	battle_won_mean:           1.0000	bess_cost_reward_mean:   -128.0139	buy_cost_reward_mean:    -313027.6870
+critic_grad_norm:        532.0993	critic_loss:             703.5515	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.3186	generate_cost_reward_mean: -1.5816	grid_purchase_cost_mean: 313027.6870	mean_soc_mean:             0.4534
+return_mean:             -313.0725	return_std:               33.7417	soc_violation_mean:       18.8792	target_mean:             -65.7121
+td_error_abs:             20.2597	test_battery_punishment_reward_mean: -6.0237	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-189.5406
+test_buy_cost_reward_mean:-312889.1870	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:-20.7670
+test_grid_purchase_cost_mean:312889.1870	test_mean_soc_mean:        0.2195	test_return_mean:        -312.9617	test_return_std:          38.0703
+test_soc_violation_mean:  24.5837	test_total_power_loss_mean:14377.8437	total_power_loss_mean:   14412.9545	
+[INFO 22:20:17] my_main Recent Stats | t_env:      24192 | Episode:     1008
+battery_punishment_reward_mean: -5.3225	battle_won_mean:           1.0000	bess_cost_reward_mean:   -123.0721	buy_cost_reward_mean:    -311785.8888
+critic_grad_norm:        535.3649	critic_loss:             707.2106	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.3004	generate_cost_reward_mean: -0.4366	grid_purchase_cost_mean: 311785.8888	mean_soc_mean:             0.4711
+return_mean:             -311.8285	return_std:               33.5396	soc_violation_mean:       18.1405	target_mean:             -72.3779
+td_error_abs:             20.3011	test_battery_punishment_reward_mean: -6.0237	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-189.5406
+test_buy_cost_reward_mean:-312889.1870	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:-20.7670
+test_grid_purchase_cost_mean:312889.1870	test_mean_soc_mean:        0.2195	test_return_mean:        -312.9617	test_return_std:          38.0703
+test_soc_violation_mean:  24.5837	test_total_power_loss_mean:14377.8437	total_power_loss_mean:   14369.6327	
+[INFO 22:20:18] my_main Updated all target networks
+[INFO 22:20:23] my_main Recent Stats | t_env:      26208 | Episode:     1092
+battery_punishment_reward_mean: -5.0322	battle_won_mean:           1.0000	bess_cost_reward_mean:   -121.6178	buy_cost_reward_mean:    -312291.6930
+critic_grad_norm:        2041.1274	critic_loss:             1108.7562	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.2823	generate_cost_reward_mean: -0.1249	grid_purchase_cost_mean: 312291.6930	mean_soc_mean:             0.4753
+return_mean:             -312.3337	return_std:               33.7894	soc_violation_mean:       17.4885	target_mean:             -82.0284
+td_error_abs:             25.2228	test_battery_punishment_reward_mean: -6.0237	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-189.5406
+test_buy_cost_reward_mean:-312889.1870	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:-20.7670
+test_grid_purchase_cost_mean:312889.1870	test_mean_soc_mean:        0.2195	test_return_mean:        -312.9617	test_return_std:          38.0703
+test_soc_violation_mean:  24.5837	test_total_power_loss_mean:14377.8437	total_power_loss_mean:   14386.1874	
+[INFO 22:20:29] my_main Recent Stats | t_env:      28224 | Episode:     1176
+battery_punishment_reward_mean: -4.8315	battle_won_mean:           1.0000	bess_cost_reward_mean:   -120.5050	buy_cost_reward_mean:    -313629.6603
+critic_grad_norm:        2027.5429	critic_loss:             1082.2228	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.2641	generate_cost_reward_mean: -0.2828	grid_purchase_cost_mean: 313629.6603	mean_soc_mean:             0.4791
+return_mean:             -313.6712	return_std:               33.6122	soc_violation_mean:       17.0223	target_mean:             -88.1589
+td_error_abs:             24.7888	test_battery_punishment_reward_mean: -6.0237	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-189.5406
+test_buy_cost_reward_mean:-312889.1870	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:-20.7670
+test_grid_purchase_cost_mean:312889.1870	test_mean_soc_mean:        0.2195	test_return_mean:        -312.9617	test_return_std:          38.0703
+test_soc_violation_mean:  24.5837	test_total_power_loss_mean:14377.8437	total_power_loss_mean:   14436.8545	
+[INFO 22:20:33] my_main Updated all target networks
+[INFO 22:20:35] my_main t_env: 30048 / 160000
+[INFO 22:20:35] my_main Estimated time left: 6 minutes, 54 seconds. Time passed: 1 minutes, 34 seconds
+[INFO 22:20:36] my_main Recent Stats | t_env:      30240 | Episode:     1260
+battery_punishment_reward_mean: -4.7489	battle_won_mean:           1.0000	bess_cost_reward_mean:   -120.1292	buy_cost_reward_mean:    -314204.5047
+critic_grad_norm:        2039.8065	critic_loss:             1081.4144	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.2460	generate_cost_reward_mean: -0.9572	grid_purchase_cost_mean: 314204.5047	mean_soc_mean:             0.4800
+return_mean:             -314.2462	return_std:               34.0273	soc_violation_mean:       16.8376	target_mean:             -94.4736
+td_error_abs:             24.7217	test_battery_punishment_reward_mean: -9.6459	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-194.1709
+test_buy_cost_reward_mean:-312851.9659	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:-30.2678
+test_grid_purchase_cost_mean:312851.9659	test_mean_soc_mean:        0.2007	test_return_mean:        -312.9307	test_return_std:          36.9017
+test_soc_violation_mean:  31.6071	test_total_power_loss_mean:14381.9563	total_power_loss_mean:   14460.0550	
+[INFO 22:20:43] my_main Recent Stats | t_env:      32256 | Episode:     1344
+battery_punishment_reward_mean: -5.4750	battle_won_mean:           1.0000	bess_cost_reward_mean:   -128.0337	buy_cost_reward_mean:    -315061.2928
+critic_grad_norm:        1645.1818	critic_loss:             1038.5078	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.2278	generate_cost_reward_mean: -3.8076	grid_purchase_cost_mean: 315061.2928	mean_soc_mean:             0.4511
+return_mean:             -315.1069	return_std:               34.4323	soc_violation_mean:       18.5782	target_mean:             -100.5276
+td_error_abs:             24.2567	test_battery_punishment_reward_mean: -9.6459	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-194.1709
+test_buy_cost_reward_mean:-312851.9659	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:-30.2678
+test_grid_purchase_cost_mean:312851.9659	test_mean_soc_mean:        0.2007	test_return_mean:        -312.9307	test_return_std:          36.9017
+test_soc_violation_mean:  31.6071	test_total_power_loss_mean:14381.9563	total_power_loss_mean:   14495.2763	
+[INFO 22:20:49] my_main Recent Stats | t_env:      34272 | Episode:     1428
+battery_punishment_reward_mean: -6.2784	battle_won_mean:           1.0000	bess_cost_reward_mean:   -137.9519	buy_cost_reward_mean:    -315080.4071
+critic_grad_norm:        1664.5248	critic_loss:             1016.1339	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.2097	generate_cost_reward_mean: -5.8125	grid_purchase_cost_mean: 315080.4071	mean_soc_mean:             0.4148
+return_mean:             -315.1303	return_std:               34.0682	soc_violation_mean:       20.5440	target_mean:             -106.2545
+td_error_abs:             23.8744	test_battery_punishment_reward_mean: -9.6459	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-194.1709
+test_buy_cost_reward_mean:-312851.9659	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:-30.2678
+test_grid_purchase_cost_mean:312851.9659	test_mean_soc_mean:        0.2007	test_return_mean:        -312.9307	test_return_std:          36.9017
+test_soc_violation_mean:  31.6071	test_total_power_loss_mean:14381.9563	total_power_loss_mean:   14488.9374	
+[INFO 22:20:50] my_main Updated all target networks
+[INFO 22:20:55] my_main Recent Stats | t_env:      36288 | Episode:     1512
+battery_punishment_reward_mean: -7.7950	battle_won_mean:           1.0000	bess_cost_reward_mean:   -149.0812	buy_cost_reward_mean:    -313748.0195
+critic_grad_norm:        751.5786	critic_loss:             625.3841	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.1916	generate_cost_reward_mean: -6.5918	grid_purchase_cost_mean: 313748.0195	mean_soc_mean:             0.3739
+return_mean:             -313.8024	return_std:               33.2575	soc_violation_mean:       24.1802	target_mean:             -111.5966
+td_error_abs:             19.0676	test_battery_punishment_reward_mean: -9.6459	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-194.1709
+test_buy_cost_reward_mean:-312851.9659	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:-30.2678
+test_grid_purchase_cost_mean:312851.9659	test_mean_soc_mean:        0.2007	test_return_mean:        -312.9307	test_return_std:          36.9017
+test_soc_violation_mean:  31.6071	test_total_power_loss_mean:14381.9563	total_power_loss_mean:   14433.4496	
+[INFO 22:21:02] my_main Recent Stats | t_env:      38304 | Episode:     1596
+battery_punishment_reward_mean: -9.5399	battle_won_mean:           1.0000	bess_cost_reward_mean:   -161.3457	buy_cost_reward_mean:    -312340.6088
+critic_grad_norm:        815.1678	critic_loss:             609.3063	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.1734	generate_cost_reward_mean: -7.1220	grid_purchase_cost_mean: 312340.6088	mean_soc_mean:             0.3289
+return_mean:             -312.3999	return_std:               33.9194	soc_violation_mean:       28.3704	target_mean:             -117.2992
+td_error_abs:             18.7473	test_battery_punishment_reward_mean: -9.6459	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-194.1709
+test_buy_cost_reward_mean:-312851.9659	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:-30.2678
+test_grid_purchase_cost_mean:312851.9659	test_mean_soc_mean:        0.2007	test_return_mean:        -312.9307	test_return_std:          36.9017
+test_soc_violation_mean:  31.6071	test_total_power_loss_mean:14381.9563	total_power_loss_mean:   14378.9056	
+[INFO 22:21:04] my_main Updated all target networks
+[INFO 22:21:07] my_main t_env: 40056 / 160000
+[INFO 22:21:07] my_main Estimated time left: 6 minutes, 27 seconds. Time passed: 2 minutes, 7 seconds
+[INFO 22:21:09] my_main Recent Stats | t_env:      40320 | Episode:     1680
+battery_punishment_reward_mean:-10.7427	battle_won_mean:           1.0000	bess_cost_reward_mean:   -173.8344	buy_cost_reward_mean:    -311173.8262
+critic_grad_norm:        843.3407	critic_loss:             602.3014	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.1553	generate_cost_reward_mean: -2.5332	grid_purchase_cost_mean: 311173.8262	mean_soc_mean:             0.2831
+return_mean:             -311.2360	return_std:               33.1451	soc_violation_mean:       31.5086	target_mean:             -122.8177
+td_error_abs:             18.4450	test_battery_punishment_reward_mean:-11.1990	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-194.2882
+test_buy_cost_reward_mean:-319054.5049	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:  3.5598
+test_grid_purchase_cost_mean:319054.5049	test_mean_soc_mean:        0.2004	test_return_mean:        -319.1214	test_return_std:          33.2203
+test_soc_violation_mean:  34.6936	test_total_power_loss_mean:14647.7183	total_power_loss_mean:   14330.1246	
+[INFO 22:21:15] my_main Recent Stats | t_env:      42336 | Episode:     1764
+battery_punishment_reward_mean:-11.2147	battle_won_mean:           1.0000	bess_cost_reward_mean:   -179.0383	buy_cost_reward_mean:    -310536.7322
+critic_grad_norm:        848.7941	critic_loss:             591.0246	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.1371	generate_cost_reward_mean:  3.1398	grid_purchase_cost_mean: 310536.7322	mean_soc_mean:             0.2631
+return_mean:             -310.5987	return_std:               33.2418	soc_violation_mean:       32.9082	target_mean:             -128.2497
+td_error_abs:             18.1955	test_battery_punishment_reward_mean:-11.1990	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-194.2882
+test_buy_cost_reward_mean:-319054.5049	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:  3.5598
+test_grid_purchase_cost_mean:319054.5049	test_mean_soc_mean:        0.2004	test_return_mean:        -319.1214	test_return_std:          33.2203
+test_soc_violation_mean:  34.6936	test_total_power_loss_mean:14647.7183	total_power_loss_mean:   14306.9329	
+[INFO 22:21:20] my_main Updated all target networks
+[INFO 22:21:21] my_main Recent Stats | t_env:      44352 | Episode:     1848
+battery_punishment_reward_mean:-10.7955	battle_won_mean:           1.0000	bess_cost_reward_mean:   -182.8499	buy_cost_reward_mean:    -310930.7953
+critic_grad_norm:        873.7596	critic_loss:             578.0843	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.1190	generate_cost_reward_mean: 14.2478	grid_purchase_cost_mean: 310930.7953	mean_soc_mean:             0.2483
+return_mean:             -310.9898	return_std:               33.9089	soc_violation_mean:       32.5356	target_mean:             -133.7118
+td_error_abs:             17.9582	test_battery_punishment_reward_mean:-11.1990	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-194.2882
+test_buy_cost_reward_mean:-319054.5049	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:  3.5598
+test_grid_purchase_cost_mean:319054.5049	test_mean_soc_mean:        0.2004	test_return_mean:        -319.1214	test_return_std:          33.2203
+test_soc_violation_mean:  34.6936	test_total_power_loss_mean:14647.7183	total_power_loss_mean:   14323.4756	
+[INFO 22:21:28] my_main Recent Stats | t_env:      46368 | Episode:     1932
+battery_punishment_reward_mean: -9.8196	battle_won_mean:           1.0000	bess_cost_reward_mean:   -181.3145	buy_cost_reward_mean:    -310912.1419
+critic_grad_norm:        351.0263	critic_loss:             538.9839	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.1008	generate_cost_reward_mean: 23.0180	grid_purchase_cost_mean: 310912.1419	mean_soc_mean:             0.2530
+return_mean:             -310.9671	return_std:               34.3792	soc_violation_mean:       30.8421	target_mean:             -139.0164
+td_error_abs:             17.4016	test_battery_punishment_reward_mean:-11.1990	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-194.2882
+test_buy_cost_reward_mean:-319054.5049	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:  3.5598
+test_grid_purchase_cost_mean:319054.5049	test_mean_soc_mean:        0.2004	test_return_mean:        -319.1214	test_return_std:          33.2203
+test_soc_violation_mean:  34.6936	test_total_power_loss_mean:14647.7183	total_power_loss_mean:   14324.8000	
+[INFO 22:21:34] my_main Recent Stats | t_env:      48384 | Episode:     2016
+battery_punishment_reward_mean: -9.6697	battle_won_mean:           1.0000	bess_cost_reward_mean:   -181.0488	buy_cost_reward_mean:    -310851.6297
+critic_grad_norm:        312.3761	critic_loss:             531.9954	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0827	generate_cost_reward_mean: 31.8582	grid_purchase_cost_mean: 310851.6297	mean_soc_mean:             0.2535
+return_mean:             -310.9032	return_std:               33.8938	soc_violation_mean:       30.6530	target_mean:             -144.1142
+td_error_abs:             17.2344	test_battery_punishment_reward_mean:-11.1990	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-194.2882
+test_buy_cost_reward_mean:-319054.5049	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:  3.5598
+test_grid_purchase_cost_mean:319054.5049	test_mean_soc_mean:        0.2004	test_return_mean:        -319.1214	test_return_std:          33.2203
+test_soc_violation_mean:  34.6936	test_total_power_loss_mean:14647.7183	total_power_loss_mean:   14324.2972	
+[INFO 22:21:35] my_main Updated all target networks
+[INFO 22:21:39] my_main t_env: 50064 / 160000
+[INFO 22:21:39] my_main Estimated time left: 5 minutes, 52 seconds. Time passed: 2 minutes, 39 seconds
+[INFO 22:21:41] my_main Recent Stats | t_env:      50400 | Episode:     2100
+battery_punishment_reward_mean:-10.1895	battle_won_mean:           1.0000	bess_cost_reward_mean:   -182.6114	buy_cost_reward_mean:    -310704.7897
+critic_grad_norm:        1155.8352	critic_loss:             614.0268	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0645	generate_cost_reward_mean: 36.3824	grid_purchase_cost_mean: 310704.7897	mean_soc_mean:             0.2474
+return_mean:             -310.7553	return_std:               34.3134	soc_violation_mean:       31.8493	target_mean:             -152.1273
+td_error_abs:             18.8224	test_battery_punishment_reward_mean:-12.7259	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-194.4416
+test_buy_cost_reward_mean:-321893.4725	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: 33.8699
+test_grid_purchase_cost_mean:321893.4725	test_mean_soc_mean:        0.2001	test_return_mean:        -321.9497	test_return_std:          33.0375
+test_soc_violation_mean:  37.7432	test_total_power_loss_mean:14785.9912	total_power_loss_mean:   14318.5330	
+[INFO 22:21:48] my_main Recent Stats | t_env:      52416 | Episode:     2184
+battery_punishment_reward_mean:-10.7301	battle_won_mean:           1.0000	bess_cost_reward_mean:   -184.1271	buy_cost_reward_mean:    -310352.7308
+critic_grad_norm:        1273.7378	critic_loss:             595.6182	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 42.3672	grid_purchase_cost_mean: 310352.7308	mean_soc_mean:             0.2412
+return_mean:             -310.4018	return_std:               34.2704	soc_violation_mean:       33.0596	target_mean:             -157.0597
+td_error_abs:             18.5830	test_battery_punishment_reward_mean:-12.7259	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-194.4416
+test_buy_cost_reward_mean:-321893.4725	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: 33.8699
+test_grid_purchase_cost_mean:321893.4725	test_mean_soc_mean:        0.2001	test_return_mean:        -321.9497	test_return_std:          33.0375
+test_soc_violation_mean:  37.7432	test_total_power_loss_mean:14785.9912	total_power_loss_mean:   14301.1114	
+[INFO 22:21:51] my_main Updated all target networks
+[INFO 22:21:54] my_main Recent Stats | t_env:      54432 | Episode:     2268
+battery_punishment_reward_mean:-12.0584	battle_won_mean:           1.0000	bess_cost_reward_mean:   -185.5458	buy_cost_reward_mean:    -310867.5677
+critic_grad_norm:        1394.3344	critic_loss:             588.1384	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 42.1190	grid_purchase_cost_mean: 310867.5677	mean_soc_mean:             0.2357
+return_mean:             -310.9176	return_std:               34.6245	soc_violation_mean:       35.7717	target_mean:             -162.0963
+td_error_abs:             18.3989	test_battery_punishment_reward_mean:-12.7259	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-194.4416
+test_buy_cost_reward_mean:-321893.4725	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: 33.8699
+test_grid_purchase_cost_mean:321893.4725	test_mean_soc_mean:        0.2001	test_return_mean:        -321.9497	test_return_std:          33.0375
+test_soc_violation_mean:  37.7432	test_total_power_loss_mean:14785.9912	total_power_loss_mean:   14324.9702	
+[INFO 22:22:01] my_main Recent Stats | t_env:      56448 | Episode:     2352
+battery_punishment_reward_mean:-13.2786	battle_won_mean:           1.0000	bess_cost_reward_mean:   -189.8151	buy_cost_reward_mean:    -312456.0852
+critic_grad_norm:        1456.9523	critic_loss:             577.5000	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 43.1003	grid_purchase_cost_mean: 312456.0852	mean_soc_mean:             0.2198
+return_mean:             -312.5076	return_std:               34.1013	soc_violation_mean:       38.2691	target_mean:             -166.9665
+td_error_abs:             18.0691	test_battery_punishment_reward_mean:-12.7259	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-194.4416
+test_buy_cost_reward_mean:-321893.4725	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: 33.8699
+test_grid_purchase_cost_mean:321893.4725	test_mean_soc_mean:        0.2001	test_return_mean:        -321.9497	test_return_std:          33.0375
+test_soc_violation_mean:  37.7432	test_total_power_loss_mean:14785.9912	total_power_loss_mean:   14392.1525	
+[INFO 22:22:08] my_main Updated all target networks
+[INFO 22:22:08] my_main Recent Stats | t_env:      58464 | Episode:     2436
+battery_punishment_reward_mean:-13.4447	battle_won_mean:           1.0000	bess_cost_reward_mean:   -191.6868	buy_cost_reward_mean:    -313749.4434
+critic_grad_norm:        1705.5027	critic_loss:             561.4930	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 43.6013	grid_purchase_cost_mean: 313749.4434	mean_soc_mean:             0.2127
+return_mean:             -313.8015	return_std:               34.2799	soc_violation_mean:       38.6811	target_mean:             -171.7356
+td_error_abs:             17.8230	test_battery_punishment_reward_mean:-12.7259	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-194.4416
+test_buy_cost_reward_mean:-321893.4725	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: 33.8699
+test_grid_purchase_cost_mean:321893.4725	test_mean_soc_mean:        0.2001	test_return_mean:        -321.9497	test_return_std:          33.0375
+test_soc_violation_mean:  37.7432	test_total_power_loss_mean:14785.9912	total_power_loss_mean:   14440.7959	
+[INFO 22:22:13] my_main t_env: 60072 / 160000
+[INFO 22:22:13] my_main Estimated time left: 5 minutes, 37 seconds. Time passed: 3 minutes, 12 seconds
+[INFO 22:22:15] my_main Recent Stats | t_env:      60480 | Episode:     2520
+battery_punishment_reward_mean:-13.5080	battle_won_mean:           1.0000	bess_cost_reward_mean:   -191.9637	buy_cost_reward_mean:    -313979.3187
+critic_grad_norm:        921.3388	critic_loss:             511.2564	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 43.9191	grid_purchase_cost_mean: 313979.3187	mean_soc_mean:             0.2114
+return_mean:             -314.0313	return_std:               34.1141	soc_violation_mean:       38.8447	target_mean:             -176.2981
+td_error_abs:             16.8180	test_battery_punishment_reward_mean: -7.1351	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-130.1032
+test_buy_cost_reward_mean:-315195.6756	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: -4.1633
+test_grid_purchase_cost_mean:315195.6756	test_mean_soc_mean:        0.4340	test_return_mean:        -315.2425	test_return_std:          34.2909
+test_soc_violation_mean:  26.6642	test_total_power_loss_mean:14487.5424	total_power_loss_mean:   14448.0161	
+[INFO 22:22:22] my_main Recent Stats | t_env:      62496 | Episode:     2604
+battery_punishment_reward_mean:-11.9155	battle_won_mean:           1.0000	bess_cost_reward_mean:   -164.8389	buy_cost_reward_mean:    -313063.6733
+critic_grad_norm:        1022.5556	critic_loss:             503.7227	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 23.2049	grid_purchase_cost_mean: 313063.6733	mean_soc_mean:             0.3100
+return_mean:             -313.1137	return_std:               34.8736	soc_violation_mean:       35.5466	target_mean:             -180.8429
+td_error_abs:             16.6242	test_battery_punishment_reward_mean: -7.1351	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-130.1032
+test_buy_cost_reward_mean:-315195.6756	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: -4.1633
+test_grid_purchase_cost_mean:315195.6756	test_mean_soc_mean:        0.4340	test_return_mean:        -315.2425	test_return_std:          34.2909
+test_soc_violation_mean:  26.6642	test_total_power_loss_mean:14487.5424	total_power_loss_mean:   14406.6781	
+[INFO 22:22:24] my_main Updated all target networks
+[INFO 22:22:28] my_main Recent Stats | t_env:      64512 | Episode:     2688
+battery_punishment_reward_mean:-14.5496	battle_won_mean:           1.0000	bess_cost_reward_mean:   -133.2541	buy_cost_reward_mean:    -313225.4381
+critic_grad_norm:        3786.8582	critic_loss:             681.8844	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean:  4.3519	grid_purchase_cost_mean: 313225.4381	mean_soc_mean:             0.4258
+return_mean:             -313.2728	return_std:               34.1718	soc_violation_mean:       40.5781	target_mean:             -187.5761
+td_error_abs:             19.5248	test_battery_punishment_reward_mean: -7.1351	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-130.1032
+test_buy_cost_reward_mean:-315195.6756	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: -4.1633
+test_grid_purchase_cost_mean:315195.6756	test_mean_soc_mean:        0.4340	test_return_mean:        -315.2425	test_return_std:          34.2909
+test_soc_violation_mean:  26.6642	test_total_power_loss_mean:14487.5424	total_power_loss_mean:   14407.0300	
+[INFO 22:22:35] my_main Recent Stats | t_env:      66528 | Episode:     2772
+battery_punishment_reward_mean:-17.1765	battle_won_mean:           1.0000	bess_cost_reward_mean:   -101.7177	buy_cost_reward_mean:    -312336.4464
+critic_grad_norm:        3795.1657	critic_loss:             687.8791	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean:-14.4227	grid_purchase_cost_mean: 312336.4464	mean_soc_mean:             0.5415
+return_mean:             -312.3810	return_std:               33.8544	soc_violation_mean:       45.5843	target_mean:             -191.8542
+td_error_abs:             19.5487	test_battery_punishment_reward_mean: -7.1351	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-130.1032
+test_buy_cost_reward_mean:-315195.6756	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: -4.1633
+test_grid_purchase_cost_mean:315195.6756	test_mean_soc_mean:        0.4340	test_return_mean:        -315.2425	test_return_std:          34.2909
+test_soc_violation_mean:  26.6642	test_total_power_loss_mean:14487.5424	total_power_loss_mean:   14370.1503	
+[INFO 22:22:40] my_main Updated all target networks
+[INFO 22:22:42] my_main Recent Stats | t_env:      68544 | Episode:     2856
+battery_punishment_reward_mean:-19.8709	battle_won_mean:           1.0000	bess_cost_reward_mean:   -70.1934	buy_cost_reward_mean:    -311041.1008
+critic_grad_norm:        4399.1354	critic_loss:             706.1543	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean:-33.2133	grid_purchase_cost_mean: 311041.1008	mean_soc_mean:             0.6569
+return_mean:             -311.0830	return_std:               32.8584	soc_violation_mean:       50.7533	target_mean:             -196.5156
+td_error_abs:             19.7947	test_battery_punishment_reward_mean: -7.1351	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-130.1032
+test_buy_cost_reward_mean:-315195.6756	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: -4.1633
+test_grid_purchase_cost_mean:315195.6756	test_mean_soc_mean:        0.4340	test_return_mean:        -315.2425	test_return_std:          34.2909
+test_soc_violation_mean:  26.6642	test_total_power_loss_mean:14487.5424	total_power_loss_mean:   14314.6983	
+[INFO 22:22:47] my_main t_env: 70080 / 160000
+[INFO 22:22:47] my_main Estimated time left: 5 minutes, 6 seconds. Time passed: 3 minutes, 47 seconds
+[INFO 22:22:50] my_main Recent Stats | t_env:      70560 | Episode:     2940
+battery_punishment_reward_mean:-22.5114	battle_won_mean:           1.0000	bess_cost_reward_mean:   -38.7058	buy_cost_reward_mean:    -311673.4360
+critic_grad_norm:        4470.7332	critic_loss:             637.4704	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean:-52.0628	grid_purchase_cost_mean: 311673.4360	mean_soc_mean:             0.7723
+return_mean:             -311.7126	return_std:               32.4977	soc_violation_mean:       55.7845	target_mean:             -200.5776
+td_error_abs:             18.6220	test_battery_punishment_reward_mean:-14.0775	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-64.6019
+test_buy_cost_reward_mean:-308707.2983	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:-45.6307
+test_grid_purchase_cost_mean:308707.2983	test_mean_soc_mean:        0.6740	test_return_mean:        -308.7499	test_return_std:          32.8745
+test_soc_violation_mean:  39.8439	test_total_power_loss_mean:14206.8681	total_power_loss_mean:   14337.5630	
+[INFO 22:22:57] my_main Recent Stats | t_env:      72576 | Episode:     3024
+battery_punishment_reward_mean:-26.7287	battle_won_mean:           1.0000	bess_cost_reward_mean:   -34.3601	buy_cost_reward_mean:    -312320.1062
+critic_grad_norm:        4385.2614	critic_loss:             655.1509	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean:-50.2666	grid_purchase_cost_mean: 312320.1062	mean_soc_mean:             0.7891
+return_mean:             -312.3586	return_std:               31.9045	soc_violation_mean:       64.0958	target_mean:             -204.9339
+td_error_abs:             18.7011	test_battery_punishment_reward_mean:-14.0775	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-64.6019
+test_buy_cost_reward_mean:-308707.2983	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:-45.6307
+test_grid_purchase_cost_mean:308707.2983	test_mean_soc_mean:        0.6740	test_return_mean:        -308.7499	test_return_std:          32.8745
+test_soc_violation_mean:  39.8439	test_total_power_loss_mean:14206.8681	total_power_loss_mean:   14361.1264	
+[INFO 22:22:58] my_main Updated all target networks
+[INFO 22:23:05] my_main Recent Stats | t_env:      74592 | Episode:     3108
+battery_punishment_reward_mean:-26.7269	battle_won_mean:           1.0000	bess_cost_reward_mean:   -34.3996	buy_cost_reward_mean:    -312182.2595
+critic_grad_norm:        1884.2073	critic_loss:             488.7035	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean:-50.3142	grid_purchase_cost_mean: 312182.2595	mean_soc_mean:             0.7890
+return_mean:             -312.2208	return_std:               31.6455	soc_violation_mean:       64.0811	target_mean:             -209.2111
+td_error_abs:             16.2690	test_battery_punishment_reward_mean:-14.0775	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-64.6019
+test_buy_cost_reward_mean:-308707.2983	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:-45.6307
+test_grid_purchase_cost_mean:308707.2983	test_mean_soc_mean:        0.6740	test_return_mean:        -308.7499	test_return_std:          32.8745
+test_soc_violation_mean:  39.8439	test_total_power_loss_mean:14206.8681	total_power_loss_mean:   14360.2549	
+[INFO 22:23:12] my_main Recent Stats | t_env:      76608 | Episode:     3192
+battery_punishment_reward_mean:-26.7327	battle_won_mean:           1.0000	bess_cost_reward_mean:   -34.4327	buy_cost_reward_mean:    -313196.2301
+critic_grad_norm:        1883.7248	critic_loss:             469.0246	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean:-50.4139	grid_purchase_cost_mean: 313196.2301	mean_soc_mean:             0.7889
+return_mean:             -313.2348	return_std:               31.3462	soc_violation_mean:       64.0992	target_mean:             -213.6079
+td_error_abs:             16.0476	test_battery_punishment_reward_mean:-14.0775	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-64.6019
+test_buy_cost_reward_mean:-308707.2983	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:-45.6307
+test_grid_purchase_cost_mean:308707.2983	test_mean_soc_mean:        0.6740	test_return_mean:        -308.7499	test_return_std:          32.8745
+test_soc_violation_mean:  39.8439	test_total_power_loss_mean:14206.8681	total_power_loss_mean:   14395.3798	
+[INFO 22:23:15] my_main Updated all target networks
+[INFO 22:23:19] my_main Recent Stats | t_env:      78624 | Episode:     3276
+battery_punishment_reward_mean:-26.7283	battle_won_mean:           1.0000	bess_cost_reward_mean:   -34.5523	buy_cost_reward_mean:    -313701.0731
+critic_grad_norm:        1271.0225	critic_loss:             437.6466	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean:-50.3855	grid_purchase_cost_mean: 313701.0731	mean_soc_mean:             0.7885
+return_mean:             -313.7397	return_std:               33.0637	soc_violation_mean:       64.0911	target_mean:             -217.4313
+td_error_abs:             15.3279	test_battery_punishment_reward_mean:-14.0775	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-64.6019
+test_buy_cost_reward_mean:-308707.2983	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:-45.6307
+test_grid_purchase_cost_mean:308707.2983	test_mean_soc_mean:        0.6740	test_return_mean:        -308.7499	test_return_std:          32.8745
+test_soc_violation_mean:  39.8439	test_total_power_loss_mean:14206.8681	total_power_loss_mean:   14419.8315	
+[INFO 22:23:25] my_main t_env: 80088 / 160000
+[INFO 22:23:25] my_main Estimated time left: 4 minutes, 58 seconds. Time passed: 4 minutes, 24 seconds
+[INFO 22:23:28] my_main Recent Stats | t_env:      80640 | Episode:     3360
+battery_punishment_reward_mean:-26.7174	battle_won_mean:           1.0000	bess_cost_reward_mean:   -34.5588	buy_cost_reward_mean:    -311428.2923
+critic_grad_norm:        1276.5217	critic_loss:             439.7099	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean:-50.4006	grid_purchase_cost_mean: 311428.2923	mean_soc_mean:             0.7885
+return_mean:             -311.4669	return_std:               33.1491	soc_violation_mean:       64.0733	target_mean:             -221.5397
+td_error_abs:             15.2962	test_battery_punishment_reward_mean:-16.9152	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-96.7618
+test_buy_cost_reward_mean:-314875.0685	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:-29.7101
+test_grid_purchase_cost_mean:314875.0685	test_mean_soc_mean:        0.5571	test_return_mean:        -314.9235	test_return_std:          30.7075
+test_soc_violation_mean:  45.5127	test_total_power_loss_mean:14469.8633	total_power_loss_mean:   14331.6545	
+[INFO 22:23:34] my_main Updated all target networks
+[INFO 22:23:35] my_main Recent Stats | t_env:      82656 | Episode:     3444
+battery_punishment_reward_mean:-23.5755	battle_won_mean:           1.0000	bess_cost_reward_mean:   -64.3352	buy_cost_reward_mean:    -311293.2402
+critic_grad_norm:        1800.6511	critic_loss:             423.6799	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean:-36.1079	grid_purchase_cost_mean: 311293.2402	mean_soc_mean:             0.6793
+return_mean:             -311.3355	return_std:               33.0364	soc_violation_mean:       58.0512	target_mean:             -225.7048
+td_error_abs:             15.0995	test_battery_punishment_reward_mean:-16.9152	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-96.7618
+test_buy_cost_reward_mean:-314875.0685	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:-29.7101
+test_grid_purchase_cost_mean:314875.0685	test_mean_soc_mean:        0.5571	test_return_mean:        -314.9235	test_return_std:          30.7075
+test_soc_violation_mean:  45.5127	test_total_power_loss_mean:14469.8633	total_power_loss_mean:   14331.7254	
+[INFO 22:23:42] my_main Recent Stats | t_env:      84672 | Episode:     3528
+battery_punishment_reward_mean:-20.9221	battle_won_mean:           1.0000	bess_cost_reward_mean:   -95.7977	buy_cost_reward_mean:    -309694.1861
+critic_grad_norm:        1637.0292	critic_loss:             404.0681	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean:-22.2260	grid_purchase_cost_mean: 309694.1861	mean_soc_mean:             0.5640
+return_mean:             -309.7409	return_std:               34.2551	soc_violation_mean:       52.9813	target_mean:             -229.2929
+td_error_abs:             14.3135	test_battery_punishment_reward_mean:-16.9152	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-96.7618
+test_buy_cost_reward_mean:-314875.0685	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:-29.7101
+test_grid_purchase_cost_mean:314875.0685	test_mean_soc_mean:        0.5571	test_return_mean:        -314.9235	test_return_std:          30.7075
+test_soc_violation_mean:  45.5127	test_total_power_loss_mean:14469.8633	total_power_loss_mean:   14267.7089	
+[INFO 22:23:49] my_main Recent Stats | t_env:      86688 | Episode:     3612
+battery_punishment_reward_mean:-18.3140	battle_won_mean:           1.0000	bess_cost_reward_mean:   -127.2961	buy_cost_reward_mean:    -308846.0564
+critic_grad_norm:        1659.4711	critic_loss:             403.6079	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: -8.3110	grid_purchase_cost_mean: 308846.0564	mean_soc_mean:             0.4484
+return_mean:             -308.8973	return_std:               34.3955	soc_violation_mean:       48.0075	target_mean:             -232.8034
+td_error_abs:             14.2661	test_battery_punishment_reward_mean:-16.9152	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-96.7618
+test_buy_cost_reward_mean:-314875.0685	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:-29.7101
+test_grid_purchase_cost_mean:314875.0685	test_mean_soc_mean:        0.5571	test_return_mean:        -314.9235	test_return_std:          30.7075
+test_soc_violation_mean:  45.5127	test_total_power_loss_mean:14469.8633	total_power_loss_mean:   14241.3392	
+[INFO 22:23:51] my_main Updated all target networks
+[INFO 22:23:56] my_main Recent Stats | t_env:      88704 | Episode:     3696
+battery_punishment_reward_mean:-15.6476	battle_won_mean:           1.0000	bess_cost_reward_mean:   -158.7980	buy_cost_reward_mean:    -308602.4256
+critic_grad_norm:        1812.4762	critic_loss:             448.3805	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean:  5.5903	grid_purchase_cost_mean: 308602.4256	mean_soc_mean:             0.3329
+return_mean:             -308.6582	return_std:               33.5639	soc_violation_mean:       42.9141	target_mean:             -238.7118
+td_error_abs:             15.4111	test_battery_punishment_reward_mean:-16.9152	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-96.7618
+test_buy_cost_reward_mean:-314875.0685	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:-29.7101
+test_grid_purchase_cost_mean:314875.0685	test_mean_soc_mean:        0.5571	test_return_mean:        -314.9235	test_return_std:          30.7075
+test_soc_violation_mean:  45.5127	test_total_power_loss_mean:14469.8633	total_power_loss_mean:   14234.9461	
+[INFO 22:24:01] my_main t_env: 90096 / 160000
+[INFO 22:24:01] my_main Estimated time left: 4 minutes, 16 seconds. Time passed: 5 minutes, 1 seconds
+[INFO 22:24:05] my_main Recent Stats | t_env:      90720 | Episode:     3780
+battery_punishment_reward_mean:-13.0301	battle_won_mean:           1.0000	bess_cost_reward_mean:   -190.3022	buy_cost_reward_mean:    -311195.9550
+critic_grad_norm:        2045.1906	critic_loss:             438.8432	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 19.5047	grid_purchase_cost_mean: 311195.9550	mean_soc_mean:             0.2173
+return_mean:             -311.2563	return_std:               33.2932	soc_violation_mean:       37.9267	target_mean:             -242.2624
+td_error_abs:             15.4330	test_battery_punishment_reward_mean:-16.9631	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-161.7239
+test_buy_cost_reward_mean:-319695.7588	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:  6.0480
+test_grid_purchase_cost_mean:319695.7588	test_mean_soc_mean:        0.3200	test_return_mean:        -319.7528	test_return_std:          29.2284
+test_soc_violation_mean:  45.8782	test_total_power_loss_mean:14691.3691	total_power_loss_mean:   14344.0316	
+[INFO 22:24:09] my_main Updated all target networks
+[INFO 22:24:12] my_main Recent Stats | t_env:      92736 | Episode:     3864
+battery_punishment_reward_mean:-13.5600	battle_won_mean:           1.0000	bess_cost_reward_mean:   -192.0264	buy_cost_reward_mean:    -312242.2033
+critic_grad_norm:        1548.4573	critic_loss:             421.7588	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 19.1730	grid_purchase_cost_mean: 312242.2033	mean_soc_mean:             0.2110
+return_mean:             -312.3034	return_std:               33.6501	soc_violation_mean:       38.9718	target_mean:             -245.8305
+td_error_abs:             15.2165	test_battery_punishment_reward_mean:-16.9631	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-161.7239
+test_buy_cost_reward_mean:-319695.7588	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:  6.0480
+test_grid_purchase_cost_mean:319695.7588	test_mean_soc_mean:        0.3200	test_return_mean:        -319.7528	test_return_std:          29.2284
+test_soc_violation_mean:  45.8782	test_total_power_loss_mean:14691.3691	total_power_loss_mean:   14386.9389	
+[INFO 22:24:19] my_main Recent Stats | t_env:      94752 | Episode:     3948
+battery_punishment_reward_mean:-13.5734	battle_won_mean:           1.0000	bess_cost_reward_mean:   -192.0470	buy_cost_reward_mean:    -313572.0185
+critic_grad_norm:        1486.3946	critic_loss:             411.0242	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 19.2312	grid_purchase_cost_mean: 313572.0185	mean_soc_mean:             0.2109
+return_mean:             -313.6332	return_std:               34.4975	soc_violation_mean:       39.0065	target_mean:             -249.5168
+td_error_abs:             15.1675	test_battery_punishment_reward_mean:-16.9631	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-161.7239
+test_buy_cost_reward_mean:-319695.7588	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:  6.0480
+test_grid_purchase_cost_mean:319695.7588	test_mean_soc_mean:        0.3200	test_return_mean:        -319.7528	test_return_std:          29.2284
+test_soc_violation_mean:  45.8782	test_total_power_loss_mean:14691.3691	total_power_loss_mean:   14438.8215	
+[INFO 22:24:26] my_main Updated all target networks
+[INFO 22:24:26] my_main Recent Stats | t_env:      96768 | Episode:     4032
+battery_punishment_reward_mean:-13.5631	battle_won_mean:           1.0000	bess_cost_reward_mean:   -192.0292	buy_cost_reward_mean:    -313580.8737
+critic_grad_norm:        1630.8781	critic_loss:             400.2129	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 19.2619	grid_purchase_cost_mean: 313580.8737	mean_soc_mean:             0.2109
+return_mean:             -313.6421	return_std:               34.6131	soc_violation_mean:       38.9881	target_mean:             -253.1350
+td_error_abs:             14.9594	test_battery_punishment_reward_mean:-16.9631	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-161.7239
+test_buy_cost_reward_mean:-319695.7588	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:  6.0480
+test_grid_purchase_cost_mean:319695.7588	test_mean_soc_mean:        0.3200	test_return_mean:        -319.7528	test_return_std:          29.2284
+test_soc_violation_mean:  45.8782	test_total_power_loss_mean:14691.3691	total_power_loss_mean:   14433.9788	
+[INFO 22:24:34] my_main Recent Stats | t_env:      98784 | Episode:     4116
+battery_punishment_reward_mean:-13.5842	battle_won_mean:           1.0000	bess_cost_reward_mean:   -192.0851	buy_cost_reward_mean:    -313492.1842
+critic_grad_norm:        1462.6758	critic_loss:             351.7636	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 19.1980	grid_purchase_cost_mean: 313492.1842	mean_soc_mean:             0.2106
+return_mean:             -313.5534	return_std:               35.4585	soc_violation_mean:       39.0445	target_mean:             -256.3108
+td_error_abs:             13.8831	test_battery_punishment_reward_mean:-16.9631	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-161.7239
+test_buy_cost_reward_mean:-319695.7588	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean:  6.0480
+test_grid_purchase_cost_mean:319695.7588	test_mean_soc_mean:        0.3200	test_return_mean:        -319.7528	test_return_std:          29.2284
+test_soc_violation_mean:  45.8782	test_total_power_loss_mean:14691.3691	total_power_loss_mean:   14425.5855	
+[INFO 22:24:39] my_main t_env: 100104 / 160000
+[INFO 22:24:39] my_main Estimated time left: 3 minutes, 43 seconds. Time passed: 5 minutes, 38 seconds
+[INFO 22:24:42] my_main Recent Stats | t_env:     100800 | Episode:     4200
+battery_punishment_reward_mean:-13.5619	battle_won_mean:           1.0000	bess_cost_reward_mean:   -191.9331	buy_cost_reward_mean:    -312768.6490
+critic_grad_norm:        1638.9578	critic_loss:             347.1460	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 19.1565	grid_purchase_cost_mean: 312768.6490	mean_soc_mean:             0.2113
+return_mean:             -312.8299	return_std:               35.9183	soc_violation_mean:       38.9840	target_mean:             -259.7139
+td_error_abs:             13.7755	test_battery_punishment_reward_mean:-14.1745	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-194.4690
+test_buy_cost_reward_mean:-319777.5129	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: 20.6784
+test_grid_purchase_cost_mean:319777.5129	test_mean_soc_mean:        0.2000	test_return_mean:        -319.8392	test_return_std:          30.8067
+test_soc_violation_mean:  40.5890	test_total_power_loss_mean:14700.9763	total_power_loss_mean:   14393.8746	
+[INFO 22:24:45] my_main Updated all target networks
+[INFO 22:24:50] my_main Recent Stats | t_env:     102816 | Episode:     4284
+battery_punishment_reward_mean:-13.5564	battle_won_mean:           1.0000	bess_cost_reward_mean:   -191.9648	buy_cost_reward_mean:    -312141.8156
+critic_grad_norm:        5616.6798	critic_loss:             457.6392	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 19.1533	grid_purchase_cost_mean: 312141.8156	mean_soc_mean:             0.2111
+return_mean:             -312.2030	return_std:               35.0599	soc_violation_mean:       38.9784	target_mean:             -264.4662
+td_error_abs:             15.9375	test_battery_punishment_reward_mean:-14.1745	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-194.4690
+test_buy_cost_reward_mean:-319777.5129	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: 20.6784
+test_grid_purchase_cost_mean:319777.5129	test_mean_soc_mean:        0.2000	test_return_mean:        -319.8392	test_return_std:          30.8067
+test_soc_violation_mean:  40.5890	test_total_power_loss_mean:14700.9763	total_power_loss_mean:   14372.0137	
+[INFO 22:24:57] my_main Recent Stats | t_env:     104832 | Episode:     4368
+battery_punishment_reward_mean:-13.5533	battle_won_mean:           1.0000	bess_cost_reward_mean:   -192.0044	buy_cost_reward_mean:    -310911.0302
+critic_grad_norm:        5591.1810	critic_loss:             446.1993	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 19.1871	grid_purchase_cost_mean: 310911.0302	mean_soc_mean:             0.2109
+return_mean:             -310.9722	return_std:               32.6522	soc_violation_mean:       38.9736	target_mean:             -267.4767
+td_error_abs:             15.7575	test_battery_punishment_reward_mean:-14.1745	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-194.4690
+test_buy_cost_reward_mean:-319777.5129	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: 20.6784
+test_grid_purchase_cost_mean:319777.5129	test_mean_soc_mean:        0.2000	test_return_mean:        -319.8392	test_return_std:          30.8067
+test_soc_violation_mean:  40.5890	test_total_power_loss_mean:14700.9763	total_power_loss_mean:   14325.4641	
+[INFO 22:25:03] my_main Updated all target networks
+[INFO 22:25:05] my_main Recent Stats | t_env:     106848 | Episode:     4452
+battery_punishment_reward_mean:-13.5272	battle_won_mean:           1.0000	bess_cost_reward_mean:   -191.9475	buy_cost_reward_mean:    -310889.2298
+critic_grad_norm:        5452.9862	critic_loss:             440.3562	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 19.1149	grid_purchase_cost_mean: 310889.2298	mean_soc_mean:             0.2113
+return_mean:             -310.9504	return_std:               33.0583	soc_violation_mean:       38.9050	target_mean:             -270.5222
+td_error_abs:             15.6242	test_battery_punishment_reward_mean:-14.1745	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-194.4690
+test_buy_cost_reward_mean:-319777.5129	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: 20.6784
+test_grid_purchase_cost_mean:319777.5129	test_mean_soc_mean:        0.2000	test_return_mean:        -319.8392	test_return_std:          30.8067
+test_soc_violation_mean:  40.5890	test_total_power_loss_mean:14700.9763	total_power_loss_mean:   14321.1832	
+[INFO 22:25:12] my_main Recent Stats | t_env:     108864 | Episode:     4536
+battery_punishment_reward_mean:-13.5140	battle_won_mean:           1.0000	bess_cost_reward_mean:   -191.8802	buy_cost_reward_mean:    -311279.6958
+critic_grad_norm:        5340.6892	critic_loss:             432.9224	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 19.1145	grid_purchase_cost_mean: 311279.6958	mean_soc_mean:             0.2116
+return_mean:             -311.3409	return_std:               32.5952	soc_violation_mean:       38.8680	target_mean:             -273.3014
+td_error_abs:             15.5799	test_battery_punishment_reward_mean:-14.1745	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-194.4690
+test_buy_cost_reward_mean:-319777.5129	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: 20.6784
+test_grid_purchase_cost_mean:319777.5129	test_mean_soc_mean:        0.2000	test_return_mean:        -319.8392	test_return_std:          30.8067
+test_soc_violation_mean:  40.5890	test_total_power_loss_mean:14700.9763	total_power_loss_mean:   14332.2393	
+[INFO 22:25:16] my_main t_env: 110112 / 160000
+[INFO 22:25:16] my_main Estimated time left: 3 minutes, 7 seconds. Time passed: 6 minutes, 16 seconds
+[INFO 22:25:20] my_main Recent Stats | t_env:     110880 | Episode:     4620
+battery_punishment_reward_mean:-14.7143	battle_won_mean:           1.0000	bess_cost_reward_mean:   -177.0243	buy_cost_reward_mean:    -310177.9867
+critic_grad_norm:        5068.5743	critic_loss:             441.4692	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 21.5555	grid_purchase_cost_mean: 310177.9867	mean_soc_mean:             0.2665
+return_mean:             -310.2337	return_std:               33.4997	soc_violation_mean:       41.1369	target_mean:             -276.2978
+td_error_abs:             15.5990	test_battery_punishment_reward_mean:-19.7584	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-128.9865
+test_buy_cost_reward_mean:-316574.0743	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: 31.0925
+test_grid_purchase_cost_mean:316574.0743	test_mean_soc_mean:        0.4400	test_return_mean:        -316.6119	test_return_std:          33.4575
+test_soc_violation_mean:  51.1808	test_total_power_loss_mean:14568.5527	total_power_loss_mean:   14285.3865	
+[INFO 22:25:21] my_main Updated all target networks
+[INFO 22:25:28] my_main Recent Stats | t_env:     112896 | Episode:     4704
+battery_punishment_reward_mean:-17.3145	battle_won_mean:           1.0000	bess_cost_reward_mean:   -145.5365	buy_cost_reward_mean:    -309831.0816
+critic_grad_norm:        1650.2040	critic_loss:             356.6938	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 26.4454	grid_purchase_cost_mean: 309831.0816	mean_soc_mean:             0.3821
+return_mean:             -309.8754	return_std:               34.7631	soc_violation_mean:       46.0825	target_mean:             -279.1961
+td_error_abs:             14.1101	test_battery_punishment_reward_mean:-19.7584	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-128.9865
+test_buy_cost_reward_mean:-316574.0743	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: 31.0925
+test_grid_purchase_cost_mean:316574.0743	test_mean_soc_mean:        0.4400	test_return_mean:        -316.6119	test_return_std:          33.4575
+test_soc_violation_mean:  51.1808	test_total_power_loss_mean:14568.5527	total_power_loss_mean:   14267.4613	
+[INFO 22:25:35] my_main Recent Stats | t_env:     114912 | Episode:     4788
+battery_punishment_reward_mean:-19.9777	battle_won_mean:           1.0000	bess_cost_reward_mean:   -113.9514	buy_cost_reward_mean:    -310958.5698
+critic_grad_norm:        1813.9380	critic_loss:             369.2523	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 31.3765	grid_purchase_cost_mean: 310958.5698	mean_soc_mean:             0.4979
+return_mean:             -310.9914	return_std:               36.5557	soc_violation_mean:       51.1684	target_mean:             -281.9770
+td_error_abs:             14.3166	test_battery_punishment_reward_mean:-19.7584	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-128.9865
+test_buy_cost_reward_mean:-316574.0743	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: 31.0925
+test_grid_purchase_cost_mean:316574.0743	test_mean_soc_mean:        0.4400	test_return_mean:        -316.6119	test_return_std:          33.4575
+test_soc_violation_mean:  51.1808	test_total_power_loss_mean:14568.5527	total_power_loss_mean:   14318.9085	
+[INFO 22:25:38] my_main Updated all target networks
+[INFO 22:25:42] my_main Recent Stats | t_env:     116928 | Episode:     4872
+battery_punishment_reward_mean:-22.6424	battle_won_mean:           1.0000	bess_cost_reward_mean:   -82.4418	buy_cost_reward_mean:    -310892.1777
+critic_grad_norm:        1997.8728	critic_loss:             370.0734	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 36.4325	grid_purchase_cost_mean: 310892.1777	mean_soc_mean:             0.6133
+return_mean:             -310.9135	return_std:               36.5089	soc_violation_mean:       56.2666	target_mean:             -285.0162
+td_error_abs:             14.4596	test_battery_punishment_reward_mean:-19.7584	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-128.9865
+test_buy_cost_reward_mean:-316574.0743	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: 31.0925
+test_grid_purchase_cost_mean:316574.0743	test_mean_soc_mean:        0.4400	test_return_mean:        -316.6119	test_return_std:          33.4575
+test_soc_violation_mean:  51.1808	test_total_power_loss_mean:14568.5527	total_power_loss_mean:   14322.1860	
+[INFO 22:25:49] my_main Recent Stats | t_env:     118944 | Episode:     4956
+battery_punishment_reward_mean:-25.3380	battle_won_mean:           1.0000	bess_cost_reward_mean:   -50.7713	buy_cost_reward_mean:    -310838.1195
+critic_grad_norm:        2342.6242	critic_loss:             372.5222	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 41.5416	grid_purchase_cost_mean: 310838.1195	mean_soc_mean:             0.7293
+return_mean:             -310.8479	return_std:               36.3314	soc_violation_mean:       61.4252	target_mean:             -287.9240
+td_error_abs:             14.5362	test_battery_punishment_reward_mean:-19.7584	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-128.9865
+test_buy_cost_reward_mean:-316574.0743	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: 31.0925
+test_grid_purchase_cost_mean:316574.0743	test_mean_soc_mean:        0.4400	test_return_mean:        -316.6119	test_return_std:          33.4575
+test_soc_violation_mean:  51.1808	test_total_power_loss_mean:14568.5527	total_power_loss_mean:   14329.8165	
+[INFO 22:25:54] my_main t_env: 120120 / 160000
+[INFO 22:25:54] my_main Estimated time left: 2 minutes, 28 seconds. Time passed: 6 minutes, 53 seconds
+[INFO 22:25:57] my_main Updated all target networks
+[INFO 22:25:58] my_main Recent Stats | t_env:     120960 | Episode:     5040
+battery_punishment_reward_mean:-26.7947	battle_won_mean:           1.0000	bess_cost_reward_mean:   -34.1417	buy_cost_reward_mean:    -311491.6922
+critic_grad_norm:        2400.3325	critic_loss:             352.6013	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 44.1066	grid_purchase_cost_mean: 311491.6922	mean_soc_mean:             0.7898
+return_mean:             -311.4955	return_std:               35.6161	soc_violation_mean:       64.2396	target_mean:             -290.6114
+td_error_abs:             14.3321	test_battery_punishment_reward_mean:-25.3360	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-63.5130
+test_buy_cost_reward_mean:-317876.3064	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: 41.5066
+test_grid_purchase_cost_mean:317876.3064	test_mean_soc_mean:        0.6800	test_return_mean:        -317.8904	test_return_std:          36.6060
+test_soc_violation_mean:  61.7599	test_total_power_loss_mean:14620.1657	total_power_loss_mean:   14363.1663	
+[INFO 22:26:05] my_main Recent Stats | t_env:     122976 | Episode:     5124
+battery_punishment_reward_mean:-26.8140	battle_won_mean:           1.0000	bess_cost_reward_mean:   -34.1225	buy_cost_reward_mean:    -312591.7371
+critic_grad_norm:        2431.5772	critic_loss:             337.0962	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 44.0811	grid_purchase_cost_mean: 312591.7371	mean_soc_mean:             0.7899
+return_mean:             -312.5955	return_std:               35.0782	soc_violation_mean:       64.2820	target_mean:             -293.2859
+td_error_abs:             13.6878	test_battery_punishment_reward_mean:-25.3360	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-63.5130
+test_buy_cost_reward_mean:-317876.3064	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: 41.5066
+test_grid_purchase_cost_mean:317876.3064	test_mean_soc_mean:        0.6800	test_return_mean:        -317.8904	test_return_std:          36.6060
+test_soc_violation_mean:  61.7599	test_total_power_loss_mean:14620.1657	total_power_loss_mean:   14412.7970	
+[INFO 22:26:12] my_main Recent Stats | t_env:     124992 | Episode:     5208
+battery_punishment_reward_mean:-26.8049	battle_won_mean:           1.0000	bess_cost_reward_mean:   -34.0892	buy_cost_reward_mean:    -314872.8877
+critic_grad_norm:        2292.3758	critic_loss:             334.4205	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 44.0627	grid_purchase_cost_mean: 314872.8877	mean_soc_mean:             0.7900
+return_mean:             -314.8767	return_std:               34.2925	soc_violation_mean:       64.2641	target_mean:             -296.1519
+td_error_abs:             13.5471	test_battery_punishment_reward_mean:-25.3360	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-63.5130
+test_buy_cost_reward_mean:-317876.3064	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: 41.5066
+test_grid_purchase_cost_mean:317876.3064	test_mean_soc_mean:        0.6800	test_return_mean:        -317.8904	test_return_std:          36.6060
+test_soc_violation_mean:  61.7599	test_total_power_loss_mean:14620.1657	total_power_loss_mean:   14503.7234	
+[INFO 22:26:14] my_main Updated all target networks
+[INFO 22:26:20] my_main Recent Stats | t_env:     127008 | Episode:     5292
+battery_punishment_reward_mean:-26.7960	battle_won_mean:           1.0000	bess_cost_reward_mean:   -34.1123	buy_cost_reward_mean:    -314447.6653
+critic_grad_norm:        2297.1613	critic_loss:             349.8323	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 43.9920	grid_purchase_cost_mean: 314447.6653	mean_soc_mean:             0.7899
+return_mean:             -314.4515	return_std:               33.9081	soc_violation_mean:       64.2407	target_mean:             -300.4436
+td_error_abs:             13.8952	test_battery_punishment_reward_mean:-25.3360	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-63.5130
+test_buy_cost_reward_mean:-317876.3064	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: 41.5066
+test_grid_purchase_cost_mean:317876.3064	test_mean_soc_mean:        0.6800	test_return_mean:        -317.8904	test_return_std:          36.6060
+test_soc_violation_mean:  61.7599	test_total_power_loss_mean:14620.1657	total_power_loss_mean:   14485.2734	
+[INFO 22:26:27] my_main Recent Stats | t_env:     129024 | Episode:     5376
+battery_punishment_reward_mean:-26.7510	battle_won_mean:           1.0000	bess_cost_reward_mean:   -34.2851	buy_cost_reward_mean:    -315913.5126
+critic_grad_norm:        2044.9665	critic_loss:             351.9352	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 43.8864	grid_purchase_cost_mean: 315913.5126	mean_soc_mean:             0.7893
+return_mean:             -315.9174	return_std:               34.2635	soc_violation_mean:       64.1383	target_mean:             -303.5074
+td_error_abs:             13.8413	test_battery_punishment_reward_mean:-25.3360	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-63.5130
+test_buy_cost_reward_mean:-317876.3064	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: 41.5066
+test_grid_purchase_cost_mean:317876.3064	test_mean_soc_mean:        0.6800	test_return_mean:        -317.8904	test_return_std:          36.6060
+test_soc_violation_mean:  61.7599	test_total_power_loss_mean:14620.1657	total_power_loss_mean:   14547.8225	
+[INFO 22:26:32] my_main t_env: 130128 / 160000
+[INFO 22:26:32] my_main Estimated time left: 1 minutes, 53 seconds. Time passed: 7 minutes, 31 seconds
+[INFO 22:26:34] my_main Updated all target networks
+[INFO 22:26:36] my_main Recent Stats | t_env:     131040 | Episode:     5460
+battery_punishment_reward_mean:-26.7485	battle_won_mean:           1.0000	bess_cost_reward_mean:   -34.3503	buy_cost_reward_mean:    -315973.7555
+critic_grad_norm:        1814.3083	critic_loss:             360.5665	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 43.9375	grid_purchase_cost_mean: 315973.7555	mean_soc_mean:             0.7891
+return_mean:             -315.9777	return_std:               33.3908	soc_violation_mean:       64.1344	target_mean:             -306.3739
+td_error_abs:             13.9004	test_battery_punishment_reward_mean:-28.1232	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-30.7556
+test_buy_cost_reward_mean:-319082.4197	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: 46.7136
+test_grid_purchase_cost_mean:319082.4197	test_mean_soc_mean:        0.8000	test_return_mean:        -319.0846	test_return_std:          35.1029
+test_soc_violation_mean:  67.0463	test_total_power_loss_mean:14672.0623	total_power_loss_mean:   14546.4825	
+[INFO 22:26:44] my_main Recent Stats | t_env:     133056 | Episode:     5544
+battery_punishment_reward_mean:-26.7828	battle_won_mean:           1.0000	bess_cost_reward_mean:   -34.1441	buy_cost_reward_mean:    -315365.3457
+critic_grad_norm:        1536.0665	critic_loss:             339.5081	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 43.9930	grid_purchase_cost_mean: 315365.3457	mean_soc_mean:             0.7897
+return_mean:             -315.3692	return_std:               33.5415	soc_violation_mean:       64.2069	target_mean:             -309.3041
+td_error_abs:             13.7322	test_battery_punishment_reward_mean:-28.1232	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-30.7556
+test_buy_cost_reward_mean:-319082.4197	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: 46.7136
+test_grid_purchase_cost_mean:319082.4197	test_mean_soc_mean:        0.8000	test_return_mean:        -319.0846	test_return_std:          35.1029
+test_soc_violation_mean:  67.0463	test_total_power_loss_mean:14672.0623	total_power_loss_mean:   14519.4559	
+[INFO 22:26:51] my_main Recent Stats | t_env:     135072 | Episode:     5628
+battery_punishment_reward_mean:-26.7833	battle_won_mean:           1.0000	bess_cost_reward_mean:   -34.1814	buy_cost_reward_mean:    -312212.2491
+critic_grad_norm:        1444.5447	critic_loss:             329.5529	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 43.9985	grid_purchase_cost_mean: 312212.2491	mean_soc_mean:             0.7896
+return_mean:             -312.2161	return_std:               32.6164	soc_violation_mean:       64.2047	target_mean:             -311.9615
+td_error_abs:             13.5731	test_battery_punishment_reward_mean:-28.1232	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-30.7556
+test_buy_cost_reward_mean:-319082.4197	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: 46.7136
+test_grid_purchase_cost_mean:319082.4197	test_mean_soc_mean:        0.8000	test_return_mean:        -319.0846	test_return_std:          35.1029
+test_soc_violation_mean:  67.0463	test_total_power_loss_mean:14672.0623	total_power_loss_mean:   14385.3345	
+[INFO 22:26:51] my_main Updated all target networks
+[INFO 22:26:58] my_main Recent Stats | t_env:     137088 | Episode:     5712
+battery_punishment_reward_mean:-26.7959	battle_won_mean:           1.0000	bess_cost_reward_mean:   -34.1514	buy_cost_reward_mean:    -312362.2787
+critic_grad_norm:        1556.1874	critic_loss:             320.6449	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 44.0883	grid_purchase_cost_mean: 312362.2787	mean_soc_mean:             0.7897
+return_mean:             -312.3661	return_std:               33.2967	soc_violation_mean:       64.2315	target_mean:             -314.4725
+td_error_abs:             13.3056	test_battery_punishment_reward_mean:-28.1232	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-30.7556
+test_buy_cost_reward_mean:-319082.4197	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: 46.7136
+test_grid_purchase_cost_mean:319082.4197	test_mean_soc_mean:        0.8000	test_return_mean:        -319.0846	test_return_std:          35.1029
+test_soc_violation_mean:  67.0463	test_total_power_loss_mean:14672.0623	total_power_loss_mean:   14391.9546	
+[INFO 22:27:05] my_main Recent Stats | t_env:     139104 | Episode:     5796
+battery_punishment_reward_mean:-26.7176	battle_won_mean:           1.0000	bess_cost_reward_mean:   -34.3997	buy_cost_reward_mean:    -310449.4990
+critic_grad_norm:        1365.4717	critic_loss:             309.8996	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 44.0056	grid_purchase_cost_mean: 310449.4990	mean_soc_mean:             0.7889
+return_mean:             -310.4534	return_std:               33.9769	soc_violation_mean:       64.0671	target_mean:             -316.9010
+td_error_abs:             13.1045	test_battery_punishment_reward_mean:-28.1232	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-30.7556
+test_buy_cost_reward_mean:-319082.4197	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: 46.7136
+test_grid_purchase_cost_mean:319082.4197	test_mean_soc_mean:        0.8000	test_return_mean:        -319.0846	test_return_std:          35.1029
+test_soc_violation_mean:  67.0463	test_total_power_loss_mean:14672.0623	total_power_loss_mean:   14309.4497	
+[INFO 22:27:08] my_main Updated all target networks
+[INFO 22:27:09] my_main t_env: 140136 / 160000
+[INFO 22:27:09] my_main Estimated time left: 1 minutes, 14 seconds. Time passed: 8 minutes, 9 seconds
+[INFO 22:27:14] my_main Recent Stats | t_env:     141120 | Episode:     5880
+battery_punishment_reward_mean:-26.7084	battle_won_mean:           1.0000	bess_cost_reward_mean:   -34.4582	buy_cost_reward_mean:    -311240.4132
+critic_grad_norm:        1361.9445	critic_loss:             316.8860	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 43.9832	grid_purchase_cost_mean: 311240.4132	mean_soc_mean:             0.7888
+return_mean:             -311.2443	return_std:               35.4655	soc_violation_mean:       64.0500	target_mean:             -319.4401
+td_error_abs:             13.2651	test_battery_punishment_reward_mean:-28.1198	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-30.7516
+test_buy_cost_reward_mean:-319493.4011	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: 46.7136
+test_grid_purchase_cost_mean:319493.4011	test_mean_soc_mean:        0.8000	test_return_mean:        -319.4955	test_return_std:          36.1278
+test_soc_violation_mean:  67.0395	test_total_power_loss_mean:14679.6933	total_power_loss_mean:   14345.4211	
+[INFO 22:27:21] my_main Recent Stats | t_env:     143136 | Episode:     5964
+battery_punishment_reward_mean:-26.6844	battle_won_mean:           1.0000	bess_cost_reward_mean:   -34.5436	buy_cost_reward_mean:    -311116.6946
+critic_grad_norm:        1539.3461	critic_loss:             328.7242	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 44.0033	grid_purchase_cost_mean: 311116.6946	mean_soc_mean:             0.7886
+return_mean:             -311.1206	return_std:               35.0793	soc_violation_mean:       64.0058	target_mean:             -321.6486
+td_error_abs:             13.4661	test_battery_punishment_reward_mean:-28.1198	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-30.7516
+test_buy_cost_reward_mean:-319493.4011	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: 46.7136
+test_grid_purchase_cost_mean:319493.4011	test_mean_soc_mean:        0.8000	test_return_mean:        -319.4955	test_return_std:          36.1278
+test_soc_violation_mean:  67.0395	test_total_power_loss_mean:14679.6933	total_power_loss_mean:   14338.6773	
+[INFO 22:27:27] my_main Updated all target networks
+[INFO 22:27:28] my_main Recent Stats | t_env:     145152 | Episode:     6048
+battery_punishment_reward_mean:-26.6559	battle_won_mean:           1.0000	bess_cost_reward_mean:   -34.6497	buy_cost_reward_mean:    -312407.6973
+critic_grad_norm:        1695.6250	critic_loss:             316.4817	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 43.9724	grid_purchase_cost_mean: 312407.6973	mean_soc_mean:             0.7882
+return_mean:             -312.4116	return_std:               35.5904	soc_violation_mean:       63.9486	target_mean:             -324.1786
+td_error_abs:             13.2585	test_battery_punishment_reward_mean:-28.1198	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-30.7516
+test_buy_cost_reward_mean:-319493.4011	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: 46.7136
+test_grid_purchase_cost_mean:319493.4011	test_mean_soc_mean:        0.8000	test_return_mean:        -319.4955	test_return_std:          36.1278
+test_soc_violation_mean:  67.0395	test_total_power_loss_mean:14679.6933	total_power_loss_mean:   14396.7271	
+[INFO 22:27:36] my_main Recent Stats | t_env:     147168 | Episode:     6132
+battery_punishment_reward_mean:-26.6493	battle_won_mean:           1.0000	bess_cost_reward_mean:   -34.7209	buy_cost_reward_mean:    -312643.2555
+critic_grad_norm:        1483.4331	critic_loss:             292.7894	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 43.8736	grid_purchase_cost_mean: 312643.2555	mean_soc_mean:             0.7881
+return_mean:             -312.6473	return_std:               35.0805	soc_violation_mean:       63.9429	target_mean:             -326.2533
+td_error_abs:             12.8127	test_battery_punishment_reward_mean:-28.1198	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-30.7516
+test_buy_cost_reward_mean:-319493.4011	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: 46.7136
+test_grid_purchase_cost_mean:319493.4011	test_mean_soc_mean:        0.8000	test_return_mean:        -319.4955	test_return_std:          36.1278
+test_soc_violation_mean:  67.0395	test_total_power_loss_mean:14679.6933	total_power_loss_mean:   14407.3455	
+[INFO 22:27:43] my_main Recent Stats | t_env:     149184 | Episode:     6216
+battery_punishment_reward_mean:-26.7412	battle_won_mean:           1.0000	bess_cost_reward_mean:   -34.3662	buy_cost_reward_mean:    -312623.0301
+critic_grad_norm:        1769.0700	critic_loss:             297.1066	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 43.9808	grid_purchase_cost_mean: 312623.0301	mean_soc_mean:             0.7892
+return_mean:             -312.6269	return_std:               33.7390	soc_violation_mean:       64.1348	target_mean:             -328.3371
+td_error_abs:             12.8133	test_battery_punishment_reward_mean:-28.1198	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-30.7516
+test_buy_cost_reward_mean:-319493.4011	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: 46.7136
+test_grid_purchase_cost_mean:319493.4011	test_mean_soc_mean:        0.8000	test_return_mean:        -319.4955	test_return_std:          36.1278
+test_soc_violation_mean:  67.0395	test_total_power_loss_mean:14679.6933	total_power_loss_mean:   14408.6552	
+[INFO 22:27:44] my_main Updated all target networks
+[INFO 22:27:46] my_main t_env: 150144 / 160000
+[INFO 22:27:46] my_main Estimated time left: 36 seconds. Time passed: 8 minutes, 46 seconds
+[INFO 22:27:51] my_main Recent Stats | t_env:     151200 | Episode:     6300
+battery_punishment_reward_mean:-26.7356	battle_won_mean:           1.0000	bess_cost_reward_mean:   -34.3506	buy_cost_reward_mean:    -311624.4656
+critic_grad_norm:        2909.2380	critic_loss:             288.7387	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 43.8764	grid_purchase_cost_mean: 311624.4656	mean_soc_mean:             0.7893
+return_mean:             -311.6284	return_std:               32.8193	soc_violation_mean:       64.1245	target_mean:             -331.5253
+td_error_abs:             12.5472	test_battery_punishment_reward_mean:-28.1180	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-30.7494
+test_buy_cost_reward_mean:-318896.1265	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: 46.7136
+test_grid_purchase_cost_mean:318896.1265	test_mean_soc_mean:        0.8000	test_return_mean:        -318.8983	test_return_std:          34.0870
+test_soc_violation_mean:  67.0359	test_total_power_loss_mean:14669.4351	total_power_loss_mean:   14362.7814	
+[INFO 22:27:58] my_main Recent Stats | t_env:     153216 | Episode:     6384
+battery_punishment_reward_mean:-26.7222	battle_won_mean:           1.0000	bess_cost_reward_mean:   -34.3779	buy_cost_reward_mean:    -310960.6910
+critic_grad_norm:        2704.5721	critic_loss:             282.9842	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 43.7761	grid_purchase_cost_mean: 310960.6910	mean_soc_mean:             0.7892
+return_mean:             -310.9646	return_std:               33.3156	soc_violation_mean:       64.0918	target_mean:             -333.8213
+td_error_abs:             12.4033	test_battery_punishment_reward_mean:-28.1180	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-30.7494
+test_buy_cost_reward_mean:-318896.1265	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: 46.7136
+test_grid_purchase_cost_mean:318896.1265	test_mean_soc_mean:        0.8000	test_return_mean:        -318.8983	test_return_std:          34.0870
+test_soc_violation_mean:  67.0359	test_total_power_loss_mean:14669.4351	total_power_loss_mean:   14339.1315	
+[INFO 22:28:03] my_main Updated all target networks
+[INFO 22:28:06] my_main Recent Stats | t_env:     155232 | Episode:     6468
+battery_punishment_reward_mean:-26.7369	battle_won_mean:           1.0000	bess_cost_reward_mean:   -34.4055	buy_cost_reward_mean:    -308265.8435
+critic_grad_norm:        3086.0109	critic_loss:             302.6403	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 43.7925	grid_purchase_cost_mean: 308265.8435	mean_soc_mean:             0.7892
+return_mean:             -308.2698	return_std:               34.1167	soc_violation_mean:       64.1201	target_mean:             -336.2347
+td_error_abs:             12.7824	test_battery_punishment_reward_mean:-28.1180	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-30.7494
+test_buy_cost_reward_mean:-318896.1265	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: 46.7136
+test_grid_purchase_cost_mean:318896.1265	test_mean_soc_mean:        0.8000	test_return_mean:        -318.8983	test_return_std:          34.0870
+test_soc_violation_mean:  67.0359	test_total_power_loss_mean:14669.4351	total_power_loss_mean:   14230.0845	
+[INFO 22:28:13] my_main Recent Stats | t_env:     157248 | Episode:     6552
+battery_punishment_reward_mean:-26.7580	battle_won_mean:           1.0000	bess_cost_reward_mean:   -34.2837	buy_cost_reward_mean:    -308553.5161
+critic_grad_norm:        3134.6243	critic_loss:             313.4596	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 43.8588	grid_purchase_cost_mean: 308553.5161	mean_soc_mean:             0.7895
+return_mean:             -308.5574	return_std:               35.0072	soc_violation_mean:       64.1568	target_mean:             -338.2714
+td_error_abs:             12.8276	test_battery_punishment_reward_mean:-28.1180	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-30.7494
+test_buy_cost_reward_mean:-318896.1265	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: 46.7136
+test_grid_purchase_cost_mean:318896.1265	test_mean_soc_mean:        0.8000	test_return_mean:        -318.8983	test_return_std:          34.0870
+test_soc_violation_mean:  67.0359	test_total_power_loss_mean:14669.4351	total_power_loss_mean:   14242.4715	
+[INFO 22:28:20] my_main Updated all target networks
+[INFO 22:28:20] my_main Recent Stats | t_env:     159264 | Episode:     6636
+battery_punishment_reward_mean:-26.7189	battle_won_mean:           1.0000	bess_cost_reward_mean:   -34.5042	buy_cost_reward_mean:    -310186.8632
+critic_grad_norm:        3038.7224	critic_loss:             325.5949	ep_length_mean:           24.0000	episode_limit_mean:        1.0000
+epsilon:                   0.0500	generate_cost_reward_mean: 43.8344	grid_purchase_cost_mean: 310186.8632	mean_soc_mean:             0.7889
+return_mean:             -310.1908	return_std:               35.8834	soc_violation_mean:       64.0793	target_mean:             -340.3255
+td_error_abs:             13.0693	test_battery_punishment_reward_mean:-28.1180	test_battle_won_mean:      1.0000	test_bess_cost_reward_mean:-30.7494
+test_buy_cost_reward_mean:-318896.1265	test_ep_length_mean:      24.0000	test_episode_limit_mean:   1.0000	test_generate_cost_reward_mean: 46.7136
+test_grid_purchase_cost_mean:318896.1265	test_mean_soc_mean:        0.8000	test_return_mean:        -318.8983	test_return_std:          34.0870
+test_soc_violation_mean:  67.0359	test_total_power_loss_mean:14669.4351	total_power_loss_mean:   14312.3476	
+[INFO 22:28:23] my_main Finished Training

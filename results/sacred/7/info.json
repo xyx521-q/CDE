@@ -1,0 +1,308 @@
+{
+  "battle_won_mean": [
+    1.0,
+    1.0
+  ],
+  "battle_won_mean_T": [
+    24,
+    2040
+  ],
+  "critic_grad_norm": [
+    {
+      "py/reduce": [
+        {
+          "py/function": "torch._utils._rebuild_tensor_v2"
+        },
+        {
+          "py/tuple": [
+            {
+              "py/reduce": [
+                {
+                  "py/function": "torch.storage._load_from_bytes"
+                },
+                {
+                  "py/tuple": [
+                    {
+                      "py/b64": "gAKKCmz8nEb5IGqoUBkugAJN6QMugAJ9cQAoWBAAAABwcm90b2NvbF92ZXJzaW9ucQFN6QNYDQAAAGxpdHRsZV9lbmRpYW5xAohYCgAAAHR5cGVfc2l6ZXNxA31xBChYBQAAAHNob3J0cQVLAlgDAAAAaW50cQZLBFgEAAAAbG9uZ3EHSwR1dS6AAihYBwAAAHN0b3JhZ2VxAGN0b3JjaApGbG9hdFN0b3JhZ2UKcQFYDQAAADI0NzQ2OTE3MDE2OTZxAlgDAAAAY3B1cQNLAU50cQRRLoACXXEAWA0AAAAyNDc0NjkxNzAxNjk2cQFhLgEAAAAAAAAAhcNmSQ=="
+                    }
+                  ]
+                }
+              ]
+            },
+            0,
+            {
+              "py/tuple": []
+            },
+            {
+              "py/tuple": []
+            },
+            false,
+            {
+              "py/reduce": [
+                {
+                  "py/type": "collections.OrderedDict"
+                },
+                {
+                  "py/tuple": []
+                },
+                null,
+                null,
+                {
+                  "py/tuple": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "py/reduce": [
+        {
+          "py/function": "torch._utils._rebuild_tensor_v2"
+        },
+        {
+          "py/tuple": [
+            {
+              "py/reduce": [
+                {
+                  "py/function": "torch.storage._load_from_bytes"
+                },
+                {
+                  "py/tuple": [
+                    {
+                      "py/b64": "gAKKCmz8nEb5IGqoUBkugAJN6QMugAJ9cQAoWBAAAABwcm90b2NvbF92ZXJzaW9ucQFN6QNYDQAAAGxpdHRsZV9lbmRpYW5xAohYCgAAAHR5cGVfc2l6ZXNxA31xBChYBQAAAHNob3J0cQVLAlgDAAAAaW50cQZLBFgEAAAAbG9uZ3EHSwR1dS6AAihYBwAAAHN0b3JhZ2VxAGN0b3JjaApGbG9hdFN0b3JhZ2UKcQFYDQAAADI0NzQ3NzYyOTEzNjBxAlgDAAAAY3B1cQNLAU50cQRRLoACXXEAWA0AAAAyNDc0Nzc2MjkxMzYwcQFhLgEAAAAAAAAAH6WRSg=="
+                    }
+                  ]
+                }
+              ]
+            },
+            0,
+            {
+              "py/tuple": []
+            },
+            {
+              "py/tuple": []
+            },
+            false,
+            {
+              "py/reduce": [
+                {
+                  "py/type": "collections.OrderedDict"
+                },
+                {
+                  "py/tuple": []
+                },
+                null,
+                null,
+                {
+                  "py/tuple": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "critic_grad_norm_T": [
+    768,
+    2784
+  ],
+  "critic_loss": [
+    35307073536.0,
+    35219120128.0
+  ],
+  "critic_loss_T": [
+    768,
+    2784
+  ],
+  "ep_length_mean": [
+    24.0,
+    24.0
+  ],
+  "ep_length_mean_T": [
+    24,
+    2040
+  ],
+  "episode": [
+    84
+  ],
+  "episode_T": [
+    2016
+  ],
+  "episode_limit_mean": [
+    1.0,
+    1.0
+  ],
+  "episode_limit_mean_T": [
+    24,
+    2040
+  ],
+  "epsilon": [
+    0.5,
+    0.481856
+  ],
+  "epsilon_T": [
+    24,
+    2040
+  ],
+  "mean_soc_mean": [
+    0.32666665911674503,
+    0.5009523759640402
+  ],
+  "mean_soc_mean_T": [
+    24,
+    2040
+  ],
+  "return_mean": [
+    {
+      "dtype": "float64",
+      "py/object": "numpy.float64",
+      "value": -880122.319284195
+    },
+    {
+      "dtype": "float64",
+      "py/object": "numpy.float64",
+      "value": -929977.4022262391
+    }
+  ],
+  "return_mean_T": [
+    24,
+    2040
+  ],
+  "return_std": [
+    {
+      "dtype": "float64",
+      "py/object": "numpy.float64",
+      "value": 0.0
+    },
+    {
+      "dtype": "float64",
+      "py/object": "numpy.float64",
+      "value": 91871.8350421323
+    }
+  ],
+  "return_std_T": [
+    24,
+    2040
+  ],
+  "target_mean": [
+    -57574.65972222222,
+    -57644.729166666664
+  ],
+  "target_mean_T": [
+    768,
+    2784
+  ],
+  "td_error_abs": [
+    172725.22916666666,
+    172923.14583333334
+  ],
+  "td_error_abs_T": [
+    768,
+    2784
+  ],
+  "test_battle_won_mean": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "test_battle_won_mean_T": [
+    24,
+    24,
+    24
+  ],
+  "test_ep_length_mean": [
+    24.0,
+    24.0,
+    24.0
+  ],
+  "test_ep_length_mean_T": [
+    24,
+    24,
+    24
+  ],
+  "test_episode_limit_mean": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "test_episode_limit_mean_T": [
+    24,
+    24,
+    24
+  ],
+  "test_mean_soc_mean": [
+    0.8000000000000005,
+    0.36093749823048726,
+    0.8000000000000005
+  ],
+  "test_mean_soc_mean_T": [
+    24,
+    24,
+    24
+  ],
+  "test_return_mean": [
+    {
+      "dtype": "float64",
+      "py/object": "numpy.float64",
+      "value": -968223.7965490569
+    },
+    {
+      "dtype": "float64",
+      "py/object": "numpy.float64",
+      "value": -933081.4573776056
+    },
+    {
+      "dtype": "float64",
+      "py/object": "numpy.float64",
+      "value": -998350.6841947905
+    }
+  ],
+  "test_return_mean_T": [
+    24,
+    24,
+    24
+  ],
+  "test_return_std": [
+    {
+      "dtype": "float64",
+      "py/object": "numpy.float64",
+      "value": 103569.43200800553
+    },
+    {
+      "dtype": "float64",
+      "py/object": "numpy.float64",
+      "value": 97625.61603996476
+    },
+    {
+      "dtype": "float64",
+      "py/object": "numpy.float64",
+      "value": 81280.66694997913
+    }
+  ],
+  "test_return_std_T": [
+    24,
+    24,
+    24
+  ],
+  "test_total_power_loss_mean": [
+    602.9618750715255,
+    585.5531249904075,
+    618.2637500715257
+  ],
+  "test_total_power_loss_mean_T": [
+    24,
+    24,
+    24
+  ],
+  "total_power_loss_mean": [
+    567.7499997854234,
+    582.591190496378
+  ],
+  "total_power_loss_mean_T": [
+    24,
+    2040
+  ]
+}

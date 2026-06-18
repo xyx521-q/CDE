@@ -1,0 +1,96 @@
+{
+  "artifacts": [],
+  "command": "my_main",
+  "experiment": {
+    "base_dir": "C:\\Users\\xyx\\Desktop\\GDE-main\\src",
+    "dependencies": [
+      "numpy==2.2.6",
+      "pyyaml==6.0.3",
+      "sacred==0.8.7",
+      "torch==2.12.0+cpu"
+    ],
+    "mainfile": "main.py",
+    "name": "pymarl",
+    "repositories": [],
+    "sources": [
+      [
+        "main.py",
+        "_sources\\main_a7a5cddaac361a5883b3854293b5986d.py"
+      ],
+      [
+        "run.py",
+        "_sources\\run_3bee6665cc218074448d1eed41a623d3.py"
+      ],
+      [
+        "utils\\__init__.py",
+        "_sources\\__init___d41d8cd98f00b204e9800998ecf8427e.py"
+      ],
+      [
+        "utils\\logging.py",
+        "_sources\\logging_a5a84fc83fc1dd6973924f225876e5c4.py"
+      ]
+    ]
+  },
+  "heartbeat": "2026-06-05T14:28:20.566424",
+  "host": {
+    "ENV": {},
+    "cpu": "12th Gen Intel(R) Core(TM) i5-12400",
+    "hostname": "DESKTOP-39MDRMU",
+    "os": [
+      "Windows",
+      "Windows-10-10.0.26200-SP0"
+    ],
+    "python_version": "3.10.11"
+  },
+  "meta": {
+    "command": "my_main",
+    "config_updates": {
+      "EA": 0,
+      "env_args": {
+        "log_trajectories": false,
+        "reward_aggregate": "mean",
+        "reward_scale": 0.001
+      },
+      "t_max": 160000,
+      "use_cuda": false
+    },
+    "named_configs": [],
+    "options": {
+      "--beat-interval": null,
+      "--capture": null,
+      "--comment": null,
+      "--debug": false,
+      "--enforce_clean": false,
+      "--file_storage": null,
+      "--force": false,
+      "--help": false,
+      "--id": null,
+      "--loglevel": null,
+      "--mongo_db": null,
+      "--name": null,
+      "--pdb": false,
+      "--print-config": false,
+      "--priority": null,
+      "--queue": false,
+      "--s3": null,
+      "--sql": null,
+      "--tiny_db": null,
+      "--unobserved": false,
+      "COMMAND": null,
+      "UPDATE": [
+        "EA=0",
+        "t_max=160000",
+        "use_cuda=False",
+        "env_args.log_trajectories=False",
+        "env_args.reward_aggregate=mean",
+        "env_args.reward_scale=0.001"
+      ],
+      "help": false,
+      "with": true
+    }
+  },
+  "resources": [],
+  "result": null,
+  "start_time": "2026-06-05T14:18:59.145964",
+  "status": "RUNNING"
+}
