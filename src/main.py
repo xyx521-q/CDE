@@ -15,6 +15,7 @@ if not hasattr(collections, "Sequence"):
     collections.Sequence = collections.abc.Sequence
 
 from sacred import Experiment, SETTINGS
+import sacred.host_info as sacred_host_info
 from sacred.observers import FileStorageObserver
 from sacred.utils import apply_backspaces_and_linefeeds
 from utils.logging import get_logger
@@ -32,6 +33,10 @@ th.set_num_threads(cpu_num)
 
 SETTINGS['CAPTURE_MODE'] = "no"
 SETTINGS['CONFIG']['READ_ONLY_CONFIG'] = False
+sacred_host_info._host_info_gatherers_list[:] = [
+    gatherer for gatherer in sacred_host_info._host_info_gatherers_list
+    if gatherer.name != "cpu"
+]
 logger = get_logger()
 
 ex = Experiment("pymarl",save_git_info=False)

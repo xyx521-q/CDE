@@ -7,24 +7,26 @@ env_args:
   log_trajectories: false
   log_trajectories_mode: "test"
   reward_aggregate: "mean"
-  reward_scale: 1.0
+  reward_scale: 0.1
   buy_cost_weight: 1.0
   buy_reward_mode: "relative_saving"
   buy_reward_scale: 100.0
-  generate_cost_weight: 1.0
-  bess_cost_weight: 1.0
-  env_reward_weight: 1.0
+  battery_action_mode: "soc_feasible_fraction"
+  battery_c_rate_limit: 0.3
+  generate_cost_weight: 0.1
+  bess_cost_weight: 0.1
+  env_reward_weight: 0.1
   battery_punishment_weight: 5.0
-  soc_reserve_target: 0.4
-  soc_reserve_weight: 5.0
+  soc_reserve_target: 0.35
+  soc_reserve_weight: 2.0
   data:
     - agent_name: "agent1"
       low_state: [0.0, 0.0, 0.2]
       high_state: [5.0, 5.0, 0.8]
       low_action: [0.0, -1.0]
       high_action: [1.0, 1.0]
-      dg_max: 2.0
-      battery_cap: 5.0
+      dg_max: 80.0
+      battery_cap: 200.0
       battery_punishment_param: 1.0
       raw_ch: 0.95
       raw_dis: 0.95
@@ -41,8 +43,8 @@ env_args:
       high_state: [5.0, 5.0, 0.8]
       low_action: [0.0, -1.0]
       high_action: [1.0, 1.0]
-      dg_max: 2.0
-      battery_cap: 5.0
+      dg_max: 80.0
+      battery_cap: 200.0
       battery_punishment_param: 1.0
       raw_ch: 0.95
       raw_dis: 0.95
@@ -59,8 +61,8 @@ env_args:
       high_state: [5.0, 5.0, 0.8]
       low_action: [0.0, -1.0]
       high_action: [1.0, 1.0]
-      dg_max: 2.0
-      battery_cap: 5.0
+      dg_max: 80.0
+      battery_cap: 200.0
       battery_punishment_param: 1.0
       raw_ch: 0.95
       raw_dis: 0.95
