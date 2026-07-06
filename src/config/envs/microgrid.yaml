@@ -11,8 +11,6 @@ env_args:
   buy_cost_weight: 1.0
   buy_reward_mode: "relative_saving"
   buy_reward_scale: 100.0
-  battery_action_mode: "soc_feasible_fraction"
-  battery_c_rate_limit: 0.3
   generate_cost_weight: 0.1
   bess_cost_weight: 0.1
   env_reward_weight: 0.1

@@ -58,10 +58,6 @@ class MGEnv(ParallelEnv):
         self.buy_cost_weight = float(config.get("buy_cost_weight", 1.0))
         self.buy_reward_mode = config.get("buy_reward_mode", "raw_cost")
         self.buy_reward_scale = float(config.get("buy_reward_scale", 100.0))
-        self.battery_action_mode = config.get("battery_action_mode", "fixed_power")
-        if self.battery_action_mode not in {"fixed_power", "soc_feasible_fraction"}:
-            raise ValueError(f"Unknown battery_action_mode: {self.battery_action_mode}")
-        self.battery_c_rate_limit = float(config.get("battery_c_rate_limit", 1.0))
         self.generate_cost_weight = float(config.get("generate_cost_weight", 1.0))
         self.bess_cost_weight = float(config.get("bess_cost_weight", 1.0))
         self.env_reward_weight = float(config.get("env_reward_weight", 1.0))
@@ -325,27 +321,13 @@ class MGEnv(ParallelEnv):
         actions_raw = np.clip(actions_raw, self.action_lows, self.action_highs)
 
         pds = actions_raw[:, 0] * self.params["dg_max"]
+        pbs_requested = actions_raw[:, 1] * self.params["battery_caps"]
 
         socs = self.params["socs"].copy()
         battery_caps = self.params["battery_caps"]
         battery_punishment_params = self.params["battery_punishment_params"]
 
         last_socs = socs
-        if self.battery_action_mode == "soc_feasible_fraction":
-            battery_power_limit = self.battery_c_rate_limit * battery_caps
-            max_charge_by_soc = np.maximum((0.8 - last_socs) * battery_caps / self.params["raw_ch"], 0.0)
-            max_discharge_by_soc = np.maximum((last_socs - 0.2) * battery_caps / self.params["raw_dis"], 0.0)
-            feasible_charge = np.minimum(battery_power_limit, max_charge_by_soc)
-            feasible_discharge = np.minimum(battery_power_limit, max_discharge_by_soc)
-            battery_action = actions_raw[:, 1]
-            pbs_requested = np.where(
-                battery_action < 0,
-                battery_action * feasible_charge,
-                battery_action * feasible_discharge,
-            )
-        else:
-            pbs_requested = actions_raw[:, 1] * battery_caps
-
         delta_soc = np.where(
             pbs_requested < 0,
             -self.params["raw_ch"] * pbs_requested / battery_caps,
@@ -357,16 +339,8 @@ class MGEnv(ParallelEnv):
         clamped_low = socs < 0.2
         clamped_high = socs > 0.8
         pb_adj = pbs_requested.copy()
-        pb_adj[clamped_low] = (
-            (last_socs[clamped_low] - 0.2)
-            * battery_caps[clamped_low]
-            / self.params["raw_dis"][clamped_low]
-        )
-        pb_adj[clamped_high] = (
-            (last_socs[clamped_high] - 0.8)
-            * battery_caps[clamped_high]
-            / self.params["raw_ch"][clamped_high]
-        )
+        pb_adj[clamped_low] = (last_socs[clamped_low] - 0.2) * battery_caps[clamped_low]
+        pb_adj[clamped_high] = (last_socs[clamped_high] - 0.8) * battery_caps[clamped_high]
 
         # 惩罚按“请求动作与最终执行动作的偏差”计算，避免 reward 与环境实际执行错位。
         pbs = pb_adj
@@ -408,7 +382,7 @@ class MGEnv(ParallelEnv):
         env_reward = self.env_reward_weight * (-pds * self.params["env_param"])
         punishment = self.battery_punishment_weight * battery_punishment
         soc_reserve_penalty = -self.soc_reserve_weight * (
-            np.maximum(self.soc_reserve_target - socs_raw, 0.0) + np.maximum(socs_raw - 0.8, 0.0)
+            np.maximum(self.soc_reserve_target - socs, 0.0) + np.maximum(socs_raw - 0.8, 0.0)
         )
         eco_reward = weighted_generate_costs + weighted_bess_cost + weighted_buy_cost
         
