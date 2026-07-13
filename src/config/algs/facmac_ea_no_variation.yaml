@@ -1,0 +1,4 @@
+# EA ablation: retain selection and elite cloning while disabling variation.
+name: "facmac_ea_no_variation"
+mutation_prob: 0.0
+crossover_prob: 0.0

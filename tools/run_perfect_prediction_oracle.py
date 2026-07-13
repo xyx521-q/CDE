@@ -55,7 +55,7 @@ def simulate_episode(x, env, row_idx, initial_socs):
 
         # Map [-1, 1] into the dynamically feasible battery power range so SOC stays valid.
         pb_low = -((0.8 - socs) * battery_caps / raw_ch)
-        pb_high = ((socs - 0.2) * battery_caps / raw_dis)
+        pb_high = (socs - 0.2) * battery_caps / raw_dis
         pbs = pb_low + 0.5 * (pb_gate + 1.0) * (pb_high - pb_low)
 
         delta_soc = np.where(
@@ -71,7 +71,9 @@ def simulate_episode(x, env, row_idx, initial_socs):
         bess_poly = -np.abs(bessa * x_bess**2 + bessb * x_bess + bessc)
         generate_costs = -(costa * pds**2 + costb * pds + costc)
         env_reward = -(pds * env_param)
-        soc_reserve_penalty = -env.soc_reserve_weight * np.maximum(env.soc_reserve_target - socs, 0.0)
+        soc_reserve_penalty = -env.soc_reserve_weight * np.maximum(
+            env.soc_reserve_target - socs, 0.0
+        )
 
         baseline_pg = max(load_pv, 0.0)
         baseline_grid_purchase_cost = baseline_pg * price
@@ -92,7 +94,9 @@ def simulate_episode(x, env, row_idx, initial_socs):
             + env.buy_cost_weight * buy_cost
             + curtailment_penalty
         )
-        reward_list = eco_reward + env.env_reward_weight * env_reward + soc_reserve_penalty
+        reward_list = (
+            eco_reward + env.env_reward_weight * env_reward + soc_reserve_penalty
+        )
 
         if env.reward_aggregate == "mean":
             total_reward += float(np.mean(reward_list)) * env.reward_scale
@@ -101,7 +105,9 @@ def simulate_episode(x, env, row_idx, initial_socs):
 
         total_grid_purchase_cost += float(actual_grid_purchase_cost)
         total_baseline_grid_purchase_cost += float(baseline_grid_purchase_cost)
-        total_grid_purchase_saving += float(baseline_grid_purchase_cost - actual_grid_purchase_cost)
+        total_grid_purchase_saving += float(
+            baseline_grid_purchase_cost - actual_grid_purchase_cost
+        )
         total_generate_cost += float(np.sum(-generate_costs))
         total_bess_cost += float(np.sum(-bess_poly))
         total_env_cost += float(np.sum(-env_reward))
@@ -114,7 +120,8 @@ def simulate_episode(x, env, row_idx, initial_socs):
         "grid_purchase_cost": total_grid_purchase_cost,
         "baseline_grid_purchase_cost": total_baseline_grid_purchase_cost,
         "grid_purchase_saving": total_grid_purchase_saving,
-        "grid_purchase_saving_ratio": total_grid_purchase_saving / max(total_baseline_grid_purchase_cost, 1e-6),
+        "grid_purchase_saving_ratio": total_grid_purchase_saving
+        / max(total_baseline_grid_purchase_cost, 1e-6),
         "generate_cost": total_generate_cost,
         "bess_cost": total_bess_cost,
         "env_cost": total_env_cost,
@@ -194,7 +201,7 @@ def main():
     args = parser.parse_args()
 
     config_path = ROOT / "src" / "config" / "envs" / f"{args.env_config}.yaml"
-    with open(config_path, "r", encoding="utf-8") as f:
+    with open(config_path, encoding="utf-8") as f:
         cfg = yaml.safe_load(f)
 
     env_args = cfg["env_args"]
@@ -230,15 +237,27 @@ def main():
         "num_days": len(results),
         "initial_soc": args.initial_soc,
         "episode_return_mean": float(np.mean([r["episode_return"] for r in results])),
-        "grid_purchase_cost_mean": float(np.mean([r["grid_purchase_cost"] for r in results])),
-        "baseline_grid_purchase_cost_mean": float(np.mean([r["baseline_grid_purchase_cost"] for r in results])),
-        "grid_purchase_saving_mean": float(np.mean([r["grid_purchase_saving"] for r in results])),
-        "grid_purchase_saving_ratio_mean": float(np.mean([r["grid_purchase_saving_ratio"] for r in results])),
+        "grid_purchase_cost_mean": float(
+            np.mean([r["grid_purchase_cost"] for r in results])
+        ),
+        "baseline_grid_purchase_cost_mean": float(
+            np.mean([r["baseline_grid_purchase_cost"] for r in results])
+        ),
+        "grid_purchase_saving_mean": float(
+            np.mean([r["grid_purchase_saving"] for r in results])
+        ),
+        "grid_purchase_saving_ratio_mean": float(
+            np.mean([r["grid_purchase_saving_ratio"] for r in results])
+        ),
         "generate_cost_mean": float(np.mean([r["generate_cost"] for r in results])),
         "bess_cost_mean": float(np.mean([r["bess_cost"] for r in results])),
         "env_cost_mean": float(np.mean([r["env_cost"] for r in results])),
-        "curtailment_penalty_mean": float(np.mean([r["curtailment_penalty"] for r in results])),
-        "soc_reserve_penalty_mean": float(np.mean([r["soc_reserve_penalty"] for r in results])),
+        "curtailment_penalty_mean": float(
+            np.mean([r["curtailment_penalty"] for r in results])
+        ),
+        "soc_reserve_penalty_mean": float(
+            np.mean([r["soc_reserve_penalty"] for r in results])
+        ),
         "mean_soc_mean": float(np.mean([r["mean_soc"] for r in results])),
     }
 

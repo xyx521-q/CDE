@@ -1,9 +1,6 @@
 # microgrid.yaml
-env: "microgrid"
-
 env_args:
   result_dir: "./results"
-  action_bins: 7
   log_trajectories: false
   log_trajectories_mode: "test"
   reward_mode: "milp_economic"

@@ -7,7 +7,7 @@
 `microgrid.yaml` 是微电网环境配置文件。运行命令中使用：
 
 ```powershell
-uv run python src/main.py --config=facmac_smac --env-config=microgrid with use_cuda=False
+uv run python src/direct_main.py --config facmac_ea --env-config microgrid --override use_cuda=False
 ```
 
 其中 `--env-config=microgrid` 会加载：
@@ -25,23 +25,11 @@ env_args:
   ...
 ```
 
-`env: "microgrid"` 决定使用 `src/envs/__init__.py` 中注册的 `MGEnv` 环境。`env_args` 会作为 `config` 传入 `MGEnv(config=..., algo_name=...)`。
+训练代码直接实例化 `MGEnv`，并将 `env_args` 作为 `config` 传入。
 
 ## 2. 顶层字段
 
-```yaml
-env: "microgrid"
-```
-
-含义：选择微电网环境。
-
-代码对应：
-
-```python
-REGISTRY["microgrid"] = partial(env_fn, env=MGEnv)
-```
-
-因此，只要配置中写 `env: "microgrid"`，runner 创建环境时就会实例化 `MGEnv`。
+微电网是项目唯一环境，运行时直接实例化 `MGEnv`。
 
 ## 3. env_args 总体作用
 
@@ -94,20 +82,7 @@ log_trajectories_mode: "test"
 
 ## 5. 动作相关配置
 
-```yaml
-action_bins: 7
-```
-
-含义：离散动作分箱数量。
-
-当前主算法 `facmac_smac.yaml` 中：
-
-```yaml
-discretize_actions: False
-agent_output_type: "continuous"
-```
-
-因此主线训练使用连续动作，`action_bins` 在当前连续动作流程中不是核心参数。
+主线训练使用连续动作。
 
 每个 agent 中有：
 
@@ -714,10 +689,9 @@ reward_scale: 0.1
 建议按下面顺序对照阅读：
 
 1. `src/config/envs/microgrid.yaml`：看配置值。
-2. `src/envs/__init__.py`：看 `microgrid` 如何注册到 `MGEnv`。
+2. `src/runners/episode_runner.py`：看训练流程如何直接实例化 `MGEnv`。
 3. `src/envs/maenv.py` 的 `__init__()`：看配置如何变成环境属性。
 4. `src/envs/maenv.py` 的 `get_obs()` 和 `get_state()`：看观测和全局状态。
 5. `src/envs/maenv.py` 的 `step()`：看动作、SOC、电网购电和奖励。
 6. `src/runners/episode_runner.py`：看环境返回值如何进入 batch。
 7. `src/learners/facmac_learner.py`：看 `reward` 如何参与 FACMAC 更新。
-

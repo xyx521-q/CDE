@@ -7,7 +7,6 @@ import yaml
 from scipy.optimize import Bounds, LinearConstraint, milp
 from scipy.sparse import lil_matrix
 
-
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -21,15 +20,19 @@ def apply_parameter_overrides(params, dg_max_override=None, battery_cap_override
         for key, value in params.items()
     }
     if dg_max_override is not None:
-        overridden["dg_max"] = np.full_like(overridden["dg_max"], float(dg_max_override), dtype=float)
+        overridden["dg_max"] = np.full_like(
+            overridden["dg_max"], float(dg_max_override), dtype=float
+        )
     if battery_cap_override is not None:
-        overridden["battery_caps"] = np.full_like(overridden["battery_caps"], float(battery_cap_override), dtype=float)
+        overridden["battery_caps"] = np.full_like(
+            overridden["battery_caps"], float(battery_cap_override), dtype=float
+        )
     return overridden
 
 
 def load_case(env_config, seed, split, num_days):
     config_path = ROOT / "src" / "config" / "envs" / f"{env_config}.yaml"
-    with open(config_path, "r", encoding="utf-8") as f:
+    with open(config_path, encoding="utf-8") as f:
         cfg = yaml.safe_load(f)
 
     env_args = cfg["env_args"]
@@ -50,7 +53,9 @@ def load_case(env_config, seed, split, num_days):
         "costc": _as_agent_array([a["costc"] for a in agents]),
         "env_param": _as_agent_array([a["env_param"] for a in agents]),
         "split_ratio": _as_agent_array([a["split_ratio"] for a in agents]),
-        "curtailment_penalty_weight": float(env_args.get("curtailment_penalty_weight", 0.0)),
+        "curtailment_penalty_weight": float(
+            env_args.get("curtailment_penalty_weight", 0.0)
+        ),
     }
 
     rng = np.random.default_rng(seed)
@@ -91,9 +96,13 @@ def solve_dispatch(
     raw_ch = np.asarray(params["raw_ch"], dtype=float)
     raw_dis = np.asarray(params["raw_dis"], dtype=float)
     gen_linear_cost = np.asarray(params.get("costb", np.zeros(n_agents)), dtype=float)
-    env_linear_cost = np.asarray(params.get("env_param", np.zeros(n_agents)), dtype=float)
+    env_linear_cost = np.asarray(
+        params.get("env_param", np.zeros(n_agents)), dtype=float
+    )
     if curtailment_penalty_weight is None:
-        curtailment_penalty_weight = float(params.get("curtailment_penalty_weight", 0.0))
+        curtailment_penalty_weight = float(
+            params.get("curtailment_penalty_weight", 0.0)
+        )
     resolved_curtailment_penalty_weight = float(curtailment_penalty_weight)
 
     grid_start = 0
@@ -220,7 +229,9 @@ def solve_dispatch(
         c=c,
         integrality=integrality,
         bounds=Bounds(lb, ub),
-        constraints=LinearConstraint(matrix.tocsr(), np.asarray(lower), np.asarray(upper)),
+        constraints=LinearConstraint(
+            matrix.tocsr(), np.asarray(lower), np.asarray(upper)
+        ),
         options=options,
     )
     if not res.success:
@@ -234,11 +245,23 @@ def solve_dispatch(
     grid_import = np.array([x[idx_grid(t)] for t in range(n_steps)])
     curtailment = np.array([x[idx_curtailment(t)] for t in range(n_steps)])
     pd = np.array([[x[idx_pd(t, a)] for a in range(n_agents)] for t in range(n_steps)])
-    charge = np.array([[x[idx_charge(t, a)] for a in range(n_agents)] for t in range(n_steps)])
-    discharge = np.array([[x[idx_discharge(t, a)] for a in range(n_agents)] for t in range(n_steps)])
-    soc = np.array([[x[idx_soc(t, a)] for a in range(n_agents)] for t in range(n_steps + 1)])
+    charge = np.array(
+        [[x[idx_charge(t, a)] for a in range(n_agents)] for t in range(n_steps)]
+    )
+    discharge = np.array(
+        [[x[idx_discharge(t, a)] for a in range(n_agents)] for t in range(n_steps)]
+    )
+    soc = np.array(
+        [[x[idx_soc(t, a)] for a in range(n_agents)] for t in range(n_steps + 1)]
+    )
 
-    generation_cost = float(np.sum(params.get("costa", 0.0) * pd**2 + params.get("costb", 0.0) * pd + params.get("costc", 0.0)))
+    generation_cost = float(
+        np.sum(
+            params.get("costa", 0.0) * pd**2
+            + params.get("costb", 0.0) * pd
+            + params.get("costc", 0.0)
+        )
+    )
     env_cost = float(np.sum(params.get("env_param", 0.0) * pd))
     battery_throughput = float(np.sum(charge + discharge))
     grid_purchase_cost = float(np.sum(grid_import * price))
@@ -260,7 +283,8 @@ def solve_dispatch(
         "grid_purchase_cost": grid_purchase_cost,
         "baseline_grid_purchase_cost": baseline_grid_purchase_cost,
         "grid_purchase_saving": baseline_grid_purchase_cost - grid_purchase_cost,
-        "grid_purchase_saving_ratio": (baseline_grid_purchase_cost - grid_purchase_cost) / max(baseline_grid_purchase_cost, 1e-6),
+        "grid_purchase_saving_ratio": (baseline_grid_purchase_cost - grid_purchase_cost)
+        / max(baseline_grid_purchase_cost, 1e-6),
         "generation_cost": generation_cost,
         "env_cost": env_cost,
         "curtailment_penalty": curtailment_penalty,
@@ -310,7 +334,10 @@ def main():
     results = []
     schedules = {}
     for idx, row_idx in enumerate(case["row_indices"], start=1):
-        print(f"[{idx}/{len(case['row_indices'])}] solving MILP row {int(row_idx)} ...", flush=True)
+        print(
+            f"[{idx}/{len(case['row_indices'])}] solving MILP row {int(row_idx)} ...",
+            flush=True,
+        )
         result = solve_dispatch(
             case["load_pv"][row_idx],
             case["price"][row_idx],
@@ -323,12 +350,15 @@ def main():
             time_limit=args.time_limit,
         )
         if not result["success"]:
-            raise RuntimeError(f"MILP failed for row {int(row_idx)}: {result['message']}")
+            raise RuntimeError(
+                f"MILP failed for row {int(row_idx)}: {result['message']}"
+            )
 
         serializable = {
             key: value
             for key, value in result.items()
-            if key not in {"grid_import", "pd", "charge", "discharge", "soc", "curtailment"}
+            if key
+            not in {"grid_import", "pd", "charge", "discharge", "soc", "curtailment"}
         }
         serializable["row_idx"] = int(row_idx)
         results.append(serializable)
@@ -354,7 +384,11 @@ def main():
         "initial_soc": args.initial_soc,
         "terminal_soc": args.terminal_soc,
         "cycle_cost": args.cycle_cost,
-        "curtailment_penalty_weight": float(case["params"].get("curtailment_penalty_weight", 0.0) if args.curtailment_penalty_weight is None else args.curtailment_penalty_weight),
+        "curtailment_penalty_weight": float(
+            case["params"].get("curtailment_penalty_weight", 0.0)
+            if args.curtailment_penalty_weight is None
+            else args.curtailment_penalty_weight
+        ),
         "dg_max_override": args.dg_max_override,
         "battery_cap_override": args.battery_cap_override,
         "model": "MILP economic dispatch with linear generation/environment costs and binary charge/discharge exclusivity",

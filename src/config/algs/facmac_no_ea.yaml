@@ -1,0 +1,3 @@
+# RL baseline: the identical FACMAC setup without evolutionary augmentation.
+name: "facmac_no_ea"
+EA: false

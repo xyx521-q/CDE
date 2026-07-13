@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "skills": {
+    "codebase-design": {
+      "source": "C:\\Users\\xyx\\Desktop\\GDE-main\\.agents\\skills",
+      "sourceType": "local",
+      "computedHash": "cdc3d683881cbe5ca367c954571e158861176aa9af8adad1b2c5edd9eb72fe05"
+    },
+    "diagnosing-bugs": {
+      "source": "C:\\Users\\xyx\\Desktop\\GDE-main\\.agents\\skills",
+      "sourceType": "local",
+      "computedHash": "44417076a76b40331f3816f21e76ea7c9d129e3f73cca2e159b69a56aaa838b2"
+    },
+    "pytorch-patterns": {
+      "source": "C:\\Users\\xyx\\Desktop\\GDE-main\\.agents\\skills",
+      "sourceType": "local",
+      "computedHash": "001be53791f76c13e09c7b706df26ec27fb93dd43e19825e426a361bcf4e3d2e"
+    },
+    "tdd": {
+      "source": "C:\\Users\\xyx\\Desktop\\GDE-main\\.agents\\skills",
+      "sourceType": "local",
+      "computedHash": "7ac19bf391ceb23266ed5b4f81068201eaa38dcf76d0b59850d49c2c9e426d63"
+    },
+    "uv": {
+      "source": "C:\\Users\\xyx\\Desktop\\GDE-main\\.agents\\skills",
+      "sourceType": "local",
+      "computedHash": "19be80af320534d243a183ae7608521b47bd89b48a138d0cdafef9548e832733"
+    }
+  }
+}

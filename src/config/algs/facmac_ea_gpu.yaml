@@ -1,0 +1,19 @@
+# RTX 5070 Ti 12 GB preset for Windows/Linux with PyTorch CUDA 12.8.
+# Environment interaction and replay storage stay on CPU; neural-network
+# inference, FACMAC updates, and the EA population run on CUDA.
+name: "facmac_ea_gpu"
+use_cuda: true
+
+# Algorithm parameters are shared with the CPU configuration in default.yaml.
+# This preset changes only CUDA execution precision and operational cadence.
+float32_matmul_precision: "high"
+
+# Reduce evaluation, console/W&B synchronization, and checkpoint I/O so the
+# training loop spends more time in CUDA kernels.
+test_nepisode: 4
+test_interval: 10000
+log_interval: 10000
+runner_log_interval: 10000
+learner_log_interval: 10000
+save_model_interval: 100000
+ea_log_interval: 50

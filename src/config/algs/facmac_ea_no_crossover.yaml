@@ -1,0 +1,3 @@
+# EA ablation: retain selection and mutation while disabling crossover.
+name: "facmac_ea_no_crossover"
+crossover_prob: 0.0

@@ -4,7 +4,7 @@ import collections.abc
 import os
 import re
 from copy import deepcopy
-from os.path import dirname, abspath
+from os.path import abspath, dirname
 
 import numpy as np
 import torch as th
@@ -12,7 +12,6 @@ import yaml
 
 from run import run
 from utils.logging import get_logger
-
 
 if not hasattr(collections, "Mapping"):
     collections.Mapping = collections.abc.Mapping
@@ -40,7 +39,7 @@ def config_copy(config):
 
 
 def load_yaml(path):
-    with open(path, "r", encoding="utf-8") as f:
+    with open(path, encoding="utf-8") as f:
         return yaml.load(f, Loader=yaml.FullLoader)
 
 
@@ -73,8 +72,8 @@ def normalize_scalars(value):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Run training without Sacred.")
-    parser.add_argument("--config", default="facmac_smac")
+    parser = argparse.ArgumentParser(description="Run microgrid FACMAC training.")
+    parser.add_argument("--config", default="facmac_ea")
     parser.add_argument("--env-config", default="microgrid")
     parser.add_argument(
         "--override",
@@ -88,8 +87,12 @@ def main():
     config_dir = os.path.join(src_dir, "config")
 
     config = load_yaml(os.path.join(config_dir, "default.yaml"))
-    config = recursive_dict_update(config, load_yaml(os.path.join(config_dir, "envs", f"{args.env_config}.yaml")))
-    config = recursive_dict_update(config, load_yaml(os.path.join(config_dir, "algs", f"{args.config}.yaml")))
+    config = recursive_dict_update(
+        config, load_yaml(os.path.join(config_dir, "envs", f"{args.env_config}.yaml"))
+    )
+    config = recursive_dict_update(
+        config, load_yaml(os.path.join(config_dir, "algs", f"{args.config}.yaml"))
+    )
 
     for override in args.override:
         key, raw_value = override.split("=", 1)
@@ -104,7 +107,7 @@ def main():
     config["env_args"]["run_id"] = "direct"
 
     logger = get_logger()
-    run(None, config, logger)
+    run(config, logger)
 
 
 if __name__ == "__main__":

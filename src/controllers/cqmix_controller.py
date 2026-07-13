@@ -1,113 +1,85 @@
-from gym import spaces
-from gymnasium import spaces as gymnasium_spaces
-import torch as th
-import torch.distributions as tdist
 import numpy as np
-from .basic_controller import BasicMAC
+import torch as th
+from gymnasium import spaces
 
+from modules.policy import RNNAgent
 
-BOX_SPACES = (spaces.Box, gymnasium_spaces.Box)
-TUPLE_SPACES = (spaces.Tuple, gymnasium_spaces.Tuple)
+class CQMixMAC:
+    def __init__(self, scheme, groups, args):
+        self.n_agents = args.n_agents
+        self.args = args
+        self.agent = RNNAgent(self._get_input_shape(scheme), args)
+        self.hidden_states = None
+        if not all(isinstance(space, spaces.Box) for space in args.action_spaces):
+            raise ValueError("Only continuous Box action spaces are supported.")
+        if any(space.shape != (args.n_actions,) for space in args.action_spaces):
+            raise ValueError("All agents must use the same flat action shape.")
+        self._action_lows = th.as_tensor(
+            np.stack([space.low for space in args.action_spaces]), dtype=th.float32
+        ).unsqueeze(0)
+        self._action_highs = th.as_tensor(
+            np.stack([space.high for space in args.action_spaces]), dtype=th.float32
+        ).unsqueeze(0)
+        self._action_bounds_cache = {}
 
+    def init_hidden(self, batch_size):
+        self.hidden_states = (
+            self.agent.init_hidden().unsqueeze(0).expand(batch_size, self.n_agents, -1)
+        )
 
-# This multi-agent controller shares parameters between agents
-class CQMixMAC(BasicMAC):
+    def parameters(self):
+        return self.agent.parameters()
+
+    def named_parameters(self):
+        return self.agent.named_parameters()
+
+    def load_state(self, other_mac):
+        self.agent.load_state_dict(other_mac.agent.state_dict())
+
+    def load_state_from_state_dict(self, state_dict):
+        self.agent.load_state_dict(state_dict)
+
+    def cuda(self, device="cuda"):
+        self.agent.cuda(device=device)
+
+    def save_models(self, path):
+        th.save(self.agent.state_dict(), f"{path}/agent.th")
+
+    def load_models(self, path):
+        self.agent.load_state_dict(
+            th.load(f"{path}/agent.th", map_location=lambda storage, loc: storage)
+        )
+
     def _scale_actions_to_space(self, actions):
-        if all([isinstance(act_space, BOX_SPACES) for act_space in self.args.action_spaces]):
-            scaled_actions = actions.clone()
-            for _aid in range(self.n_agents):
-                for _actid in range(self.args.action_spaces[_aid].shape[0]):
-                    low = np.asarray(self.args.action_spaces[_aid].low[_actid]).item()
-                    high = np.asarray(self.args.action_spaces[_aid].high[_actid]).item()
-                    scaled_actions[:, _aid, _actid] = low + 0.5 * (actions[:, _aid, _actid] + 1.0) * (high - low)
-            return scaled_actions
-        elif all([isinstance(act_space, TUPLE_SPACES) for act_space in self.args.action_spaces]):
-            scaled_actions = actions.clone()
-            for _aid in range(self.n_agents):
-                offset = 0
-                for space in self.args.action_spaces[_aid].spaces:
-                    for _actid in range(space.shape[0]):
-                        low = np.asarray(space.low[_actid]).item()
-                        high = np.asarray(space.high[_actid]).item()
-                        scaled_actions[:, _aid, offset + _actid] = (
-                            low + 0.5 * (actions[:, _aid, offset + _actid] + 1.0) * (high - low)
-                        )
-                    offset += space.shape[0]
-            return scaled_actions
-        return actions
+        low, high = self._get_action_bounds(actions)
+        return low + 0.5 * (actions + 1.0) * (high - low)
 
     def _clamp_actions_to_space(self, actions):
-        if all([isinstance(act_space, BOX_SPACES) for act_space in self.args.action_spaces]):
-            for _aid in range(self.n_agents):
-                for _actid in range(self.args.action_spaces[_aid].shape[0]):
-                    actions[:, _aid, _actid].clamp_(
-                        np.asarray(self.args.action_spaces[_aid].low[_actid]).item(),
-                        np.asarray(self.args.action_spaces[_aid].high[_actid]).item(),
-                    )
-        elif all([isinstance(act_space, TUPLE_SPACES) for act_space in self.args.action_spaces]):
-            for _aid in range(self.n_agents):
-                for _actid in range(self.args.action_spaces[_aid].spaces[0].shape[0]):
-                    actions[:, _aid, _actid].clamp_(
-                        self.args.action_spaces[_aid].spaces[0].low[_actid],
-                        self.args.action_spaces[_aid].spaces[0].high[_actid],
-                    )
-                for _actid in range(self.args.action_spaces[_aid].spaces[1].shape[0]):
-                    tmp_idx = _actid + self.args.action_spaces[_aid].spaces[0].shape[0]
-                    actions[:, _aid, tmp_idx].clamp_(
-                        self.args.action_spaces[_aid].spaces[1].low[_actid],
-                        self.args.action_spaces[_aid].spaces[1].high[_actid],
-                    )
-        return actions
+        low, high = self._get_action_bounds(actions)
+        return th.maximum(th.minimum(actions, high), low)
 
+    def _get_action_bounds(self, actions):
+        cache_key = (str(actions.device), actions.dtype)
+        bounds = self._action_bounds_cache.get(cache_key)
+        if bounds is None:
+            bounds = (
+                self._action_lows.to(device=actions.device, dtype=actions.dtype),
+                self._action_highs.to(device=actions.device, dtype=actions.dtype),
+            )
+            self._action_bounds_cache[cache_key] = bounds
+        return bounds
 
-    def select_actions(self, ep_batch, t_ep, t_env, bs=slice(None), test_mode=False, past_actions=None, critic=None,
-                       target_mac=False, explore_agent_ids=None):
-
-        if t_ep is not None and t_ep > 0:
-            past_actions = ep_batch["actions"][:, t_ep-1]
-
-        if getattr(self.args, "agent", "cqmix") == "cqmix":
-            raise Exception("No CQMIX agent selected (naf, icnn, qtopt)!")
-
-        # Note batch_size_run is set to be 1 in our experiments
-        if self.args.agent in ["naf", "mlp", "rnn"]:
-            chosen_actions = self.forward(ep_batch[bs],
-                                          t_ep,
-                                          hidden_states=self.hidden_states[bs],
-                                          test_mode=test_mode,
-                                          select_actions=True)["actions"] # just to make sure detach
-            chosen_actions = chosen_actions.view(ep_batch[bs].batch_size, self.n_agents, self.args.n_actions).detach()
-            pass
-        elif self.args.agent == "icnn":
-            inputs = self._build_inputs(ep_batch[bs], t_ep)
-            chosen_actions = self.agent.bundle_tuned2(observation=inputs)
-            chosen_actions = chosen_actions.view(ep_batch[bs].batch_size, self.n_agents, self.args.n_actions).detach()
-            pass
-        elif self.args.agent in ["cem", "cemrnn"]:
-            chosen_actions = self.cem_sampling(ep_batch, t_ep, bs)
-        elif self.args.agent in ["cemrand"]:
-            N = 64
-            agent_inputs = self._build_inputs(ep_batch[bs], t_ep)
-            hidden_states = self.hidden_states[bs].repeat(N, 1, 1)
-
-            # Randomly sample N actions from a uniform distribution
-            ftype = th.FloatTensor if not next(self.agent.parameters()).is_cuda else th.cuda.FloatTensor
-            low = ftype(ep_batch[bs].batch_size, self.n_agents, self.args.n_actions).zero_() + self.args.action_spaces[0].low[0]
-            high = ftype(ep_batch[bs].batch_size, self.n_agents, self.args.n_actions).zero_() + self.args.action_spaces[0].high[0]
-            dist = tdist.Uniform(low.view(-1, self.args.n_actions), high.view(-1, self.args.n_actions))
-            actions = dist.sample((N,)).detach()
-
-            # Pick the best sampled action
-            out = self.agent(agent_inputs.unsqueeze(0).expand(N, *agent_inputs.shape).contiguous().view(-1, agent_inputs.shape[-1]),
-                             hidden_states if hidden_states is not None else self.hidden_states,
-                             actions=actions.view(-1, actions.shape[-1]))["Q"].view(N, -1, 1)
-            topk, topk_idxs = th.topk(out, 1, dim=0)
-            action_prime = th.mean(actions.gather(0, topk_idxs.repeat(1, 1, self.args.n_actions).long()), dim=0)
-            chosen_actions = action_prime.clone().view(ep_batch[bs].batch_size, self.n_agents,
-                                                       self.args.n_actions).detach()
-            pass
-        else:
-            raise Exception("No known agent type selected for cqmix! ({})".format(self.args.agent))
+    def select_actions(
+        self,
+        ep_batch,
+        t_ep,
+        t_env,
+        bs=slice(None),
+        test_mode=False,
+    ):
+        chosen_actions = self.forward(ep_batch[bs], t_ep, select_actions=True)[
+            "actions"
+        ].detach()
 
         # Now do appropriate noising
         exploration_mode = getattr(self.args, "exploration_mode", "gaussian")
@@ -119,7 +91,12 @@ class CQMixMAC(BasicMAC):
                 theta = getattr(self.args, "ou_theta", 0.15)
                 sigma = getattr(self.args, "ou_sigma", 0.2)
 
-                noise_scale = getattr(self.args, "ou_noise_scale", 0.3) if t_env < self.args.env_args["episode_limit"]*self.args.ou_stop_episode else 0.0
+                noise_scale = (
+                    getattr(self.args, "ou_noise_scale", 0.3)
+                    if t_env
+                    < self.args.env_args["episode_limit"] * self.args.ou_stop_episode
+                    else 0.0
+                )
                 dx = theta * (mu - x) + sigma * x.clone().normal_()
                 self.ou_noise_state = x + dx
                 ou_noise = self.ou_noise_state * noise_scale
@@ -128,48 +105,53 @@ class CQMixMAC(BasicMAC):
                 start_steps = getattr(self.args, "start_steps", 0)
                 act_noise = getattr(self.args, "act_noise", 0.1)
                 if t_env >= start_steps:
-                    if explore_agent_ids is None:
-                        x = chosen_actions.clone().zero_()
-                        chosen_actions += act_noise * x.clone().normal_()
-                    else:
-                        for idx in explore_agent_ids:
-                            x = chosen_actions[:, idx].clone().zero_()
-                            chosen_actions[:, idx] += act_noise * x.clone().normal_()
+                    x = chosen_actions.clone().zero_()
+                    chosen_actions += act_noise * x.clone().normal_()
                 else:
-                    if getattr(self.args.env_args, "scenario_name", None) is None or self.args.env_args["scenario_name"] in ["Humanoid-v2", "HumanoidStandup-v2"]:
-                        chosen_actions = th.from_numpy(np.array([[self.args.action_spaces[0].sample() for i in range(self.n_agents)] for _ in range(ep_batch[bs].batch_size)])).float().to(device=ep_batch.device)
-                    else:
-                        chosen_actions = th.from_numpy(np.array([[self.args.action_spaces[i].sample() for i in range(self.n_agents)] for _ in range(ep_batch[bs].batch_size)])).float().to(device=ep_batch.device)
+                    chosen_actions = (
+                        th.from_numpy(
+                            np.array(
+                                [
+                                    [
+                                        self.args.action_spaces[i].sample()
+                                        for i in range(self.n_agents)
+                                    ]
+                                    for _ in range(ep_batch[bs].batch_size)
+                                ]
+                            )
+                        )
+                        .float()
+                        .to(device=chosen_actions.device)
+                    )
 
         # For continuous actions, clamp after exploration so the environment and critic see valid actions.
         return self._clamp_actions_to_space(chosen_actions)
 
-    def get_weight_decay_weights(self):
-        return self.agent.get_weight_decay_weights()
-
-    def forward(self, ep_batch, t, actions=None, hidden_states=None, select_actions=False, test_mode=False):
-        agent_inputs = self._build_inputs(ep_batch, t)
+    def forward(
+        self,
+        ep_batch,
+        t,
+        actions=None,
+        select_actions=False,
+    ):
+        agent_inputs = self._build_inputs(ep_batch, t).to(
+            next(self.agent.parameters()).device
+        )
         ret = self.agent(agent_inputs, self.hidden_states, actions=actions)
         if "actions" in ret:
-            raw_actions = ret["actions"].view(ep_batch.batch_size, self.n_agents, self.args.n_actions)
+            raw_actions = ret["actions"].view(
+                ep_batch.batch_size, self.n_agents, self.args.n_actions
+            )
             scaled_actions = self._scale_actions_to_space(raw_actions)
             ret = dict(ret)
             ret["raw_actions"] = raw_actions
-            ret["actions"] = self._clamp_actions_to_space(scaled_actions)
+            ret["actions"] = scaled_actions
         if select_actions:
             self.hidden_states = ret["hidden_state"]
             return ret
-        agent_outs = ret["Q"]
-        self.hidden_states = ret["hidden_state"]
+        return ret
 
-        if self.agent_output_type == "pi_logits":
-            agent_outs = th.nn.functional.softmax(agent_outs, dim=-1)
-            if not test_mode:
-                agent_outs = ((1 - self.action_selector.epsilon) * agent_outs
-                               + th.ones_like(agent_outs) * self.action_selector.epsilon/agent_outs.size(-1))
-        return agent_outs.view(ep_batch.batch_size, self.n_agents, -1), actions
-
-    def _build_inputs(self, batch, t, target_mac=False, last_target_action=None):
+    def _build_inputs(self, batch, t):
         # Assumes homogenous agents with flat observations.
         # Other MACs might want to e.g. delegate building inputs to each agent
         bs = batch.batch_size
@@ -182,67 +164,21 @@ class CQMixMAC(BasicMAC):
             else:
                 inputs.append(batch["actions"][:, t - 1])
         if self.args.obs_agent_id:
-            inputs.append(th.eye(self.n_agents, device=batch.device).unsqueeze(0).expand(bs, -1, -1))
+            inputs.append(
+                th.eye(self.n_agents, device=batch.device)
+                .unsqueeze(0)
+                .expand(bs, -1, -1)
+            )
 
-        inputs = th.cat([x.reshape(bs*self.n_agents, -1) for x in inputs], dim=1)
+        inputs = th.cat([x.reshape(bs * self.n_agents, -1) for x in inputs], dim=1)
 
         return inputs
 
     def _get_input_shape(self, scheme):
         input_shape = scheme["obs"]["vshape"]
         if self.args.obs_last_action:
-            if getattr(self.args, "discretize_actions", False):
-                input_shape += scheme["actions_onehot"]["vshape"][0]
-            else:
-                input_shape += scheme["actions"]["vshape"][0]
+            input_shape += scheme["actions"]["vshape"][0]
         if self.args.obs_agent_id:
             input_shape += self.n_agents
 
         return input_shape
-
-    def cem_sampling(self, ep_batch, t, bs, critic=None):
-        # Number of samples from the param distribution
-        N = 64
-        # Number of best samples we will consider
-        Ne = 6
-
-        ftype = th.FloatTensor if not next(self.agent.parameters()).is_cuda else th.cuda.FloatTensor
-        mu = ftype(ep_batch[bs].batch_size, self.n_agents, self.args.n_actions).zero_()
-        std = ftype(ep_batch[bs].batch_size, self.n_agents, self.args.n_actions).zero_() + 1.0
-        its = 0
-
-        maxits = 2
-        agent_inputs = self._build_inputs(ep_batch[bs], t)
-        hidden_states = self.hidden_states.reshape(-1, self.n_agents, self.args.rnn_hidden_dim)[bs].repeat(N, 1, 1, 1)
-
-        # Use feed-forward critic here, so it takes only the obs input
-        critic_inputs = []
-        if critic is not None:
-            critic_inputs.append(ep_batch[bs]["obs"][:, t])
-            critic_inputs = th.cat([x.reshape(ep_batch[bs].batch_size * self.n_agents, -1) for x in critic_inputs], dim=1)
-
-        while its < maxits:
-            dist = tdist.Normal(mu.view(-1, self.args.n_actions), std.view(-1, self.args.n_actions))
-            actions = dist.sample((N,)).detach()
-            actions_prime = th.tanh(actions)
-
-            if critic is None:
-                ret = self.agent(agent_inputs.unsqueeze(0).expand(N, *agent_inputs.shape).contiguous().view(-1, agent_inputs.shape[-1]),
-                                 hidden_states if hidden_states is not None else self.hidden_states,
-                                 actions=actions_prime.view(-1, actions_prime.shape[-1]))
-                out = ret["Q"].view(N, -1, 1)
-            else:
-                out, _ = critic(critic_inputs.unsqueeze(0).expand(N, *critic_inputs.shape).contiguous().view(-1, critic_inputs.shape[-1]),
-                                actions=actions_prime.view(-1, actions_prime.shape[-1]))
-                out = out.view(N, -1, 1)
-
-            topk, topk_idxs = th.topk(out, Ne, dim=0)
-            mu = th.mean(actions.gather(0, topk_idxs.repeat(1, 1, self.args.n_actions).long()), dim=0)
-            std = th.std(actions.gather(0, topk_idxs.repeat(1, 1, self.args.n_actions).long()), dim=0)
-            its += 1
-
-        topk, topk_idxs = th.topk(out, 1, dim=0)
-        action_prime = th.mean(actions_prime.gather(0, topk_idxs.repeat(1, 1, self.args.n_actions).long()), dim=0)
-        chosen_actions = action_prime.clone().view(ep_batch[bs].batch_size, self.n_agents, self.args.n_actions).detach()
-
-        return chosen_actions

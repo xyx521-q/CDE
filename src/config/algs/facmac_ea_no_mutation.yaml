@@ -1,0 +1,4 @@
+# EA ablation: retain population selection/recombination but disable mutation.
+name: "facmac_ea_no_mutation"
+EA: true
+mutation_prob: 0.0
