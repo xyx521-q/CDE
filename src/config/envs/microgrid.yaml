@@ -6,15 +6,17 @@ env_args:
   action_bins: 7
   log_trajectories: false
   log_trajectories_mode: "test"
-  reward_aggregate: "mean"
-  reward_scale: 0.1
+  reward_mode: "milp_economic"
+  reward_aggregate: "sum"
+  reward_scale: 1.0
   buy_cost_weight: 1.0
-  buy_reward_mode: "relative_saving"
+  buy_reward_mode: "raw_cost"
   buy_reward_scale: 100.0
-  generate_cost_weight: 0.1
-  bess_cost_weight: 0.1
-  env_reward_weight: 0.1
-  battery_punishment_weight: 5.0
+  generate_cost_weight: 1.0
+  bess_cost_weight: 1.0
+  env_reward_weight: 1.0
+  battery_punishment_weight: 1.0
+  curtailment_penalty_weight: 1.0
   soc_reserve_target: 0.35
   soc_reserve_weight: 2.0
   data:
@@ -28,7 +30,7 @@ env_args:
       battery_punishment_param: 1.0
       raw_ch: 0.95
       raw_dis: 0.95
-      split_ratio: 0.25
+      split_ratio: 0.3333333333333333
       bessa: 0.01
       bessb: 0.1
       bessc: 0.05
@@ -46,7 +48,7 @@ env_args:
       battery_punishment_param: 1.0
       raw_ch: 0.95
       raw_dis: 0.95
-      split_ratio: 0.25
+      split_ratio: 0.3333333333333333
       bessa: 0.01
       bessb: 0.1
       bessc: 0.05
@@ -64,7 +66,7 @@ env_args:
       battery_punishment_param: 1.0
       raw_ch: 0.95
       raw_dis: 0.95
-      split_ratio: 0.25
+      split_ratio: 0.3333333333333333
       bessa: 0.01
       bessb: 0.1
       bessc: 0.05

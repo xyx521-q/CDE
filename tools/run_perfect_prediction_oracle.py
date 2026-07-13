@@ -40,6 +40,7 @@ def simulate_episode(x, env, row_idx, initial_socs):
     total_generate_cost = 0.0
     total_bess_cost = 0.0
     total_env_cost = 0.0
+    total_curtailment_penalty = 0.0
     total_soc_reserve_penalty = 0.0
     mean_soc_sum = 0.0
 
@@ -75,6 +76,8 @@ def simulate_episode(x, env, row_idx, initial_socs):
         baseline_pg = max(load_pv, 0.0)
         baseline_grid_purchase_cost = baseline_pg * price
         actual_grid_purchase_cost = max(pg, 0.0) * price
+        curtailment = max(-pg, 0.0)
+        curtailment_penalty = -env.curtailment_penalty_weight * curtailment
         if env.buy_reward_mode == "relative_saving":
             buy_cost = env.buy_reward_scale * (
                 (baseline_grid_purchase_cost - actual_grid_purchase_cost)
@@ -87,6 +90,7 @@ def simulate_episode(x, env, row_idx, initial_socs):
             env.generate_cost_weight * generate_costs
             + env.bess_cost_weight * bess_poly
             + env.buy_cost_weight * buy_cost
+            + curtailment_penalty
         )
         reward_list = eco_reward + env.env_reward_weight * env_reward + soc_reserve_penalty
 
@@ -101,6 +105,7 @@ def simulate_episode(x, env, row_idx, initial_socs):
         total_generate_cost += float(np.sum(-generate_costs))
         total_bess_cost += float(np.sum(-bess_poly))
         total_env_cost += float(np.sum(-env_reward))
+        total_curtailment_penalty += float(curtailment_penalty)
         total_soc_reserve_penalty += float(np.sum(-soc_reserve_penalty))
         mean_soc_sum += float(np.mean(socs))
 
@@ -113,6 +118,7 @@ def simulate_episode(x, env, row_idx, initial_socs):
         "generate_cost": total_generate_cost,
         "bess_cost": total_bess_cost,
         "env_cost": total_env_cost,
+        "curtailment_penalty": total_curtailment_penalty,
         "soc_reserve_penalty": total_soc_reserve_penalty,
         "mean_soc": mean_soc_sum / t_horizon,
     }
@@ -231,6 +237,7 @@ def main():
         "generate_cost_mean": float(np.mean([r["generate_cost"] for r in results])),
         "bess_cost_mean": float(np.mean([r["bess_cost"] for r in results])),
         "env_cost_mean": float(np.mean([r["env_cost"] for r in results])),
+        "curtailment_penalty_mean": float(np.mean([r["curtailment_penalty"] for r in results])),
         "soc_reserve_penalty_mean": float(np.mean([r["soc_reserve_penalty"] for r in results])),
         "mean_soc_mean": float(np.mean([r["mean_soc"] for r in results])),
     }

@@ -55,6 +55,7 @@ class MGEnv(ParallelEnv):
 
         self.reward_aggregate = config.get("reward_aggregate", "sum")
         self.reward_scale = float(config.get("reward_scale", 1.0))
+        self.reward_mode = config.get("reward_mode", "legacy")
         self.buy_cost_weight = float(config.get("buy_cost_weight", 1.0))
         self.buy_reward_mode = config.get("buy_reward_mode", "raw_cost")
         self.buy_reward_scale = float(config.get("buy_reward_scale", 100.0))
@@ -62,6 +63,7 @@ class MGEnv(ParallelEnv):
         self.bess_cost_weight = float(config.get("bess_cost_weight", 1.0))
         self.env_reward_weight = float(config.get("env_reward_weight", 1.0))
         self.battery_punishment_weight = float(config.get("battery_punishment_weight", 1.0))
+        self.curtailment_penalty_weight = float(config.get("curtailment_penalty_weight", 0.0))
         self.soc_reserve_target = float(config.get("soc_reserve_target", 0.35))
         self.soc_reserve_weight = float(config.get("soc_reserve_weight", 0.0))
         self._ep_steps = 0
@@ -76,7 +78,11 @@ class MGEnv(ParallelEnv):
         self._ep_bess_cost_reward = 0.0
         self._ep_battery_punishment_reward = 0.0
         self._ep_battery_action_clip = 0.0
+        self._ep_curtailment_reward = 0.0
         self._ep_soc_reserve_reward = 0.0
+        self._ep_economic_reward = 0.0
+        self._ep_economic_cost = 0.0
+        self._ep_curtailment_cost = 0.0
 
         env_folder_path = pathlib.Path(__file__ or ".").parent
 
@@ -241,6 +247,10 @@ class MGEnv(ParallelEnv):
                 [agents_config[a]["env_param"] for a in self.possible_agents],
                 dtype=float,
             ),
+            "split_ratio": np.array(
+                [agents_config[a]["split_ratio"] for a in self.possible_agents],
+                dtype=float,
+            ),
             "socs": np.full(self.n_agents, 0.2, dtype=float),
         }
 
@@ -276,7 +286,11 @@ class MGEnv(ParallelEnv):
         self._ep_bess_cost_reward = 0.0
         self._ep_battery_punishment_reward = 0.0
         self._ep_battery_action_clip = 0.0
+        self._ep_curtailment_reward = 0.0
         self._ep_soc_reserve_reward = 0.0
+        self._ep_economic_reward = 0.0
+        self._ep_economic_cost = 0.0
+        self._ep_curtailment_cost = 0.0
         
         # 严格注意：框架的 runner.py 里写的是 self.env.reset()，它只认观察列表
         return self.get_obs()
@@ -308,7 +322,11 @@ class MGEnv(ParallelEnv):
         self._ep_bess_cost_reward = 0.0
         self._ep_battery_punishment_reward = 0.0
         self._ep_battery_action_clip = 0.0
+        self._ep_curtailment_reward = 0.0
         self._ep_soc_reserve_reward = 0.0
+        self._ep_economic_reward = 0.0
+        self._ep_economic_cost = 0.0
+        self._ep_curtailment_cost = 0.0
         return self.get_obs()
 
     def step(self, actions):
@@ -358,36 +376,63 @@ class MGEnv(ParallelEnv):
         pg = self.data_dict["load_pv"][tuple(self.idx)] - sum(pds) - sum(pbs)
 
         x = pbs + 3 * battery_caps * (1 - socs)
-        bess_poly = -np.abs(
+        bess_cost = np.abs(
             self.params["bessa"] * x**2 + self.params["bessb"] * x + self.params["bessc"]
         )
 
-        generate_costs = -(
-            self.params["costa"] * pds**2 + self.params["costb"] * pds + self.params["costc"]
-        )
+        generate_costs = self.params["costa"] * pds**2 + self.params["costb"] * pds + self.params["costc"]
         baseline_pg = max(float(self.data_dict["load_pv"][tuple(self.idx)]), 0.0)
         baseline_grid_purchase_cost = baseline_pg * self.data_dict["price"][tuple(self.idx)]
         actual_grid_purchase_cost = max(float(pg), 0.0) * self.data_dict["price"][tuple(self.idx)]
-        if self.buy_reward_mode == "relative_saving":
+        if self.reward_mode == "milp_economic":
+            split_weights = self.params["split_ratio"] / max(np.sum(self.params["split_ratio"]), 1e-6)
+            grid_cost_share = actual_grid_purchase_cost * split_weights
+            env_cost = pds * self.params["env_param"]
+            curtailment = np.full(self.n_agents, np.maximum(-pg, 0.0), dtype=float)
+            curtailment_cost = self.curtailment_penalty_weight * curtailment * split_weights
+            economic_cost = grid_cost_share + generate_costs + bess_cost + env_cost + curtailment_cost
+            economic_reward = -economic_cost
+            weighted_generate_costs = -generate_costs
+            weighted_bess_cost = -bess_cost
+            weighted_buy_cost = -grid_cost_share
+            weighted_curtailment_cost = -curtailment_cost
+        elif self.buy_reward_mode == "relative_saving":
             buy_signal = self.buy_reward_scale * (
                 (baseline_grid_purchase_cost - actual_grid_purchase_cost)
                 / max(baseline_grid_purchase_cost, 1e-6)
             )
             buy_cost = float(buy_signal)
+            weighted_buy_cost = self.buy_cost_weight * buy_cost
+            weighted_generate_costs = self.generate_cost_weight * (-generate_costs)
+            weighted_bess_cost = self.bess_cost_weight * (-bess_cost)
+            env_cost = pds * self.params["env_param"]
+            weighted_curtailment_cost = -self.curtailment_penalty_weight * np.full(self.n_agents, np.maximum(-pg, 0.0), dtype=float)
+            economic_cost = actual_grid_purchase_cost + np.sum(generate_costs) + np.sum(bess_cost) + np.sum(env_cost) + np.sum(np.maximum(-pg, 0.0)) * self.curtailment_penalty_weight
+            economic_reward = -economic_cost
         else:
             buy_cost = -actual_grid_purchase_cost
-        weighted_buy_cost = self.buy_cost_weight * buy_cost
-        weighted_generate_costs = self.generate_cost_weight * generate_costs
-        weighted_bess_cost = self.bess_cost_weight * bess_poly
+            weighted_buy_cost = self.buy_cost_weight * buy_cost
+            weighted_generate_costs = self.generate_cost_weight * (-generate_costs)
+            weighted_bess_cost = self.bess_cost_weight * (-bess_cost)
+            env_cost = pds * self.params["env_param"]
+            weighted_curtailment_cost = -self.curtailment_penalty_weight * np.full(self.n_agents, np.maximum(-pg, 0.0), dtype=float)
+            economic_cost = actual_grid_purchase_cost + np.sum(generate_costs) + np.sum(bess_cost) + np.sum(env_cost) + np.sum(np.maximum(-pg, 0.0)) * self.curtailment_penalty_weight
+            economic_reward = -economic_cost
+
         env_reward = self.env_reward_weight * (-pds * self.params["env_param"])
         punishment = self.battery_punishment_weight * battery_punishment
+        curtailment = np.full(self.n_agents, np.maximum(-pg, 0.0), dtype=float)
+        curtailment_penalty = weighted_curtailment_cost
         soc_reserve_penalty = -self.soc_reserve_weight * (
             np.maximum(self.soc_reserve_target - socs, 0.0) + np.maximum(socs_raw - 0.8, 0.0)
         )
-        eco_reward = weighted_generate_costs + weighted_bess_cost + weighted_buy_cost
+        eco_reward = weighted_generate_costs + weighted_bess_cost + weighted_buy_cost + curtailment_penalty
         
         # 每一个 Agent 算出来的单兵奖励列表
-        reward_list = eco_reward + env_reward + punishment + soc_reserve_penalty
+        if self.reward_mode == "milp_economic":
+            reward_list = economic_reward + punishment + soc_reserve_penalty
+        else:
+            reward_list = eco_reward + env_reward + punishment + soc_reserve_penalty
 
         step_total_power_loss = float(np.abs(pg))
         step_grid_purchase_cost = float(actual_grid_purchase_cost)
@@ -409,7 +454,11 @@ class MGEnv(ParallelEnv):
         self._ep_bess_cost_reward += float(np.sum(weighted_bess_cost))
         self._ep_battery_punishment_reward += float(np.sum(punishment))
         self._ep_battery_action_clip += float(np.sum(battery_action_clip))
+        self._ep_curtailment_reward += float(np.sum(curtailment_penalty))
         self._ep_soc_reserve_reward += float(np.sum(soc_reserve_penalty))
+        self._ep_economic_reward += float(np.sum(economic_reward))
+        self._ep_economic_cost += float(np.sum(-economic_reward))
+        self._ep_curtailment_cost += float(np.sum(-curtailment_penalty))
         
         # --- 记账保存逻辑（保留你原本写 CSV 的行为） ---
         for j, i in enumerate(self.possible_agents):
@@ -419,7 +468,9 @@ class MGEnv(ParallelEnv):
                 "pv_sd": float(self.data_dict[i]["pv_data"][tuple(self.idx)]), "load": float(self.data_dict[i]["load"][tuple(self.idx)]),
                 "pv": float(self.data_dict[i]["pv"][tuple(self.idx)]), "soc_init": float(last_socs[j]), "soc": float(self.params["socs"][j]),
                 "action_pd": float(actions_raw[j, 0]), "action_pb": float(actions_raw[j, 1]), "pd": float(pds[j]), "pb": float(pbs[j]),
-                "pg_total": float(pg), "gen_cost": float(weighted_generate_costs[j]), "bess_cost": float(weighted_bess_cost[j]), "buy_cost": float(weighted_buy_cost),
+                "pg_total": float(pg), "gen_cost": float(-weighted_generate_costs[j]), "bess_cost": float(-weighted_bess_cost[j]), "buy_cost": float(-weighted_buy_cost[j]),
+                "curtailment_penalty": float(curtailment_penalty[j]),
+                "economic_reward": float(economic_reward[j]), "economic_cost": float(-economic_reward[j]),
                 "baseline_grid_purchase_cost": float(baseline_grid_purchase_cost), "grid_purchase_saving": float(step_grid_purchase_saving),
                 "eco_reward": float(eco_reward[j]), "env_reward": float(env_reward[j]), "punishment": float(punishment[j]),
                 "soc_reserve_penalty": float(soc_reserve_penalty[j]), "reward": float(reward_list[j]),
@@ -476,11 +527,15 @@ class MGEnv(ParallelEnv):
             "grid_purchase_saving_ratio": float(
                 self._ep_grid_purchase_saving / max(self._ep_baseline_grid_purchase_cost, 1e-6)
             ),
+            "economic_reward": float(self._ep_economic_reward),
+            "economic_cost": float(self._ep_economic_cost),
+            "curtailment_cost": float(self._ep_curtailment_cost),
             "buy_cost_reward": float(self._ep_buy_cost_reward),
             "generate_cost_reward": float(self._ep_generate_cost_reward),
             "bess_cost_reward": float(self._ep_bess_cost_reward),
             "battery_punishment_reward": float(self._ep_battery_punishment_reward),
             "battery_action_clip": float(self._ep_battery_action_clip),
+            "curtailment_reward": float(self._ep_curtailment_reward),
             "soc_reserve_reward": float(self._ep_soc_reserve_reward),
             "episode_limit": terminated,
             # 设置一个虚拟胜负：只要全天没有任何一个电池 SoC 低于 0.2 违规，就记 battle_won=1（赢了）

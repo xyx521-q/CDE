@@ -14,10 +14,8 @@ class Logger:
         self.stats = defaultdict(lambda: [])
 
     def setup_tb(self, directory_name):
-        # Import here so it doesn't have to be installed if you don't use it
-        from tensorboard_logger import configure, log_value
-        configure(directory_name)
-        self.tb_logger = log_value
+        from tensorboardX import SummaryWriter
+        self.tb_writer = SummaryWriter(directory_name)
         self.use_tb = True
 
     def setup_sacred(self, sacred_run_dict):
@@ -28,7 +26,7 @@ class Logger:
         self.stats[key].append((t, value))
 
         if self.use_tb:
-            self.tb_logger(key, value, t)
+            self.tb_writer.add_scalar(key, value, t)
 
         if self.use_sacred and to_sacred:
             if key in self.sacred_info:
