@@ -44,6 +44,7 @@
 
 ## Validation
 
+- Do not continuously monitor a running training job unless the user explicitly requests real-time supervision.
 - Sync dependencies with `uv sync` and verify lock consistency with `uv lock --check` after dependency changes.
 - CPU smoke test: `uv run python src/direct_main.py --config facmac_ea --env-config microgrid --override use_cuda=False --override wandb_mode=disabled --override save_model=False --override t_max=12500`.
 - GPU preset: `uv run python src/direct_main.py --config facmac_ea_gpu --env-config microgrid`.

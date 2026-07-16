@@ -1,0 +1,11 @@
+# Three agents cooperatively push one heavy package to its target.
+# VMAS simulation stays CPU-resident on Windows and Linux; policy CUDA remains configurable.
+env: "vmas_transport"
+wandb_project: "gde-vmas"
+env_args:
+  n_agents: 3
+  episode_limit: 100
+  n_packages: 1
+  package_width: 0.15
+  package_length: 0.15
+  package_mass: 50

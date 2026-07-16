@@ -5,6 +5,7 @@ import torch as th
 
 from components.episode_buffer import EpisodeBatch
 from envs.maenv import MGEnv
+from envs.vmas_transport import VMASTransportEnv
 
 
 class EpisodeRunner:
@@ -14,7 +15,12 @@ class EpisodeRunner:
         self.batch_size = self.args.batch_size_run
         assert self.batch_size == 1
 
-        self.env = MGEnv(config=self.args.env_args, algo_name=self.args.name)
+        if self.args.env == "microgrid":
+            self.env = MGEnv(config=self.args.env_args, algo_name=self.args.name)
+        elif self.args.env == "vmas_transport":
+            self.env = VMASTransportEnv(config=self.args.env_args)
+        else:
+            raise ValueError(f"Unsupported environment: {self.args.env}")
 
         self.episode_limit = self.env.episode_limit
         self.t = 0

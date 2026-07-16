@@ -4,12 +4,19 @@ import torch.nn as nn
 
 class GINGraphConvolution(nn.Module):
     def __init__(
-        self, in_features, out_features, state_dim, hypernet_embed, weights_operation=None
+        self,
+        in_features,
+        out_features,
+        state_dim,
+        hypernet_embed,
+        weights_operation=None,
+        weight_scale=1.0,
     ):
         super().__init__()
         self.in_features = in_features
         self.out_features = out_features
         self.weights_operation = weights_operation
+        self.weight_scale = weight_scale
         self.hidden_features = int((in_features + out_features) / 2)
         self.w1 = nn.Sequential(
             nn.Linear(state_dim, hypernet_embed),
@@ -37,6 +44,9 @@ class GINGraphConvolution(nn.Module):
         elif self.weights_operation == "clamp":
             weight1 = nn.ReLU()(weight1)
             weight2 = nn.ReLU()(weight2)
+        elif self.weights_operation == "sigmoid":
+            weight1 = torch.sigmoid(weight1) * self.weight_scale
+            weight2 = torch.sigmoid(weight2) * self.weight_scale
         hidden = torch.nn.functional.leaky_relu(
             torch.matmul(aggregated, weight1)
             + self.b1(states).view(batch_size, 1, -1)

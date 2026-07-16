@@ -45,6 +45,7 @@ start_steps: 1000
 act_noise: 0.05
 mixing_embed_dim: 64
 hypernet_embed: 64
+mixer_weight_scale: 0.1
 
 # --- Evolutionary augmentation ---
 # These values are still required when EA is disabled because the run loop

@@ -12,10 +12,12 @@ class GNN(nn.Module):
         state_dim,
         hypernet_embed,
         weights_operation=None,
+        weight_scale=1.0,
     ):
         super().__init__()
         self.state_dim = state_dim
         self.weights_operation = weights_operation
+        self.weight_scale = weight_scale
         self.nonlinearity = nn.ELU()
         self.layers = nn.ModuleList(
             [
@@ -25,6 +27,7 @@ class GNN(nn.Module):
                     state_dim,
                     hypernet_embed,
                     weights_operation=weights_operation,
+                    weight_scale=weight_scale,
                 )
                 for index in range(len(hidden_layers))
             ]
@@ -60,6 +63,8 @@ class GNN(nn.Module):
             wout = torch.abs(wout)
         elif self.weights_operation == "clamp":
             wout = nn.ReLU()(wout)
+        elif self.weights_operation == "sigmoid":
+            wout = torch.sigmoid(wout) * self.weight_scale
         scalar_out = torch.matmul(readout.view(batch_size, 1, -1), wout)
 
         per_node_scalars = torch.matmul(

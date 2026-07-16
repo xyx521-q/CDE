@@ -15,13 +15,16 @@ class GraphDec(nn.Module):
         self.state_dim = int(np.prod(args.state_shape))
         self.rnn_hidden_dim = args.rnn_hidden_dim
         self.embed_dim = args.mixing_embed_dim
+        self.state_norm = nn.LayerNorm(self.state_dim)
+        self.mixer_weight_scale = getattr(args, "mixer_weight_scale", 0.1)
 
         self.mixing_GNN = GNN(
             num_input_features=1,
             hidden_layers=[self.embed_dim],
             state_dim=self.state_dim,
             hypernet_embed=args.hypernet_embed,
-            weights_operation="abs",
+            weights_operation="sigmoid",
+            weight_scale=self.mixer_weight_scale,
         )
         self.obs_enc_dim = 16
         self.obs_encoder = nn.Sequential(
@@ -39,7 +42,7 @@ class GraphDec(nn.Module):
         self, agent_qs, states, agent_obs=None, team_rewards=None, hidden_states=None
     ):
         batch_size = states.size(0)
-        states = states.reshape(-1, self.state_dim)
+        states = self.state_norm(states.reshape(-1, self.state_dim))
         agent_qs = agent_qs.view(-1, self.n_agents, 1)
         can_communicate = (th.sum(agent_obs, dim=3) > 0).view(-1, self.n_agents)
         communication_mask = th.bmm(

@@ -5,7 +5,7 @@ env_args:
   log_trajectories_mode: "test"
   reward_mode: "milp_economic"
   reward_aggregate: "sum"
-  reward_scale: 1.0
+  reward_scale: 0.0001
   buy_cost_weight: 1.0
   buy_reward_mode: "raw_cost"
   buy_reward_scale: 100.0

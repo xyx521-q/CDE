@@ -362,32 +362,20 @@ class MGEnv(ParallelEnv):
         )
         actions_raw = np.clip(actions_raw, self.action_lows, self.action_highs)
 
-        pds = actions_raw[:, 0] * self.params["dg_max"]
-        pbs_requested = actions_raw[:, 1] * self.params["battery_caps"]
-
         socs = self.params["socs"].copy()
         battery_caps = self.params["battery_caps"]
         battery_punishment_params = self.params["battery_punishment_params"]
-
         last_socs = socs
-        delta_soc = np.where(
-            pbs_requested < 0,
-            -self.params["raw_ch"] * pbs_requested / battery_caps,
-            -self.params["raw_dis"] * pbs_requested / battery_caps,
+
+        pds = actions_raw[:, 0] * self.params["dg_max"]
+        max_charge_power = (0.8 - last_socs) * battery_caps / self.params["raw_ch"]
+        max_discharge_power = (last_socs - 0.2) * battery_caps / self.params["raw_dis"]
+        pbs_requested = np.where(
+            actions_raw[:, 1] < 0,
+            actions_raw[:, 1] * max_charge_power,
+            actions_raw[:, 1] * max_discharge_power,
         )
-        socs_raw = last_socs + delta_soc
-        socs = socs + delta_soc
-
-        clamped_low = socs < 0.2
-        clamped_high = socs > 0.8
-        pb_adj = pbs_requested.copy()
-        pb_adj[clamped_low] = (last_socs[clamped_low] - 0.2) * battery_caps[clamped_low]
-        pb_adj[clamped_high] = (last_socs[clamped_high] - 0.8) * battery_caps[
-            clamped_high
-        ]
-
-        # 惩罚按“请求动作与最终执行动作的偏差”计算，避免 reward 与环境实际执行错位。
-        pbs = pb_adj
+        pbs = np.clip(pbs_requested, -max_charge_power, max_discharge_power)
         battery_action_clip = np.abs(pbs_requested - pbs)
         battery_punishment = -battery_punishment_params * battery_action_clip
 
@@ -396,15 +384,15 @@ class MGEnv(ParallelEnv):
             -self.params["raw_ch"] * pbs / battery_caps,
             -self.params["raw_dis"] * pbs / battery_caps,
         )
+        socs_raw = last_socs + delta_soc
         socs = np.clip(last_socs + delta_soc, 0.2, 0.8)
 
         self.params["socs"] = socs
         pg = self.data_dict["load_pv"][tuple(self.idx)] - sum(pds) - sum(pbs)
 
-        x = pbs + 3 * battery_caps * (1 - socs)
         bess_cost = np.abs(
-            self.params["bessa"] * x**2
-            + self.params["bessb"] * x
+            self.params["bessa"] * pbs**2
+            + self.params["bessb"] * np.abs(pbs)
             + self.params["bessc"]
         )
 
