@@ -23,6 +23,7 @@ class Logger:
             config=config,
             mode=mode,
             dir=directory,
+            settings=wandb.Settings(console="off"),
         )
 
     def log_stat(self, key, value, t):
