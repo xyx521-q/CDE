@@ -175,6 +175,7 @@ def run_sequential(args, logger):
     last_log_T = 0
     model_save_time = 0
     ea_cycle = 0
+    ea_elite_index = 0
 
     start_time = time.time()
     last_time = start_time
@@ -202,6 +203,7 @@ def run_sequential(args, logger):
             # Each generation updates the complete shared policy once.
             for _ in range(args.ea_generations_per_cycle):
                 elite_index = evolver.epoch(pop, fitness, 0, agent_level=True)
+            ea_elite_index = elite_index
         else:
             fitness = [0.0 for _ in range(args.pop_size)]
             elite_index = 0
@@ -264,7 +266,7 @@ def run_sequential(args, logger):
                 last_test_T = runner.t_env
                 for _ in range(n_test_runs):
                     _, ea_tp_reward = runner.run(
-                        pop[np.argmax(fitness)], test_mode=True
+                        pop[ea_elite_index], test_mode=True
                     )
                     ea_eval_reward += ea_tp_reward
                 ea_eval_reward = ea_eval_reward / n_test_runs

@@ -25,7 +25,23 @@ class VMASTransportEnvTest(unittest.TestCase):
 
         self.assertIsInstance(reward, float)
         self.assertIsInstance(terminated, bool)
-        self.assertEqual(info, {})
+        self.assertEqual(
+            set(info),
+            {
+                "success_rate",
+                "reward/package_progress",
+                "reward/agent_approach",
+                "contact_rate",
+                "package_displacement",
+                "zero_return",
+                "zero_package_progress",
+            },
+        )
+        self.assertEqual(info["success_rate"], 0.0)
+        self.assertEqual(info["reward/agent_approach"], 0.0)
+        self.assertEqual(info["package_displacement"], 0.0)
+        self.assertEqual(info["zero_return"], 1.0)
+        self.assertEqual(info["zero_package_progress"], 1.0)
 
 
 if __name__ == "__main__":

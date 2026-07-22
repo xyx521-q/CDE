@@ -17,6 +17,12 @@ class GraphDec(nn.Module):
         self.embed_dim = args.mixing_embed_dim
         self.state_norm = nn.LayerNorm(self.state_dim)
         self.mixer_weight_scale = getattr(args, "mixer_weight_scale", 0.1)
+        self.register_buffer(
+            "communication_adjacency",
+            th.tensor(
+                [[1.0, 1.0, 1.0], [1.0, 1.0, 0.0], [1.0, 0.0, 1.0]]
+            ),
+        )
 
         self.mixing_GNN = GNN(
             num_input_features=1,
@@ -44,9 +50,11 @@ class GraphDec(nn.Module):
         batch_size = states.size(0)
         states = self.state_norm(states.reshape(-1, self.state_dim))
         agent_qs = agent_qs.view(-1, self.n_agents, 1)
-        can_communicate = (th.sum(agent_obs, dim=3) > 0).view(-1, self.n_agents)
-        communication_mask = th.bmm(
-            can_communicate.unsqueeze(2).float(), can_communicate.unsqueeze(1).float()
+        communication_mask = self.communication_adjacency.expand(
+            agent_qs.size(0), -1, -1
+        )
+        active_agents = th.ones(
+            agent_qs.size(0), self.n_agents, dtype=th.bool, device=agent_qs.device
         )
 
         encoded_states = self.obs_encoder(hidden_states).view(
@@ -67,4 +75,6 @@ class GraphDec(nn.Module):
             local_rewards = local_reward_fractions.view(
                 batch_size, -1, self.n_agents
             ) * team_rewards.repeat(1, 1, self.n_agents)
-        return total_q, local_rewards, can_communicate.view(batch_size, -1, self.n_agents)
+        return total_q, local_rewards, active_agents.view(
+            batch_size, -1, self.n_agents
+        )

@@ -9,3 +9,4 @@ env_args:
   package_width: 0.15
   package_length: 0.15
   package_mass: 50
+  agent_approach_reward_weight: 1.0
