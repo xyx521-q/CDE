@@ -1,0 +1,6 @@
+# FACMAC-EA mid learning rates with a new remote replication seed.
+name: "facmac_ea_lr_mid_seed3"
+use_cuda: false
+seed: 3
+lr: 2e-4
+critic_lr: 7e-5
