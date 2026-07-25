@@ -19,6 +19,7 @@ class VMASTransportEnv:
             device="cpu",
             continuous_actions=True,
             max_steps=self.episode_limit,
+            terminated_truncated=True,
             seed=config.get("seed"),
             n_agents=self.n_agents,
             n_packages=int(config.get("n_packages", 1)),
@@ -69,6 +70,11 @@ class VMASTransportEnv:
     def reset_test(self, seed=None):
         return self.reset(seed=seed)
 
+    @staticmethod
+    def _is_pure_truncation(terminated, truncated):
+        # A task termination takes precedence if both flags arrive together.
+        return bool(truncated) and not bool(terminated)
+
     def get_obs(self):
         return self._obs
 
@@ -79,7 +85,7 @@ class VMASTransportEnv:
         actions = th.as_tensor(actions, dtype=th.float32).view(
             self.n_agents, self.action_spaces[0].shape[0]
         )
-        observations, rewards, done, infos = self.env.step(
+        observations, rewards, terminated, truncated, infos = self.env.step(
             [action.unsqueeze(0) for action in actions]
         )
         self._obs = [
@@ -106,8 +112,8 @@ class VMASTransportEnv:
             self._package_positions() - self._initial_package_positions, dim=1
         ).mean()
         info = {
-            # `done` is true only when every package reaches its goal.
-            "success_rate": float(done[0]),
+            "episode_limit": self._is_pure_truncation(terminated[0], truncated[0]),
+            "success_rate": float(terminated[0]),
             "reward/package_progress": self._episode_package_progress,
             "reward/agent_approach": self._episode_agent_approach,
             "contact_rate": self._episode_contact_steps / self._episode_steps,
@@ -117,7 +123,7 @@ class VMASTransportEnv:
                 abs(self._episode_package_progress) < 1e-8
             ),
         }
-        return package_progress + agent_approach, bool(done[0]), info
+        return package_progress + agent_approach, bool(terminated[0] or truncated[0]), info
 
     def _package_positions(self):
         return th.stack(
