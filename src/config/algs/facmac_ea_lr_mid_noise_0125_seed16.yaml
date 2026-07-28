@@ -1,0 +1,7 @@
+# FACMAC-EA mid learning rates with action noise 0.125.
+name: "facmac_ea_lr_mid_noise_0125_seed16"
+use_cuda: false
+seed: 16
+lr: 2e-4
+critic_lr: 7e-5
+act_noise: 0.125
